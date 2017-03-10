@@ -1,14 +1,15 @@
 package at.spengergasse.utils;
 
-public class Person {
+public class Person implements Comparable<Person>{
 
 	private int score;
 	private String name;
+	private int place;
 
-	public Person(String name, int score) {
+	public Person(String name) {
 		setName(name);
 		setScore(0);
-		addScore(score);
+		setPlace(-1);
 	}
 
 	public int getScore() {
@@ -36,9 +37,24 @@ public class Person {
 		return this.score;
 	}
 
+	public int getPlace() {
+		return place;
+	}
+
+	public void setPlace(int place) {
+		this.place = place;
+	}
+
 	@Override
 	public String toString() {
-		return "Person [score=" + score + ", name=" + name + "]";
+		return "Person [score=" + score + ", name=" + name + ", place=" + place + "]";
 	}
+
+	@Override
+	public int compareTo(Person o) {
+		return Integer.compare(this.score, o.score);
+	}
+
+	
 
 }
