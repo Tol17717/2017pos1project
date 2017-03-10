@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Highscore {
 	
-	private ArrayList<Person> highscore = new ArrayList<Person>(); // Das ist kein Kommentar; ier ist ein Text
+	private ArrayList<Person> highscore = new ArrayList<Person>(); // I bims der Chris
 
 	public Highscore() {
 		// TODO Auto-generated constructor stub
