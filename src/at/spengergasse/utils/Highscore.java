@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Highscore {
 	
-	private ArrayList<Person> highscore = new ArrayList<Person>(); // test
+	private ArrayList<Person> highscore = new ArrayList<Person>(); // Hier ist ein Text
 
 	public Highscore() {
 		// TODO Auto-generated constructor stub
