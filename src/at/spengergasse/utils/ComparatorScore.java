@@ -2,7 +2,7 @@ package at.spengergasse.utils;
 
 import java.util.*;
 
-public class ComparatorScore implements Comparator<Person>{
+public class ComparatorScore implements Comparator<Person>{ //komm
 	
 	public ComparatorScore() {
 	}

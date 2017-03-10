@@ -3,7 +3,7 @@ package at.spengergasse.utils;
 import java.io.*;
 import java.util.*;
 
-public class Highscore {
+public class Highscore { //komm
 	
 	private ComparatorScore c = new ComparatorScore();
 

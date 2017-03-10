@@ -6,7 +6,7 @@ public class Person implements Comparable<Person>{
 	private String name;
 	private int place;
 
-	public Person(String name) {
+	public Person(String name) { //komm
 		setName(name);
 		setScore(0);
 		setPlace(-1);
