@@ -9,6 +9,6 @@ public class ComparatorScore implements Comparator<Person>{ //komm
 
 	@Override
 	public int compare(Person o1, Person o2) {
-		return o1.compareTo(o2);
+		return o2.compareTo(o1);
 	}
 }

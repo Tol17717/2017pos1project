@@ -1,6 +1,8 @@
 package at.spengergasse.utils;
 
-public class Person implements Comparable<Person>{
+import java.io.Serializable;
+
+public class Person implements Comparable<Person>, Serializable{
 
 	private int score;
 	private String name;
@@ -32,9 +34,9 @@ public class Person implements Comparable<Person>{
 		}
 	}
 	
-	public int addScore(int score){
-		this.score += score;
-		return this.score;
+	public int addScore(int add){
+		setScore(score + add);
+		return score;
 	}
 
 	public int getPlace() {
