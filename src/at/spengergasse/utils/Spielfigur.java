@@ -2,11 +2,11 @@ package at.spengergasse.utils;
 
 import java.awt.Color;
 
-public class Figur {
+public class Spielfigur {
 
 	private Color color;
 	
-	public Figur(Color color) {
+	public Spielfigur(Color color) {
 		setColor(color);
 	}
 	

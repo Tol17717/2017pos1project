@@ -7,15 +7,16 @@ package at.spengergasse.utils;
  * @author Raphael
  *
  */
-public class Endfelder {
+public class WinFeld {
 	
+
 	/**
 	 * 
 	 */
-	public Endfelder() {
+	public WinFeld() {
 		super();
+	
 		
-		// TODO Auto-generated constructor stub
 	}
 
 }
