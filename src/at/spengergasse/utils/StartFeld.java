@@ -8,12 +8,25 @@ public class StartFeld {
 	
 	public StartFeld() {
 		super();
-		figureOnSpot = null;
+		setFigureOnSpot(null);
+		this.isbesetzt = istBesetzt();
+		
+	}
+	
+	public StartFeld(Spielfigur sf) {
+		super();
+		setFigureOnSpot(sf);
+		this.isbesetzt = istBesetzt();
 	}
 
 
-	public boolean isbesetzt() {
-		return isbesetzt;
+	public boolean istBesetzt() {
+		if(this.figureOnSpot == null) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 	
@@ -21,7 +34,20 @@ public class StartFeld {
 		if(this.figureOnSpot == null && figureOnSpot != null) {
 			this.figureOnSpot = figureOnSpot;
 		}
+		this.figureOnSpot = null;
 	}
+	
+	public void removeFigurefromSpot() {
+		this.figureOnSpot = null;
+	}
+
+
+	@Override
+	public String toString() {
+		return "StartFeld [isbesetzt=" + isbesetzt + ", kannRaus=" + kannRaus + ", figureOnSpot=" + figureOnSpot + "]";
+	}
+	
+	
 	
 	
 
