@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Highscore { // komm
+public class Highscore { 
 
 	private ComparatorScore c = new ComparatorScore();
 
@@ -105,7 +105,7 @@ public class Highscore { // komm
 		}
 	}
 
-	public void createFile() throws IOException {
+	public void createFile() throws IOException { //TODO Path aus dem Hardcode entfernen
 		if (new File("\\POSProjectTOL_HRA_2017").exists()) {
 			String pfad = "\\POSProjectTOL_HRA_2017\\highscore.ser";
 			File f = new File(pfad);

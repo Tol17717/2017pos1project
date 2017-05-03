@@ -1,16 +1,19 @@
 package at.spengergasse.utils;
 
-import java.awt.Color;
-
 public class Spielfigur {
 
-	private Color color;
-	
-	public Spielfigur(Color color) {
-		setColor(color);
+	private String name;
+	private String teamname;
+
+	public Spielfigur(String name, String teamname) {
+		this.name = name;
+		this.teamname = teamname;
 	}
-	
-	public void setColor(Color color){
-		this.color=color;
+
+	public String getName(){
+		return name;
+	}
+	public String getTeamName(){
+		return teamname;
 	}
 }

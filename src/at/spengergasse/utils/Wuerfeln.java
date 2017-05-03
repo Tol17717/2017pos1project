@@ -1,11 +1,10 @@
 package at.spengergasse.utils;
 
-import java.util.*;
+import java.util.Random;
 
-public class Wuerfel {
+public class Wuerfeln {
 
-	public Wuerfel() {
-		// TODO Auto-generated constructor stub
+	public Wuerfeln() {
 	}
 
 	public int wuerfeln(){
@@ -13,4 +12,5 @@ public class Wuerfel {
 		int w = rn.nextInt(6) + 1;
 		return w;
 	}
+
 }
