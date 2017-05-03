@@ -74,10 +74,62 @@ public class Game {
 				return false;
 			} else {
 				if(kickEnemy(0)){
-					
+					System.out.println(kick(0).toString()+" wurde zurück ins Startfeld geworfen");
+					gameField[0] = startT1.remove(0);
+					System.out.println(gameField[0].toString()+" ist auf Position 0");
+					return true;
 				}
+				gameField[0] = startT1.remove(0);
+				System.out.println(gameField[0].toString()+" ist auf Position 0");
+				return true;
 			}
 		}
+		if(team == 2){
+			if(startT2.isEmpty()){
+				return false;
+			} else {
+				if(kickEnemy(10)){
+					System.out.println(kick(10).toString()+" wurde zurück ins Startfeld geworfen");
+					gameField[10] = startT1.remove(0);
+					System.out.println(gameField[10].toString()+" ist auf Position 10");
+					return true;
+				}
+				gameField[10] = startT1.remove(0);
+				System.out.println(gameField[10].toString()+" ist auf Position 10");
+				return true;
+			}
+		}
+		if(team == 3){
+			if(startT1.isEmpty()){
+				return false;
+			} else {
+				if(kickEnemy(20)){
+					System.out.println(kick(20).toString()+" wurde zurück ins Startfeld geworfen");
+					gameField[20] = startT1.remove(0);
+					System.out.println(gameField[20].toString()+" ist auf Position 20");
+					return true;
+				}
+				gameField[20] = startT1.remove(0);
+				System.out.println(gameField[20].toString()+" ist auf Position 20");
+				return true;
+			}
+		}
+		if(team == 4){
+			if(startT1.isEmpty()){
+				return false;
+			} else {
+				if(kickEnemy(30)){
+					System.out.println(kick(30).toString()+" wurde zurück ins Startfeld geworfen");
+					gameField[30] = startT1.remove(0);
+					System.out.println(gameField[30].toString()+" ist auf Position 30");
+					return true;
+				}
+				gameField[30] = startT1.remove(0);
+				System.out.println(gameField[30].toString()+" ist auf Position 30");
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean kickEnemy(int feld){
@@ -110,5 +162,9 @@ public class Game {
 			return k;
 		}
 		return null;
+	}
+	
+	public void move(int steps){
+		
 	}
 }

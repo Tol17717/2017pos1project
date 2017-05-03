@@ -16,4 +16,11 @@ public class Spielfigur {
 	public String getTeamName(){
 		return teamname;
 	}
+
+	@Override
+	public String toString() {
+		return "Spielfigur [name=" + name + ", teamname=" + teamname + "]";
+	}
+	
+	
 }
