@@ -1,6 +1,5 @@
 package at.spengergasse.utils;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Game {
@@ -215,7 +214,7 @@ public class Game {
 		if(k.getTeamName().equals(t3.getName())){
 			
 			if((k.getPosition())>39){
-				winT2.add(k);
+				winT3.add(k);
 				gameField[k.getPosition()] = null;
 				return;
 			}
@@ -234,7 +233,7 @@ public class Game {
 		if(k.getTeamName().equals(t4.getName())){
 			
 			if((k.getPosition())>39){
-				winT2.add(k);
+				winT4.add(k);
 				gameField[k.getPosition()] = null;
 				return;
 			}

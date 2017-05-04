@@ -16,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -49,7 +50,7 @@ public class GUI extends Application {
 		 grid.setPadding(new Insets(10, 10, 10, 10));
 		 Text scenetitle = new Text("Mensch Aergere Dich Nicht");
 		 scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 50));
-		 grid.add(scenetitle, 0, 0);
+		 grid.add(scenetitle, 0, 0, 2, 1);
 		 Button btn = new Button("Play");
 		 HBox hbBtn = new HBox(10);
 		 hbBtn.setAlignment(Pos.CENTER);
