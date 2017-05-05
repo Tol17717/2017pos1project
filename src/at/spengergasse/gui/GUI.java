@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -25,51 +26,49 @@ import javafx.stage.Stage;
 public class GUI extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-
-		/*primaryStage.setTitle("Mensch Aergere Dich Nicht!");
-		Button btn = new Button();
-		btn.setText("Starte Spiel");
-		btn.setOnAction(new EventHandler<ActionEvent>() {
+		primaryStage.setTitle("Mensch Aergere Dich Nicht!");
+		BorderPane root = new BorderPane();
+		HBox hbox = new HBox();
+		hbox.setPadding(new Insets(50,50,50,50));
+		Text title = new Text("Mensch Aergere Dich Nicht");
+		hbox.getChildren().add(title);
+		root.setTop(hbox);
+		Scene scene = new Scene(root, 1280, 720);
+		root.setStyle("-fx-background-image: url('test.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		GridPane gridP = new GridPane();
+		gridP.setVgap(50);
+		gridP.setHgap(50);
+		gridP.setPadding(new Insets(50,50,50,50));
+		HBox start = new HBox();
+		Button startB = new Button("Start game");
+		start.getChildren().add(startB);
+		HBox highscore = new HBox();
+		Button highscoreB = new Button("Highscore");
+		highscore.getChildren().add(highscoreB);
+		HBox credits = new HBox();
+		Button creditsB = new Button("Credits");
+		credits.getChildren().add(creditsB);
+		gridP.add(start,0,0);
+		gridP.add(highscore,0,1);
+		gridP.add(credits,0,2);
+		root.setLeft(gridP);
+		primaryStage.setMaxHeight(720);
+		primaryStage.setMaxWidth(1280);
+		primaryStage.setMinHeight(720);
+		primaryStage.setMinWidth(1280);
+		startB.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent event) {
-				System.out.println("Spiel wird gestartet");
+				Play test = new Play();
+				
 			}
 		});
-
-		StackPane root = new StackPane();
-		root.getChildren().add(btn);
-		primaryStage.setScene(new Scene(root, 1280, 720));
-		primaryStage.show();*/
-		
-		 primaryStage.setTitle("Mensch Aergere Dich Nicht!");
-		 GridPane grid = new GridPane();
-		 grid.setAlignment(Pos.CENTER);
-		 grid.setHgap(35);
-		 grid.setVgap(35);
-		 grid.setPadding(new Insets(10, 10, 10, 10));
-		 Text scenetitle = new Text("Mensch Aergere Dich Nicht");
-		 scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 50));
-		 grid.add(scenetitle, 0, 0, 2, 1);
-		 Button btn = new Button("Play");
-		 HBox hbBtn = new HBox(10);
-		 hbBtn.setAlignment(Pos.CENTER);
-		 hbBtn.getChildren().add(btn);
-		 grid.add(hbBtn, 0, 1);
-		 Button btn1 = new Button("Highscore");
-		 HBox hbBtn1 = new HBox(10);
-		 hbBtn.setAlignment(Pos.CENTER);
-		 hbBtn.getChildren().add(btn1);
-		 grid.add(hbBtn1, 0, 2);
-		 Button btn2 = new Button("Credits");
-		 HBox hbBtn2 = new HBox(10);
-		 hbBtn.setAlignment(Pos.CENTER);
-		 hbBtn.getChildren().add(btn2);
-		 grid.add(hbBtn2, 0, 3);
-		 Scene scene = new Scene(grid, 1280, 720);
-		 primaryStage.setScene(scene);
-	     primaryStage.show();
 	}
+	
+	
 
 	public static void main(String[] args) {
 		launch(args);
