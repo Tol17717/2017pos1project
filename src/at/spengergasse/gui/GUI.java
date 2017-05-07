@@ -12,6 +12,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -30,11 +37,11 @@ public class GUI extends Application {
 		BorderPane root = new BorderPane();
 		HBox hbox = new HBox();
 		hbox.setPadding(new Insets(50,50,50,50));
-		Text title = new Text("Mensch Aergere Dich Nicht");
+		Text title = new Text(" ");
 		hbox.getChildren().add(title);
 		root.setTop(hbox);
 		Scene scene = new Scene(root, 1280, 720);
-		root.setStyle("-fx-background-image: url('test.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
+		root.setStyle("-fx-background-image: url('title.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		GridPane gridP = new GridPane();
@@ -43,6 +50,7 @@ public class GUI extends Application {
 		gridP.setPadding(new Insets(50,50,50,50));
 		HBox start = new HBox();
 		Button startB = new Button("Start game");
+		
 		start.getChildren().add(startB);
 		HBox highscore = new HBox();
 		Button highscoreB = new Button("Highscore");
@@ -62,8 +70,14 @@ public class GUI extends Application {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Play test = new Play();
-				
+				Play p=new Play();
+				try {
+					p.start(primaryStage);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				primaryStage.close();
 			}
 		});
 	}
