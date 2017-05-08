@@ -32,15 +32,27 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class GUI extends Application {
+public class FrameFX extends Application {
 	private final Button startB;
 	private final Button highscoreB;
 	private final Button creditsB;
+	private final BorderPane root;
+	private final BorderPane gamePane;
+	private Scene mainScene;
+	private Scene gameScene;
+	private final Button back;
+	private Stage mainStage;
+	private final ActionListenerFX event;
 	
-	public GUI(){
+	public FrameFX(){
 		startB = new Button(" ");
 		highscoreB = new Button("Highscore");
 		creditsB = new Button("Credits");
+		root = new BorderPane();
+		gamePane = new BorderPane();
+		back = new Button("Back");
+		mainStage = new Stage();
+		event = new ActionListenerFX();
 	}
 	
 	
@@ -57,22 +69,66 @@ public class GUI extends Application {
 	public Button getCreditsB() {
 		return creditsB;
 	}
+	
+	
+	public Button getBack() {
+		return back;
+	}
+	
+	public Stage getMainStage() {
+		return mainStage;
+	}
+
+
+	public BorderPane getRoot() {
+		return root;
+	}
+
+
+	public BorderPane getGamePane() {
+		return gamePane;
+	}
+
+
+	public Scene getMainScene() {
+		return mainScene;
+	}
+
+
+	public Scene getGameScene() {
+		return gameScene;
+	}
+
+
+	public void setMainScene(Scene mainScene) {
+		this.mainScene = mainScene;
+	}
+
+
+	public void setGameScene(Scene gameScene) {
+		this.gameScene = gameScene;
+	}
+
+
+	public void setMainStage(Stage mainStage) {
+		this.mainStage = mainStage;
+	}
 
 
 	@Override
 	
 	public void start(Stage primaryStage) throws IOException {
-		primaryStage.setTitle("Mensch Aergere Dich Nicht!");
-		BorderPane root = new BorderPane();
+		mainStage.setTitle("Mensch Aergere Dich Nicht!");
 		HBox hbox = new HBox();
 		hbox.setPadding(new Insets(50,50,50,50));
 		Text title = new Text(" ");
 		hbox.getChildren().add(title);
 		root.setTop(hbox);
-		Scene scene = new Scene(root, 1280, 720);
+		mainScene = new Scene(root, 1280, 720);
+		gameScene = new Scene(gamePane, 1280, 720);
 		root.setStyle("-fx-background-image: url('title.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		mainStage.setScene(mainScene);
+		mainStage.show();
 		GridPane gridP = new GridPane();
 		gridP.setVgap(50);
 		gridP.setHgap(50);
@@ -90,41 +146,30 @@ public class GUI extends Application {
 		gridP.add(highscore,0,1);
 		gridP.add(credits,0,2);
 		root.setLeft(gridP);
-		primaryStage.setMaxHeight(720);
-		primaryStage.setMaxWidth(1280);
-		primaryStage.setMinHeight(720);
-		primaryStage.setMinWidth(1280);
-		startB.setOnAction(new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent event) {
-				BorderPane test = new BorderPane();
-				test.autosize();
-				Text txt = new Text("Game started");
-				HBox x = new HBox();
-				x.getChildren().add(txt);
-				test.getChildren().add(x);
-				HBox x2 = new HBox();
-				Button back = new Button("Back");
-				x2.getChildren().add(back);
-				test.getChildren().add(x2);
-				Scene sc = new Scene(test, 1280, 720);
-				primaryStage.setScene(sc);
-				primaryStage.show();
-				back.setOnAction(new EventHandler<ActionEvent>(){
-
-					@Override
-					public void handle(ActionEvent event) {
-						
-					}
-					
-				});
-			}
-		});
+		mainStage.setMaxHeight(720);
+		mainStage.setMaxWidth(1280);
+		mainStage.setMinHeight(720);
+		mainStage.setMinWidth(1280);
+		
+		Text txt = new Text("Game started");
+		HBox x = new HBox();
+		x.getChildren().add(txt);
+		gamePane.getChildren().add(x);
+		HBox x2 = new HBox();
+		x2.getChildren().add(back);
+		gamePane.getChildren().add(x2);
+	
+		startB.addEventHandler(ActionEvent.ACTION, event);
+		back.addEventHandler(ActionEvent.ACTION, event);
+		
 	}
 	
-	public void setStartScreen(){
-		
+	public void setMainScene(){
+		mainStage.setScene(mainScene);
+	}
+	
+	public void setGameScene(){
+		mainStage.setScene(gameScene);
 	}
 
 	public static void main(String[] args) {
