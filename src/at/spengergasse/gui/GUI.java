@@ -2,6 +2,7 @@ package at.spengergasse.gui;
 
 import java.io.IOException;
 
+import javax.print.attribute.standard.PrinterMakeAndModel;
 import javax.swing.text.html.CSS;
 
 import javafx.application.Application;
@@ -19,6 +20,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -31,7 +33,34 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GUI extends Application {
+	private final Button startB;
+	private final Button highscoreB;
+	private final Button creditsB;
+	
+	public GUI(){
+		startB = new Button(" ");
+		highscoreB = new Button("Highscore");
+		creditsB = new Button("Credits");
+	}
+	
+	
+	public Button getStartB() {
+		return startB;
+	}
+	
+
+	public Button getHighscoreB() {
+		return highscoreB;
+	}
+
+
+	public Button getCreditsB() {
+		return creditsB;
+	}
+
+
 	@Override
+	
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("Mensch Aergere Dich Nicht!");
 		BorderPane root = new BorderPane();
@@ -49,16 +78,13 @@ public class GUI extends Application {
 		gridP.setHgap(50);
 		gridP.setPadding(new Insets(50,50,50,50));
 		HBox start = new HBox();
-		Button startB = new Button(" ");
 		startB.setMinHeight(190);
 		startB.setMinWidth(619);
 		startB.setStyle(" -fx-background-image: url('at/spengergasse/img/testicon.png')");
 		start.getChildren().add(startB);
 		HBox highscore = new HBox();
-		Button highscoreB = new Button("Highscore");
 		highscore.getChildren().add(highscoreB);
 		HBox credits = new HBox();
-		Button creditsB = new Button("Credits");
 		credits.getChildren().add(creditsB);
 		gridP.add(start,0,0);
 		gridP.add(highscore,0,1);
@@ -72,19 +98,34 @@ public class GUI extends Application {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Play p=new Play();
-				try {
-					p.start(primaryStage);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				primaryStage.close();
+				BorderPane test = new BorderPane();
+				test.autosize();
+				Text txt = new Text("Game started");
+				HBox x = new HBox();
+				x.getChildren().add(txt);
+				test.getChildren().add(x);
+				HBox x2 = new HBox();
+				Button back = new Button("Back");
+				x2.getChildren().add(back);
+				test.getChildren().add(x2);
+				Scene sc = new Scene(test, 1280, 720);
+				primaryStage.setScene(sc);
+				primaryStage.show();
+				back.setOnAction(new EventHandler<ActionEvent>(){
+
+					@Override
+					public void handle(ActionEvent event) {
+						
+					}
+					
+				});
 			}
 		});
 	}
 	
-	
+	public void setStartScreen(){
+		
+	}
 
 	public static void main(String[] args) {
 		launch(args);

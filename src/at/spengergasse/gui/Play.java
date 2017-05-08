@@ -1,28 +1,43 @@
 package at.spengergasse.gui;
 
+import java.awt.Frame;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Play extends Application{
+public class Play implements EventHandler<ActionEvent>{
 	
-	public void start(Stage primaryStage) throws IOException {
-		primaryStage.setTitle("Mensch Aergere Dich Nicht!");
-		StackPane root = new StackPane();
-		Scene scene = new Scene(root, 1280,720);
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		primaryStage.setMaxHeight(720);
-		primaryStage.setMaxWidth(1280);
-		primaryStage.setMinHeight(720);
-		primaryStage.setMinWidth(1280);
-	}
+	private final GUI gui = new GUI();
 
-	public static void main(String[] args) {
-		launch(args);
+	@Override
+	public void handle(ActionEvent event) {
+		// TODO Auto-generated method stub
+		Object source = event.getSource();
+		if(source == gui.getStartB()){
+			BorderPane test = new BorderPane();
+			test.autosize();
+			Text txt = new Text("Game started");
+			HBox x = new HBox();
+			x.getChildren().add(txt);
+			test.getChildren().add(x);
+			HBox x2 = new HBox();
+			Button back = new Button("Back");
+			x2.getChildren().add(back);
+			test.getChildren().add(x2);
+			Scene sc = new Scene(test, 1280, 720);
+			primaryStage.setScene(sc);
+			primaryStage.show();
+		}
 	}
-
+	
+	
 }
