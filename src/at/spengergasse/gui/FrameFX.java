@@ -1,6 +1,7 @@
 package at.spengergasse.gui;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.print.attribute.standard.PrinterMakeAndModel;
 import javax.swing.text.html.CSS;
@@ -32,7 +33,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class FrameFX extends Application {
+public class FrameFX extends Stage {
 	private final Button startB;
 	private final Button highscoreB;
 	private final Button creditsB;
@@ -43,8 +44,9 @@ public class FrameFX extends Application {
 	private final Button back;
 	private Stage mainStage;
 	private final ActionListenerFX event;
+	final private List<String> args;
 	
-	public FrameFX(){
+	public FrameFX(List<String> parameters){
 		startB = new Button(" ");
 		highscoreB = new Button("Highscore");
 		creditsB = new Button("Credits");
@@ -52,7 +54,52 @@ public class FrameFX extends Application {
 		gamePane = new BorderPane();
 		back = new Button("Back");
 		mainStage = new Stage();
-		event = new ActionListenerFX();
+		args = parameters;
+		event = new ActionListenerFX(this);
+		
+		mainStage.setTitle("Mensch Aergere Dich Nicht!");
+		HBox hbox = new HBox();
+		hbox.setPadding(new Insets(50,50,50,50));
+		Text title = new Text(" ");
+		hbox.getChildren().add(title);
+		root.setTop(hbox);
+		mainScene = new Scene(root, 1280, 720);
+		gameScene = new Scene(gamePane, 1280, 720);
+		root.setStyle("-fx-background-image: url('title.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
+		mainStage.setScene(mainScene);
+		mainStage.show();
+		GridPane gridP = new GridPane();
+		gridP.setVgap(50);
+		gridP.setHgap(50);
+		gridP.setPadding(new Insets(50,50,50,50));
+		HBox start = new HBox();
+		startB.setMinHeight(190);
+		startB.setMinWidth(619);
+		startB.setStyle(" -fx-background-image: url('at/spengergasse/img/testicon.png')");
+		start.getChildren().add(startB);
+		HBox highscore = new HBox();
+		highscore.getChildren().add(highscoreB);
+		HBox credits = new HBox();
+		credits.getChildren().add(creditsB);
+		gridP.add(start,0,0);
+		gridP.add(highscore,0,1);
+		gridP.add(credits,0,2);
+		root.setLeft(gridP);
+		mainStage.setMaxHeight(720);
+		mainStage.setMaxWidth(1280);
+		mainStage.setMinHeight(720);
+		mainStage.setMinWidth(1280);
+		
+		Text txt = new Text("Game started");
+		HBox x = new HBox();
+		x.getChildren().add(txt);
+		gamePane.getChildren().add(x);
+		HBox x2 = new HBox();
+		x2.getChildren().add(back);
+		gamePane.getChildren().add(x2);
+	
+		startB.addEventHandler(ActionEvent.ACTION, event);
+		back.addEventHandler(ActionEvent.ACTION, event);
 	}
 	
 	
@@ -113,56 +160,6 @@ public class FrameFX extends Application {
 	public void setMainStage(Stage mainStage) {
 		this.mainStage = mainStage;
 	}
-
-
-	@Override
-	
-	public void start(Stage primaryStage) throws IOException {
-		mainStage.setTitle("Mensch Aergere Dich Nicht!");
-		HBox hbox = new HBox();
-		hbox.setPadding(new Insets(50,50,50,50));
-		Text title = new Text(" ");
-		hbox.getChildren().add(title);
-		root.setTop(hbox);
-		mainScene = new Scene(root, 1280, 720);
-		gameScene = new Scene(gamePane, 1280, 720);
-		root.setStyle("-fx-background-image: url('title.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
-		mainStage.setScene(mainScene);
-		mainStage.show();
-		GridPane gridP = new GridPane();
-		gridP.setVgap(50);
-		gridP.setHgap(50);
-		gridP.setPadding(new Insets(50,50,50,50));
-		HBox start = new HBox();
-		startB.setMinHeight(190);
-		startB.setMinWidth(619);
-		startB.setStyle(" -fx-background-image: url('at/spengergasse/img/testicon.png')");
-		start.getChildren().add(startB);
-		HBox highscore = new HBox();
-		highscore.getChildren().add(highscoreB);
-		HBox credits = new HBox();
-		credits.getChildren().add(creditsB);
-		gridP.add(start,0,0);
-		gridP.add(highscore,0,1);
-		gridP.add(credits,0,2);
-		root.setLeft(gridP);
-		mainStage.setMaxHeight(720);
-		mainStage.setMaxWidth(1280);
-		mainStage.setMinHeight(720);
-		mainStage.setMinWidth(1280);
-		
-		Text txt = new Text("Game started");
-		HBox x = new HBox();
-		x.getChildren().add(txt);
-		gamePane.getChildren().add(x);
-		HBox x2 = new HBox();
-		x2.getChildren().add(back);
-		gamePane.getChildren().add(x2);
-	
-		startB.addEventHandler(ActionEvent.ACTION, event);
-		back.addEventHandler(ActionEvent.ACTION, event);
-		
-	}
 	
 	public void setMainScene(){
 		mainStage.setScene(mainScene);
@@ -172,7 +169,5 @@ public class FrameFX extends Application {
 		mainStage.setScene(gameScene);
 	}
 
-	public static void main(String[] args) {
-		launch(args);
-	}
+	
 }

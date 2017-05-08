@@ -1,14 +1,16 @@
 package at.spengergasse.gui;
 
+import at.spengergasse.utils.Game;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 public class ActionListenerFX implements EventHandler<ActionEvent>{
 	
-	private final FrameFX gui = new FrameFX();
+	private final FrameFX gui;
+	private Game game;
 	
-	public ActionListenerFX(){
-		
+	public ActionListenerFX(FrameFX frameFX){
+		gui = frameFX;
 	}
 
 	@Override

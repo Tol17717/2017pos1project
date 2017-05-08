@@ -14,9 +14,13 @@ public class ApplicationFX extends Application{
 	
 	@Override
 	public void start(Stage stage) throws Exception {	
-		
+		final Parameters params = getParameters();
+	     final List<String> parameters = params.getRaw();
+	     for (String s:parameters){
+	    	 System.out.println(s);
+	     }
 	    
-	    new FrameFX();
+	    new FrameFX(parameters);
 	}
 
 	/**
