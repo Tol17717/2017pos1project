@@ -49,8 +49,10 @@ public class GUI extends Application {
 		gridP.setHgap(50);
 		gridP.setPadding(new Insets(50,50,50,50));
 		HBox start = new HBox();
-		Button startB = new Button("Start game");
-		
+		Button startB = new Button(" ");
+		startB.setMinHeight(190);
+		startB.setMinWidth(619);
+		startB.setStyle(" -fx-background-image: url('at/spengergasse/img/testicon.png')");
 		start.getChildren().add(startB);
 		HBox highscore = new HBox();
 		Button highscoreB = new Button("Highscore");
