@@ -20,8 +20,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent>{
 		if(source == gui.getStartB()){
 			gui.getMainStage().setScene(gui.getGameScene());
 		}
-		if(source == gui.getBack()){
+		if(source == gui.getBack() || source == gui.getBack2()){
 			gui.getMainStage().setScene(gui.getMainScene());
+		}
+		if(source == gui.getCreditsB()){
+			gui.getMainStage().setScene(gui.getCreditScene());
 		}
 	}
 	
