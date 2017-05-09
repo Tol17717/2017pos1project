@@ -1,6 +1,7 @@
 package at.spengergasse.utils;
 
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
 
 public class Game {
 
@@ -21,11 +22,11 @@ public class Game {
 	private ArrayList<Spielfigur> winT3;
 	private ArrayList<Spielfigur> winT4;
 	
-		public Game(String t1name, String t2name, String t3name, String t4name) {
-		t1 = new Team(t1name);
-		t2 = new Team(t2name);
-		t3 = new Team(t3name);
-		t4 = new Team(t4name);
+		public Game(String t1name, Color colort1, boolean t1bot, String t2name, Color colort2, boolean t2bot, String t3name, Color colort3, boolean t3bot, String t4name, Color colort4, boolean t4bot) {
+		t1 = new Team(t1name, colort1, t1bot);
+		t2 = new Team(t2name, colort2, t2bot);
+		t3 = new Team(t3name, colort3, t3bot);
+		t4 = new Team(t4name, colort4, t4bot);
 		startT1 = new ArrayList<Spielfigur>();	
 		startT2 = new ArrayList<Spielfigur>();	
 		startT3 = new ArrayList<Spielfigur>();
