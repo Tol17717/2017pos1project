@@ -90,9 +90,9 @@ public class FrameFX extends Stage {
 		root = new BorderPane();
 		gameSelectionPane = new GridPane();
 		creditPane = new GridPane();
-		back = new Button("Back");
-		back2 = new Button("Back");
-		back3 = new Button("Back");
+		back = new Button("");
+		back2 = new Button("");
+		back3 = new Button("");
 		mainStage = new Stage();
 		args = parameters;
 		event = new ActionListenerFX(this);
@@ -159,9 +159,14 @@ public class FrameFX extends Stage {
 		mainStage.setMinHeight(720);
 		mainStage.setMinWidth(1280);
 		
+		back.setMinHeight(50);
+		back.setMinWidth(100);
+		back.setStyle("-fx-background-image: url('at/spengergasse/img/back.png')");
 		Text selectionText = new Text("Please select your teams");
+		selectionText.setFill(Color.WHITE);
 		selectionText.setStyle("-fx-font: 50px Tahoma");
 		Text pickColorText = new Text("Pick your colors");
+		pickColorText.setFill(Color.WHITE);
 		pickColorText.setStyle("-fx-font: 50px Tahoma");
 		gameSelectionPane.setHgap(50);
 		gameSelectionPane.setVgap(50);
@@ -239,14 +244,20 @@ public class FrameFX extends Stage {
 	    gameSelectionPane.add(selectionErrTxt, 1, 5);
 	    gameSelectionPane.add(startGame, 5, 5);
 
+	    back2.setMinHeight(50);
+		back2.setMinWidth(100);
+		back2.setStyle("-fx-background-image: url('at/spengergasse/img/back.png')");
 		creditPane.setStyle("-fx-background-color: #47a6c2");
 		creditPane.setVgap(50);
 		creditPane.setHgap(50);
 		creditPane.setPadding(new Insets(50,50,50,50));
 		creditPane.add(back2, 0, 0);
 		Text creditTitle = new Text("An diesem Projekt beteiligt waren:");
+		creditTitle.setFill(Color.WHITE);
 		Text creditTolan = new Text("-  TOLAN CHRISTOPHER");
+		creditTolan.setFill(Color.WHITE);
 		Text creditHradil = new Text("-  HRADIL RAPHAEL");
+		creditHradil.setFill(Color.WHITE);
 		creditTitle.setStyle("-fx-font: 50px Tahoma; -fx-underline: true");
 		creditTolan.setStyle("-fx-font: 30px Tahoma");
 		creditHradil.setStyle("-fx-font: 30px Tahoma");
@@ -254,6 +265,9 @@ public class FrameFX extends Stage {
 		creditPane.add(creditTolan, 0, 2);
 		creditPane.add(creditHradil, 0, 3);
 		
+		back3.setMinHeight(50);
+		back3.setMinWidth(100);
+		back3.setStyle("-fx-background-image: url('at/spengergasse/img/back.png')");
 		highscorePane.setStyle("-fx-background-color: #47a6c2");
 		highscorePane.setVgap(50);
 		highscorePane.setHgap(50);
