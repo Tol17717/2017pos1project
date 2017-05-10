@@ -122,4 +122,10 @@ public class Highscore {
 		}
 		System.out.println("File created");
 	}
+
+	public ArrayList<Person> getHighscore() {
+		return highscore;
+	}
+	
+	
 }

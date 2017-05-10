@@ -37,30 +37,51 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class FrameFX extends Stage {
+	//Buttons
 	private final Button startB;
 	private final Button highscoreB;
 	private final Button creditsB;
+	private final Button back;
+	private final Button back2;
+	private final Button back3;
+	private final Button startGame;
+	//Panes
 	private final BorderPane root;
 	private final GridPane gameSelectionPane;
 	private final GridPane creditPane;
+	private final GridPane highscorePane;
+	//Scenes
 	private Scene mainScene;
 	private Scene gameScene;
 	private Scene creditScene;
-	private final Button back;
-	private final Button back2;
+	private Scene highscoreScene;
+	//Stages
 	private Stage mainStage;
+	//ActionListener, Parameters;
 	private final ActionListenerFX event;
 	private final List<String> args;
+	//TextField
 	private final TextField t1TF;
 	private final TextField t2TF;
 	private final TextField t3TF;
 	private final TextField t4TF;
+	//Toggle Groups
 	private final ToggleGroup groupColorsT1;
 	private final ToggleGroup groupColorsT2;
 	private final ToggleGroup groupColorsT3;
 	private final ToggleGroup groupColorsT4;
-	private final Text selectionTxt;
-	private final Button startGame;
+	//Text
+	private final Text selectionErrTxt;
+	private final Text highscore1name;
+	private final Text highscore2name;
+	private final Text highscore3name;
+	private final Text highscore4name;
+	private final Text highscore5name;
+	private final Text highscore1points;
+	private final Text highscore2points;
+	private final Text highscore3points;
+	private final Text highscore4points;
+	private final Text highscore5points;
 	
 	public FrameFX(List<String> parameters){
 		startB = new Button(" ");
@@ -71,6 +92,7 @@ public class FrameFX extends Stage {
 		creditPane = new GridPane();
 		back = new Button("Back");
 		back2 = new Button("Back");
+		back3 = new Button("Back");
 		mainStage = new Stage();
 		args = parameters;
 		event = new ActionListenerFX(this);
@@ -82,8 +104,19 @@ public class FrameFX extends Stage {
 		groupColorsT2 = new ToggleGroup(); 
 		groupColorsT3 = new ToggleGroup(); 
 		groupColorsT4 = new ToggleGroup(); 
-		selectionTxt = new Text("ERROR MESSAGE TEST");
+		selectionErrTxt = new Text("ERROR MESSAGE TEST");
 		startGame = new Button("Start Game");
+		highscorePane = new GridPane();
+		highscore1name = new Text("");
+		highscore2name = new Text("");
+		highscore3name = new Text("");
+		highscore4name = new Text("");
+		highscore5name = new Text("");
+		highscore1points = new Text("");
+		highscore2points = new Text("");
+		highscore3points = new Text("");
+		highscore4points = new Text("");
+		highscore5points = new Text("");
 		
 		mainStage.setTitle("Mensch Aergere Dich Nicht!");
 		HBox hbox = new HBox();
@@ -93,6 +126,7 @@ public class FrameFX extends Stage {
 		root.setTop(hbox);
 		mainScene = new Scene(root, 1280, 720);
 		gameScene = new Scene(gameSelectionPane, 1280, 720);
+		highscoreScene = new Scene(highscorePane, 1280, 720);
 		creditScene = new Scene(creditPane, 1280, 720);
 		root.setStyle("-fx-background-image: url('at/spengergasse/img/title.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
 		mainStage.setScene(mainScene);
@@ -200,14 +234,14 @@ public class FrameFX extends Stage {
 	    gameSelectionPane.add(blueT4, 3, 4);
 	    gameSelectionPane.add(greenT4, 4, 4);
 	    gameSelectionPane.add(yellowT4, 5, 4);
-	    selectionTxt.setStyle("-fx-font: 38px Tahoma;");
-	    selectionTxt.setFill(Color.RED);
-	    gameSelectionPane.add(selectionTxt, 1, 5);
+	    selectionErrTxt.setStyle("-fx-font: 38px Tahoma;");
+	    selectionErrTxt.setFill(Color.RED);
+	    gameSelectionPane.add(selectionErrTxt, 1, 5);
 	    gameSelectionPane.add(startGame, 5, 5);
 
 		creditPane.setStyle("-fx-background-color: #47a6c2");
 		creditPane.setVgap(50);
-		creditPane.setVgap(50);
+		creditPane.setHgap(50);
 		creditPane.setPadding(new Insets(50,50,50,50));
 		creditPane.add(back2, 0, 0);
 		Text creditTitle = new Text("An diesem Projekt beteiligt waren:");
@@ -220,11 +254,81 @@ public class FrameFX extends Stage {
 		creditPane.add(creditTolan, 0, 2);
 		creditPane.add(creditHradil, 0, 3);
 		
+		highscorePane.setStyle("-fx-background-color: #47a6c2");
+		highscorePane.setVgap(50);
+		highscorePane.setHgap(50);
+		highscorePane.setPadding(new Insets(50,50,50,50));
+		highscorePane.add(back3, 0, 0);
+		Text highscorePlace = new Text("Place");
+		Text highscoreName = new Text("Name            				    ");
+		Text highscoreScore = new Text("Points");
+		highscorePlace.setStyle("-fx-font: 30px Tahoma; -fx-underline: true");
+		highscoreName.setStyle("-fx-font: 30px Tahoma; -fx-underline: true");
+		highscoreScore.setStyle("-fx-font: 30px Tahoma; -fx-underline: true");
+		highscorePlace.setFill(Color.WHITE);
+		highscoreName.setFill(Color.WHITE);
+		highscoreScore.setFill(Color.WHITE);
+		highscorePane.add(highscorePlace, 2, 1);
+		highscorePane.add(highscoreName, 3, 1);
+		highscorePane.add(highscoreScore, 4, 1);
+		Text place1 = new Text("1st:");
+		place1.setStyle("-fx-font: 35px Tahoma");
+		place1.setFill(Color.GOLD);
+		Text place2 = new Text("2nd:");
+		place2.setStyle("-fx-font: 30px Tahoma");
+		place2.setFill(Color.SILVER);
+		Text place3 = new Text("3rd:");
+		place3.setStyle("-fx-font: 25px Tahoma");
+		place3.setFill(Color.valueOf("a57164"));
+		Text place4 = new Text("4th:");
+		place4.setStyle("-fx-font: 20px Tahoma");
+		place4.setFill(Color.WHITE);
+		Text place5 = new Text("5th:");
+		place5.setStyle("-fx-font: 20px Tahoma");
+		place5.setFill(Color.WHITE);
+		highscorePane.add(place1, 2, 2);
+		highscorePane.add(place2, 2, 3);
+		highscorePane.add(place3, 2, 4);
+		highscorePane.add(place4, 2, 5);
+		highscorePane.add(place5, 2, 6);
+		highscore1name.setStyle("-fx-font: 35px Tahoma");
+		highscore1name.setFill(Color.GOLD);
+		highscore1points.setStyle("-fx-font: 35px Tahoma");
+		highscore1points.setFill(Color.GOLD);
+		highscore2name.setStyle("-fx-font: 30px Tahoma");
+		highscore2name.setFill(Color.SILVER);
+		highscore2points.setStyle("-fx-font: 30px Tahoma");
+		highscore2points.setFill(Color.SILVER);
+		highscore3name.setStyle("-fx-font: 25px Tahoma");
+		highscore3name.setFill(Color.valueOf("a57164"));
+		highscore3points.setStyle("-fx-font: 25px Tahoma");
+		highscore3points.setFill(Color.valueOf("a57164"));
+		highscore4name.setStyle("-fx-font: 20px Tahoma");
+		highscore4name.setFill(Color.WHITE);
+		highscore4points.setStyle("-fx-font: 20px Tahoma");
+		highscore4points.setFill(Color.WHITE);
+		highscore5name.setStyle("-fx-font: 20px Tahoma");
+		highscore5name.setFill(Color.WHITE);
+		highscore5points.setStyle("-fx-font: 20px Tahoma");
+		highscore5points.setFill(Color.WHITE);
+		highscorePane.add(highscore1name, 3, 2);
+		highscorePane.add(highscore2name, 3, 3);
+		highscorePane.add(highscore3name, 3, 4);
+		highscorePane.add(highscore4name, 3, 5);
+		highscorePane.add(highscore5name, 3, 6);
+		highscorePane.add(highscore1points, 4, 2);
+		highscorePane.add(highscore2points, 4, 3);
+		highscorePane.add(highscore3points, 4, 4);
+		highscorePane.add(highscore4points, 4, 5);
+		highscorePane.add(highscore5points, 4, 6);
+		
 	    
 		startB.addEventHandler(ActionEvent.ACTION, event);
 		back.addEventHandler(ActionEvent.ACTION, event);
 		back2.addEventHandler(ActionEvent.ACTION, event);
+		back3.addEventHandler(ActionEvent.ACTION, event);
 		creditsB.addEventHandler(ActionEvent.ACTION, event);
+		highscoreB.addEventHandler(ActionEvent.ACTION, event);
 	}
 	
 	
@@ -342,8 +446,8 @@ public class FrameFX extends Stage {
 	}
 
 
-	public Text getSelectionTxt() {
-		return selectionTxt;
+	public Text getSelectionErrTxt() {
+		return selectionErrTxt;
 	}
 
 
@@ -359,6 +463,71 @@ public class FrameFX extends Stage {
 
 	public Scene getCreditScene() {
 		return creditScene;
+	}
+
+
+	public Button getBack3() {
+		return back3;
+	}
+
+
+	public GridPane getHighscorePane() {
+		return highscorePane;
+	}
+
+
+	public Scene getHighscoreScene() {
+		return highscoreScene;
+	}
+
+
+	public Text getHighscore1name() {
+		return highscore1name;
+	}
+
+
+	public Text getHighscore2name() {
+		return highscore2name;
+	}
+
+
+	public Text getHighscore3name() {
+		return highscore3name;
+	}
+
+
+	public Text getHighscore4name() {
+		return highscore4name;
+	}
+
+
+	public Text getHighscore5name() {
+		return highscore5name;
+	}
+
+
+	public Text getHighscore1points() {
+		return highscore1points;
+	}
+
+
+	public Text getHighscore2points() {
+		return highscore2points;
+	}
+
+
+	public Text getHighscore3points() {
+		return highscore3points;
+	}
+
+
+	public Text getHighscore4points() {
+		return highscore4points;
+	}
+
+
+	public Text getHighscore5points() {
+		return highscore5points;
 	}
 	
 
