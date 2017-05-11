@@ -1,9 +1,6 @@
 package at.spengergasse.gui;
 
-import java.util.List;
-
 import javafx.application.Application;
-import javafx.application.Application.Parameters;
 import javafx.stage.Stage;
 
 public class ApplicationFX extends Application{
@@ -13,14 +10,8 @@ public class ApplicationFX extends Application{
 	}
 	
 	@Override
-	public void start(Stage stage) throws Exception {	
-		final Parameters params = getParameters();
-	     final List<String> parameters = params.getRaw();
-	     for (String s:parameters){
-	    	 System.out.println(s);
-	     }
-	    
-	    new FrameFX(parameters);
+	public void start(Stage stage) throws Exception {		    
+	    new FrameFX();
 	}
 
 	/**

@@ -1,38 +1,17 @@
 package at.spengergasse.gui;
 
-import java.io.IOException;
-import java.util.List;
 
-import javax.print.attribute.standard.PrinterMakeAndModel;
-import javax.swing.text.html.CSS;
-
-import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -59,7 +38,6 @@ public class FrameFX extends Stage {
 	private Stage mainStage;
 	//ActionListener, Parameters;
 	private final ActionListenerFX event;
-	private final List<String> args;
 	//TextField
 	private final TextField t1TF;
 	private final TextField t2TF;
@@ -83,7 +61,7 @@ public class FrameFX extends Stage {
 	private final Text highscore4points;
 	private final Text highscore5points;
 	
-	public FrameFX(List<String> parameters){
+	public FrameFX(){
 		startB = new Button(" ");
 		highscoreB = new Button(" ");
 		creditsB = new Button(" ");
@@ -94,7 +72,6 @@ public class FrameFX extends Stage {
 		back2 = new Button("");
 		back3 = new Button("");
 		mainStage = new Stage();
-		args = parameters;
 		event = new ActionListenerFX(this);
 		t1TF = new TextField();
 		t2TF = new TextField();
@@ -417,12 +394,6 @@ public class FrameFX extends Stage {
 	public ActionListenerFX getEvent() {
 		return event;
 	}
-
-
-	public List<String> getArgs() {
-		return args;
-	}
-
 
 	public TextField getT1TF() {
 		return t1TF;
