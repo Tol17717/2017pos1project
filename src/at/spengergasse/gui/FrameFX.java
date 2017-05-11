@@ -239,7 +239,7 @@ public class FrameFX extends Stage {
 	    gameSelectionPane.add(blueT4, 3, 4);
 	    gameSelectionPane.add(greenT4, 4, 4);
 	    gameSelectionPane.add(yellowT4, 5, 4);
-	    selectionErrTxt.setStyle("-fx-font: 38px Tahoma;");
+	    selectionErrTxt.setStyle("-fx-font: 30px Tahoma;");
 	    selectionErrTxt.setFill(Color.RED);
 	    gameSelectionPane.add(selectionErrTxt, 1, 5);
 	    gameSelectionPane.add(startGame, 5, 5);
@@ -273,6 +273,10 @@ public class FrameFX extends Stage {
 		highscorePane.setHgap(50);
 		highscorePane.setPadding(new Insets(50,50,50,50));
 		highscorePane.add(back3, 0, 0);
+		Text highscoreTitle = new Text("Highscores");
+		highscoreTitle.setStyle("-fx-font: 45px Tahoma; -fx-underline: true");
+		highscoreTitle.setFill(Color.WHITE);
+		highscorePane.add(highscoreTitle, 2, 0, 3, 1);
 		Text highscorePlace = new Text("Place");
 		Text highscoreName = new Text("Name            				    ");
 		Text highscoreScore = new Text("Points");
