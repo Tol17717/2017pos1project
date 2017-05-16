@@ -9,10 +9,12 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private final FrameFX gui;
 	private Game game;
 	private final Highscore highscore;
+	private final FarbeCompare fc;
 
 	public ActionListenerFX(FrameFX frameFX) {
 		gui = frameFX;
 		highscore = new Highscore();
+		fc = new FarbeCompare();
 	}
 
 	@Override
@@ -63,7 +65,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				gui.getSelectionErrTxt().setText("You need at least one human player");
 				return;
 			}
-			gui.getMainStage().setScene(gui.getGameScene());
+			
 		}
 		for (int i = 0; i < 40; i++) {
 			if (source == gui.getGameField()[i]) {
