@@ -5,13 +5,19 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -24,16 +30,27 @@ public class FrameFX extends Stage {
 	private final Button back2;
 	private final Button back3;
 	private final Button startGame;
+	private final Button[] gameField;
+	private final Button[] t1s;
+	private final Button[] t2s;
+	private final Button[] t3s;
+	private final Button[] t4s;
+	private final Button[] t1w;
+	private final Button[] t2w;
+	private final Button[] t3w;
+	private final Button[] t4w;
 	//Panes
 	private final BorderPane root;
 	private final GridPane gameSelectionPane;
 	private final GridPane creditPane;
 	private final GridPane highscorePane;
+	private final GridPane gamePane;
 	//Scenes
 	private Scene mainScene;
-	private Scene gameScene;
+	private Scene gameSelectionScene;
 	private Scene creditScene;
 	private Scene highscoreScene;
+	private Scene gameScene;
 	//Stages
 	private Stage mainStage;
 	//ActionListener, Parameters;
@@ -68,6 +85,7 @@ public class FrameFX extends Stage {
 		root = new BorderPane();
 		gameSelectionPane = new GridPane();
 		creditPane = new GridPane();
+		gamePane = new GridPane();
 		back = new Button("");
 		back2 = new Button("");
 		back3 = new Button("");
@@ -94,6 +112,15 @@ public class FrameFX extends Stage {
 		highscore3points = new Text("");
 		highscore4points = new Text("");
 		highscore5points = new Text("");
+		gameField = new Button[40];
+		t1s = new Button[4];
+		t2s = new Button[4];
+		t3s = new Button[4];
+		t4s = new Button[4];
+		t1w = new Button[4];
+		t2w = new Button[4];
+		t3w = new Button[4];
+		t4w = new Button[4];
 		
 		mainStage.setTitle("Mensch Aergere Dich Nicht!");
 		HBox hbox = new HBox();
@@ -102,9 +129,10 @@ public class FrameFX extends Stage {
 		hbox.getChildren().add(title);
 		root.setTop(hbox);
 		mainScene = new Scene(root, 1280, 720);
-		gameScene = new Scene(gameSelectionPane, 1280, 720);
+		gameSelectionScene = new Scene(gameSelectionPane, 1280, 720);
 		highscoreScene = new Scene(highscorePane, 1280, 720);
 		creditScene = new Scene(creditPane, 1280, 720);
+		gameScene = new Scene(gamePane, 1280, 720);
 		root.setStyle("-fx-background-image: url('at/spengergasse/img/title.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
 		mainStage.setScene(mainScene);
 		mainStage.show();
@@ -317,7 +345,130 @@ public class FrameFX extends Stage {
 		highscorePane.add(highscore4points, 4, 5);
 		highscorePane.add(highscore5points, 4, 6);
 		
-	    
+		gamePane.setStyle("-fx-background-color: #47a6c2");
+		gamePane.setVgap(25);
+		gamePane.setHgap(25);
+		gamePane.setPadding(new Insets(50,50,50,50));
+		for(int i = 0; i < 40; i++){
+			gameField[i] = new Button("  ");
+			gameField[i].setShape(new Circle(1.5));
+			gameField[i].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
+		}
+		for(int i = 0; i < 4; i++){
+			t1s[i] = new Button("  ");
+			t1s[i].setShape(new Circle(1.5));
+			t1s[i].setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+		}
+		for(int i = 0; i < 4; i++){
+			t2s[i] = new Button("  ");
+			t2s[i].setShape(new Circle(1.5));
+			t2s[i].setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
+		}
+		for(int i = 0; i < 4; i++){
+			t3s[i] = new Button("  ");
+			t3s[i].setShape(new Circle(1.5));
+			t3s[i].setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
+		}
+		for(int i = 0; i < 4; i++){
+			t4s[i] = new Button("  ");
+			t4s[i].setShape(new Circle(1.5));
+			t4s[i].setBackground(new Background(new BackgroundFill(Color.YELLOW, null, null)));
+		}
+		for(int i = 0; i < 4; i++){
+			t1w[i] = new Button("  ");
+			t1w[i].setShape(new Circle(1.5));
+			t1w[i].setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+		}
+		for(int i = 0; i < 4; i++){
+			t2w[i] = new Button("  ");
+			t2w[i].setShape(new Circle(1.5));
+			t2w[i].setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
+		}
+		for(int i = 0; i < 4; i++){
+			t3w[i] = new Button("  ");
+			t3w[i].setShape(new Circle(1.5));
+			t3w[i].setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
+		}
+		for(int i = 0; i < 4; i++){
+			t4w[i] = new Button("  ");
+			t4w[i].setShape(new Circle(1.5));
+			t4w[i].setBackground(new Background(new BackgroundFill(Color.YELLOW, null, null)));
+		}
+		gamePane.add(t1s[0], 0, 0);
+		gamePane.add(t1s[1], 1, 0);
+		gamePane.add(t1s[2], 0, 1);
+		gamePane.add(t1s[3], 1, 1);
+		
+		gamePane.add(t2s[0], 9, 0);
+		gamePane.add(t2s[1], 10, 0);
+		gamePane.add(t2s[2], 9, 1);
+		gamePane.add(t2s[3], 10, 1);
+		
+		gamePane.add(t3s[0], 0, 9);
+		gamePane.add(t3s[1], 1, 9);
+		gamePane.add(t3s[2], 0, 10);
+		gamePane.add(t3s[3], 1, 10);
+		
+		gamePane.add(t4s[0], 9, 9);
+		gamePane.add(t4s[1], 10, 9);
+		gamePane.add(t4s[2], 9, 10);
+		gamePane.add(t4s[3], 10, 10);
+		
+		gamePane.add(t1w[0], 1, 5);
+		gamePane.add(t1w[1], 2, 5);
+		gamePane.add(t1w[2], 3, 5);
+		gamePane.add(t1w[3], 4, 5);
+		
+		gamePane.add(t2w[0], 5, 1);
+		gamePane.add(t2w[1], 5, 2);
+		gamePane.add(t2w[2], 5, 3);
+		gamePane.add(t2w[3], 5, 4);
+		
+		gamePane.add(t3w[0], 5, 6);
+		gamePane.add(t3w[1], 5, 7);
+		gamePane.add(t3w[2], 5, 8);
+		gamePane.add(t3w[3], 5, 9);
+		
+		gamePane.add(t4w[0], 6, 5);
+		gamePane.add(t4w[1], 7, 5);
+		gamePane.add(t4w[2], 8, 5);
+		gamePane.add(t4w[3], 9, 5);
+		
+		int x = -1;
+		int y = 4;
+		for(int i = 0; i < 40; i++){
+			if(i < 5){
+				x++;
+			} else if(i < 9){
+				y--;
+			} else if(i < 11){
+				x++;
+			} else if(i < 15){
+				y++;
+			} else if(i < 19){
+				x++;
+			} else if(i < 21){
+				y++;
+			} else if(i < 25){
+				x--;
+			} else if(i < 29){
+				y++;
+			} else if(i < 31){
+				x--;
+			} else if(i < 35){
+				y--;
+			} else if(i < 39){
+				x--;
+			} else if(i == 39){
+				y--;
+			}
+			gamePane.add(gameField[i], x, y);	
+		}
+		
+		for(int i = 0; i < 40; i++){
+			gameField[i].addEventHandler(ActionEvent.ACTION, event);
+		}
+	    startGame.addEventHandler(ActionEvent.ACTION, event);
 		startB.addEventHandler(ActionEvent.ACTION, event);
 		back.addEventHandler(ActionEvent.ACTION, event);
 		back2.addEventHandler(ActionEvent.ACTION, event);
@@ -327,6 +478,73 @@ public class FrameFX extends Stage {
 	}
 	
 	
+	
+	public Button[] getGameField() {
+		return gameField;
+	}
+
+
+
+	public GridPane getGamePane() {
+		return gamePane;
+	}
+
+
+
+	public Scene getGameScene() {
+		return gameScene;
+	}
+
+
+
+	public Button[] getT1s() {
+		return t1s;
+	}
+
+
+
+	public Button[] getT2s() {
+		return t2s;
+	}
+
+
+
+	public Button[] getT3s() {
+		return t3s;
+	}
+
+
+
+	public Button[] getT4s() {
+		return t4s;
+	}
+
+
+
+	public Button[] getT1w() {
+		return t1w;
+	}
+
+
+
+	public Button[] getT2w() {
+		return t2w;
+	}
+
+
+
+	public Button[] getT3w() {
+		return t3w;
+	}
+
+
+
+	public Button[] getT4w() {
+		return t4w;
+	}
+
+
+
 	public Button getStartB() {
 		return startB;
 	}
@@ -370,8 +588,8 @@ public class FrameFX extends Stage {
 	}
 
 
-	public Scene getGameScene() {
-		return gameScene;
+	public Scene getGameSelectionScene() {
+		return gameSelectionScene;
 	}
 
 	public void setMainStage(Stage mainStage) {
@@ -387,7 +605,7 @@ public class FrameFX extends Stage {
 	}
 	
 	public void setGameScene(){
-		mainStage.setScene(gameScene);
+		mainStage.setScene(gameSelectionScene);
 	}
 
 
