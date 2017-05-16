@@ -1,15 +1,18 @@
 package at.spengergasse.gui;
 
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -77,6 +80,7 @@ public class FrameFX extends Stage {
 	private final Text highscore3points;
 	private final Text highscore4points;
 	private final Text highscore5points;
+
 	
 	public FrameFX(){
 		startB = new Button(" ");
@@ -196,22 +200,22 @@ public class FrameFX extends Stage {
 		gameSelectionPane.add(t2TF, 1, 2);
 		gameSelectionPane.add(t3TF, 1, 3);
 		gameSelectionPane.add(t4TF, 1, 4);
-		RadioButton redT1 = new RadioButton("Red");
-		RadioButton blueT1 = new RadioButton("Blue");
-		RadioButton yellowT1 = new RadioButton("Yellow");
-		RadioButton greenT1 = new RadioButton("Green");
-		RadioButton redT2 = new RadioButton("Red");
-		RadioButton blueT2 = new RadioButton("Blue");
-		RadioButton yellowT2 = new RadioButton("Yellow");
-		RadioButton greenT2 = new RadioButton("Green");
-		RadioButton redT3 = new RadioButton("Red");
-		RadioButton blueT3 = new RadioButton("Blue");
-		RadioButton yellowT3 = new RadioButton("Yellow");
-		RadioButton greenT3 = new RadioButton("Green");
-		RadioButton redT4 = new RadioButton("Red");
-		RadioButton blueT4 = new RadioButton("Blue");
-		RadioButton yellowT4 = new RadioButton("Yellow");
-		RadioButton greenT4 = new RadioButton("Green");
+		ToggleButton redT1 = new RadioButton("Red");
+		ToggleButton blueT1 = new RadioButton("Blue");
+		ToggleButton yellowT1 = new RadioButton("Yellow");
+		ToggleButton greenT1 = new RadioButton("Green");
+		ToggleButton redT2 = new RadioButton("Red");
+		ToggleButton blueT2 = new RadioButton("Blue");
+		ToggleButton yellowT2 = new RadioButton("Yellow");
+		ToggleButton greenT2 = new RadioButton("Green");
+		ToggleButton redT3 = new RadioButton("Red");
+		ToggleButton blueT3 = new RadioButton("Blue");
+		ToggleButton yellowT3 = new RadioButton("Yellow");
+		ToggleButton greenT3 = new RadioButton("Green");
+		ToggleButton redT4 = new RadioButton("Red");
+		ToggleButton blueT4 = new RadioButton("Blue");
+		ToggleButton yellowT4 = new RadioButton("Yellow");
+		ToggleButton greenT4 = new RadioButton("Green");
 	    redT1.setToggleGroup(groupColorsT1);
 	    yellowT1.setToggleGroup(groupColorsT1);
 	    blueT1.setToggleGroup(groupColorsT1);
@@ -243,7 +247,7 @@ public class FrameFX extends Stage {
 	    gameSelectionPane.add(redT4, 2, 4);
 	    gameSelectionPane.add(blueT4, 3, 4);
 	    gameSelectionPane.add(greenT4, 4, 4);
-	    gameSelectionPane.add(yellowT4, 5, 4);
+	    gameSelectionPane.add(yellowT4, 5, 4);		
 	    selectionErrTxt.setStyle("-fx-font: 30px Tahoma;");
 	    selectionErrTxt.setFill(Color.RED);
 	    gameSelectionPane.add(selectionErrTxt, 1, 5);
@@ -736,7 +740,9 @@ public class FrameFX extends Stage {
 	public Text getHighscore5points() {
 		return highscore5points;
 	}
-	
 
+
+
+	
 	
 }

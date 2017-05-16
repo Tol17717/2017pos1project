@@ -61,9 +61,9 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			if (gui.getT1TF().getText().equals("") && gui.getT2TF().getText().equals("")
 					&& gui.getT3TF().getText().equals("") && gui.getT4TF().getText().equals("")) {
 				gui.getSelectionErrTxt().setText("You need at least one human player");
+				return;
 			}
 			gui.getMainStage().setScene(gui.getGameScene());
-
 		}
 		for (int i = 0; i < 40; i++) {
 			if (source == gui.getGameField()[i]) {
