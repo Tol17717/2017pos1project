@@ -66,20 +66,18 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				gui.getSelectionErrTxt().setText("You need at least one human player");
 				return;
 			}
-			int count = 0;
 			boolean isSelected = false;
-			for (int i = 0; i < 16; i++) {
-				if (gui.getTbarr()[i].isSelected()) {
+			for (int i = 1; i < 17; i++) {
+				if (gui.getTbarr()[i-1].isSelected()) {
 					isSelected = true;
 				}
-				if (count % 4 == 0 && count != 0) {
+				if (i % 4 == 0) {
 					if (isSelected == false) {
 						gui.getSelectionErrTxt().setText("Someone forgot to choose the color");
 						return;
 					}
 					isSelected = false;
 				}
-				count++;
 			}
 			for (int i = 0; i < 4; i++) {
 				if (gui.getTbarr()[i].isSelected()) {
