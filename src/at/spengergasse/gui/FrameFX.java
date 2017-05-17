@@ -1,6 +1,5 @@
 package at.spengergasse.gui;
 
-
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -25,7 +24,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class FrameFX extends Stage {
-	//Buttons
+	// Buttons
 	private final Button startB;
 	private final Button highscoreB;
 	private final Button creditsB;
@@ -42,33 +41,33 @@ public class FrameFX extends Stage {
 	private final Button[] t2w;
 	private final Button[] t3w;
 	private final Button[] t4w;
-	//Panes
+	// Panes
 	private final BorderPane root;
 	private final GridPane gameSelectionPane;
 	private final GridPane creditPane;
 	private final GridPane highscorePane;
 	private final GridPane gamePane;
-	//Scenes
+	// Scenes
 	private Scene mainScene;
 	private Scene gameSelectionScene;
 	private Scene creditScene;
 	private Scene highscoreScene;
 	private Scene gameScene;
-	//Stages
+	// Stages
 	private Stage mainStage;
-	//ActionListener, Parameters;
+	// ActionListener, Parameters;
 	private final ActionListenerFX event;
-	//TextField
+	// TextField
 	private final TextField t1TF;
 	private final TextField t2TF;
 	private final TextField t3TF;
 	private final TextField t4TF;
-	//Toggle Groups
+	// Toggle Groups
 	private final ToggleGroup groupColorsT1;
 	private final ToggleGroup groupColorsT2;
 	private final ToggleGroup groupColorsT3;
 	private final ToggleGroup groupColorsT4;
-	//Text
+	// Text
 	private final Text selectionErrTxt;
 	private final Text highscore1name;
 	private final Text highscore2name;
@@ -80,9 +79,15 @@ public class FrameFX extends Stage {
 	private final Text highscore3points;
 	private final Text highscore4points;
 	private final Text highscore5points;
+	// ToggleButtons
+	private final RadioButton[] tbarr;
+	//Color
+	private final Color colorT1;
+	private final Color colorT2;
+	private final Color colorT3;
+	private final Color colorT4;
 
-	
-	public FrameFX(){
+	public FrameFX() {
 		startB = new Button(" ");
 		highscoreB = new Button(" ");
 		creditsB = new Button(" ");
@@ -99,10 +104,10 @@ public class FrameFX extends Stage {
 		t2TF = new TextField();
 		t3TF = new TextField();
 		t4TF = new TextField();
-		groupColorsT1 = new ToggleGroup(); 
-		groupColorsT2 = new ToggleGroup(); 
-		groupColorsT3 = new ToggleGroup(); 
-		groupColorsT4 = new ToggleGroup(); 
+		groupColorsT1 = new ToggleGroup();
+		groupColorsT2 = new ToggleGroup();
+		groupColorsT3 = new ToggleGroup();
+		groupColorsT4 = new ToggleGroup();
 		selectionErrTxt = new Text("ERROR MESSAGE TEST");
 		startGame = new Button("Start Game");
 		highscorePane = new GridPane();
@@ -125,10 +130,10 @@ public class FrameFX extends Stage {
 		t2w = new Button[4];
 		t3w = new Button[4];
 		t4w = new Button[4];
-		
+
 		mainStage.setTitle("Mensch Aergere Dich Nicht!");
 		HBox hbox = new HBox();
-		hbox.setPadding(new Insets(50,50,50,50));
+		hbox.setPadding(new Insets(50, 50, 50, 50));
 		Text title = new Text(" ");
 		hbox.getChildren().add(title);
 		root.setTop(hbox);
@@ -137,13 +142,14 @@ public class FrameFX extends Stage {
 		highscoreScene = new Scene(highscorePane, 1280, 720);
 		creditScene = new Scene(creditPane, 1280, 720);
 		gameScene = new Scene(gamePane, 1280, 720);
-		root.setStyle("-fx-background-image: url('at/spengergasse/img/title.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
+		root.setStyle(
+				"-fx-background-image: url('at/spengergasse/img/title.jpg');-fx-background-size: auto;-fx-background-repeat: no-repeat;");
 		mainStage.setScene(mainScene);
 		mainStage.show();
 		GridPane gridP = new GridPane();
 		gridP.setVgap(50);
 		gridP.setHgap(50);
-		gridP.setPadding(new Insets(50,50,50,50));
+		gridP.setPadding(new Insets(50, 50, 50, 50));
 		HBox start = new HBox();
 		startB.setMinHeight(92);
 		startB.setMinWidth(300);
@@ -159,15 +165,15 @@ public class FrameFX extends Stage {
 		highscore.getChildren().add(highscoreB);
 		HBox credits = new HBox();
 		credits.getChildren().add(creditsB);
-		gridP.add(start,0,0);
-		gridP.add(highscore,0,1);
-		gridP.add(credits,0,2);
+		gridP.add(start, 0, 0);
+		gridP.add(highscore, 0, 1);
+		gridP.add(credits, 0, 2);
 		root.setLeft(gridP);
 		mainStage.setMaxHeight(720);
 		mainStage.setMaxWidth(1280);
 		mainStage.setMinHeight(720);
 		mainStage.setMinWidth(1280);
-		
+
 		back.setMinHeight(50);
 		back.setMinWidth(100);
 		back.setStyle("-fx-background-image: url('at/spengergasse/img/back.png')");
@@ -179,7 +185,7 @@ public class FrameFX extends Stage {
 		pickColorText.setStyle("-fx-font: 50px Tahoma");
 		gameSelectionPane.setHgap(50);
 		gameSelectionPane.setVgap(50);
-		gameSelectionPane.setPadding(new Insets(50,50,50,50));
+		gameSelectionPane.setPadding(new Insets(50, 50, 50, 50));
 		gameSelectionPane.setStyle("-fx-background-color: #47a6c2");
 		gameSelectionPane.add(selectionText, 1, 0);
 		gameSelectionPane.add(pickColorText, 2, 0, 4, 1);
@@ -195,71 +201,57 @@ public class FrameFX extends Stage {
 		t1TF.setPromptText("Enter the team name, leave it blank for a bot player");
 		t2TF.setPromptText("Enter the team name, leave it blank for a bot player");
 		t3TF.setPromptText("Enter the team name, leave it blank for a bot player");
-		t4TF.setPromptText("Enter the team name, leave it blank for a bot player");		
+		t4TF.setPromptText("Enter the team name, leave it blank for a bot player");
 		gameSelectionPane.add(t1TF, 1, 1);
 		gameSelectionPane.add(t2TF, 1, 2);
 		gameSelectionPane.add(t3TF, 1, 3);
 		gameSelectionPane.add(t4TF, 1, 4);
-		ToggleButton redT1 = new RadioButton("Red");
-		ToggleButton blueT1 = new RadioButton("Blue");
-		ToggleButton yellowT1 = new RadioButton("Yellow");
-		ToggleButton greenT1 = new RadioButton("Green");
-		ToggleButton redT2 = new RadioButton("Red");
-		ToggleButton blueT2 = new RadioButton("Blue");
-		ToggleButton yellowT2 = new RadioButton("Yellow");
-		ToggleButton greenT2 = new RadioButton("Green");
-		ToggleButton redT3 = new RadioButton("Red");
-		ToggleButton blueT3 = new RadioButton("Blue");
-		ToggleButton yellowT3 = new RadioButton("Yellow");
-		ToggleButton greenT3 = new RadioButton("Green");
-		ToggleButton redT4 = new RadioButton("Red");
-		ToggleButton blueT4 = new RadioButton("Blue");
-		ToggleButton yellowT4 = new RadioButton("Yellow");
-		ToggleButton greenT4 = new RadioButton("Green");
-	    redT1.setToggleGroup(groupColorsT1);
-	    yellowT1.setToggleGroup(groupColorsT1);
-	    blueT1.setToggleGroup(groupColorsT1);
-	    greenT1.setToggleGroup(groupColorsT1);
-	    redT2.setToggleGroup(groupColorsT2);
-	    yellowT2.setToggleGroup(groupColorsT2);
-	    blueT2.setToggleGroup(groupColorsT2);
-	    greenT2.setToggleGroup(groupColorsT2);
-	    redT3.setToggleGroup(groupColorsT3);
-	    yellowT3.setToggleGroup(groupColorsT3);
-	    blueT3.setToggleGroup(groupColorsT3);
-	    greenT3.setToggleGroup(groupColorsT3);
-	    redT4.setToggleGroup(groupColorsT4);
-	    yellowT4.setToggleGroup(groupColorsT4);
-	    blueT4.setToggleGroup(groupColorsT4);
-	    greenT4.setToggleGroup(groupColorsT4);
-	    gameSelectionPane.add(redT1, 2, 1);
-	    gameSelectionPane.add(blueT1, 3, 1);
-	    gameSelectionPane.add(greenT1, 4, 1);
-	    gameSelectionPane.add(yellowT1, 5, 1);
-	    gameSelectionPane.add(redT2, 2, 2);
-	    gameSelectionPane.add(blueT2, 3, 2);
-	    gameSelectionPane.add(greenT2, 4, 2);
-	    gameSelectionPane.add(yellowT2, 5, 2);
-	    gameSelectionPane.add(redT3, 2, 3);
-	    gameSelectionPane.add(blueT3, 3, 3);
-	    gameSelectionPane.add(greenT3, 4, 3);
-	    gameSelectionPane.add(yellowT3, 5, 3);
-	    gameSelectionPane.add(redT4, 2, 4);
-	    gameSelectionPane.add(blueT4, 3, 4);
-	    gameSelectionPane.add(greenT4, 4, 4);
-	    gameSelectionPane.add(yellowT4, 5, 4);		
-	    selectionErrTxt.setStyle("-fx-font: 30px Tahoma;");
-	    selectionErrTxt.setFill(Color.RED);
-	    gameSelectionPane.add(selectionErrTxt, 1, 5);
-	    gameSelectionPane.add(startGame, 5, 5);
+		tbarr = new RadioButton[16];
+		for (int i = 0; i < 16; i++) {
+			tbarr[i] = new RadioButton("Red");
+			i++;
+			tbarr[i] = new RadioButton("Blue");
+			i++;
+			tbarr[i] = new RadioButton("Yellow");
+			i++;
+			tbarr[i] = new RadioButton("Green");
+		}
+		for (int i = 0; i < 16; i++) {
+			if (i < 4) {
+				tbarr[i].setToggleGroup(groupColorsT1);
+			} else if (i < 8) {
+				tbarr[i].setToggleGroup(groupColorsT2);
+			} else if (i < 12) {
+				tbarr[i].setToggleGroup(groupColorsT3);
+			} else if (i < 16) {
+				tbarr[i].setToggleGroup(groupColorsT4);
+			}
+		}
+		int a = 2;
+		int b = 1;
+		for (int i = 0; i < 16; i++) {
+			gameSelectionPane.add(tbarr[i], a, b);
+			if (a == 5) {
+				a = 2;
+			} else {
+				a++;
+			}
+			if (i == 3 || i == 7 || i == 11 || i == 15) {
+				b++;
+			}
+		}
+		selectionErrTxt.setStyle("-fx-font: 30px Tahoma;");
+		selectionErrTxt.setFill(Color.RED);
+		gameSelectionPane.add(selectionErrTxt, 1, 5);
+		gameSelectionPane.add(startGame, 5, 5);
 
-	    back2.setMinHeight(50);
+		back2.setMinHeight(50);
 		back2.setMinWidth(100);
 		back2.setStyle("-fx-background-image: url('at/spengergasse/img/back.png')");
 		creditPane.setStyle("-fx-background-color: #47a6c2");
 		creditPane.setVgap(50);
 		creditPane.setHgap(50);
-		creditPane.setPadding(new Insets(50,50,50,50));
+		creditPane.setPadding(new Insets(50, 50, 50, 50));
 		creditPane.add(back2, 0, 0);
 		Text creditTitle = new Text("An diesem Projekt beteiligt waren:");
 		creditTitle.setFill(Color.WHITE);
@@ -273,14 +265,14 @@ public class FrameFX extends Stage {
 		creditPane.add(creditTitle, 0, 1);
 		creditPane.add(creditTolan, 0, 2);
 		creditPane.add(creditHradil, 0, 3);
-		
+
 		back3.setMinHeight(50);
 		back3.setMinWidth(100);
 		back3.setStyle("-fx-background-image: url('at/spengergasse/img/back.png')");
 		highscorePane.setStyle("-fx-background-color: #47a6c2");
 		highscorePane.setVgap(50);
 		highscorePane.setHgap(50);
-		highscorePane.setPadding(new Insets(50,50,50,50));
+		highscorePane.setPadding(new Insets(50, 50, 50, 50));
 		highscorePane.add(back3, 0, 0);
 		Text highscoreTitle = new Text("Highscores");
 		highscoreTitle.setStyle("-fx-font: 45px Tahoma; -fx-underline: true");
@@ -348,131 +340,135 @@ public class FrameFX extends Stage {
 		highscorePane.add(highscore3points, 4, 4);
 		highscorePane.add(highscore4points, 4, 5);
 		highscorePane.add(highscore5points, 4, 6);
-		
+
 		gamePane.setStyle("-fx-background-color: #47a6c2");
 		gamePane.setVgap(25);
 		gamePane.setHgap(25);
-		gamePane.setPadding(new Insets(50,50,50,50));
-		for(int i = 0; i < 40; i++){
+		gamePane.setPadding(new Insets(50, 50, 50, 50));
+		colorT1 = null;
+		colorT2 = null;
+		colorT3 = null;
+		colorT4 = null;
+		for (int i = 0; i < 40; i++) {
 			gameField[i] = new Button("  ");
 			gameField[i].setShape(new Circle(1.5));
 			gameField[i].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
 		}
-		for(int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 			t1s[i] = new Button("  ");
 			t1s[i].setShape(new Circle(1.5));
-			t1s[i].setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+			t1s[i].setBackground(new Background(new BackgroundFill(colorT1, null, null)));
 		}
-		for(int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 			t2s[i] = new Button("  ");
 			t2s[i].setShape(new Circle(1.5));
-			t2s[i].setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
+			t2s[i].setBackground(new Background(new BackgroundFill(colorT2, null, null)));
 		}
-		for(int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 			t3s[i] = new Button("  ");
 			t3s[i].setShape(new Circle(1.5));
-			t3s[i].setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
+			t3s[i].setBackground(new Background(new BackgroundFill(colorT3, null, null)));
 		}
-		for(int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 			t4s[i] = new Button("  ");
 			t4s[i].setShape(new Circle(1.5));
-			t4s[i].setBackground(new Background(new BackgroundFill(Color.YELLOW, null, null)));
+			t4s[i].setBackground(new Background(new BackgroundFill(colorT4, null, null)));
 		}
-		for(int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 			t1w[i] = new Button("  ");
 			t1w[i].setShape(new Circle(1.5));
-			t1w[i].setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+			t1w[i].setBackground(new Background(new BackgroundFill(colorT1, null, null)));
 		}
-		for(int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 			t2w[i] = new Button("  ");
 			t2w[i].setShape(new Circle(1.5));
-			t2w[i].setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
+			t2w[i].setBackground(new Background(new BackgroundFill(colorT2, null, null)));
 		}
-		for(int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 			t3w[i] = new Button("  ");
 			t3w[i].setShape(new Circle(1.5));
-			t3w[i].setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
+			t3w[i].setBackground(new Background(new BackgroundFill(colorT3, null, null)));
 		}
-		for(int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 			t4w[i] = new Button("  ");
 			t4w[i].setShape(new Circle(1.5));
-			t4w[i].setBackground(new Background(new BackgroundFill(Color.YELLOW, null, null)));
+			t4w[i].setBackground(new Background(new BackgroundFill(colorT4, null, null)));
 		}
 		gamePane.add(t1s[0], 0, 0);
 		gamePane.add(t1s[1], 1, 0);
 		gamePane.add(t1s[2], 0, 1);
 		gamePane.add(t1s[3], 1, 1);
-		
+
 		gamePane.add(t2s[0], 9, 0);
 		gamePane.add(t2s[1], 10, 0);
 		gamePane.add(t2s[2], 9, 1);
 		gamePane.add(t2s[3], 10, 1);
-		
+
 		gamePane.add(t3s[0], 0, 9);
 		gamePane.add(t3s[1], 1, 9);
 		gamePane.add(t3s[2], 0, 10);
 		gamePane.add(t3s[3], 1, 10);
-		
+
 		gamePane.add(t4s[0], 9, 9);
 		gamePane.add(t4s[1], 10, 9);
 		gamePane.add(t4s[2], 9, 10);
 		gamePane.add(t4s[3], 10, 10);
-		
+
 		gamePane.add(t1w[0], 1, 5);
 		gamePane.add(t1w[1], 2, 5);
 		gamePane.add(t1w[2], 3, 5);
 		gamePane.add(t1w[3], 4, 5);
-		
+
 		gamePane.add(t2w[0], 5, 1);
 		gamePane.add(t2w[1], 5, 2);
 		gamePane.add(t2w[2], 5, 3);
 		gamePane.add(t2w[3], 5, 4);
-		
+
 		gamePane.add(t3w[0], 5, 6);
 		gamePane.add(t3w[1], 5, 7);
 		gamePane.add(t3w[2], 5, 8);
 		gamePane.add(t3w[3], 5, 9);
-		
+
 		gamePane.add(t4w[0], 6, 5);
 		gamePane.add(t4w[1], 7, 5);
 		gamePane.add(t4w[2], 8, 5);
 		gamePane.add(t4w[3], 9, 5);
-		
+
 		int x = -1;
 		int y = 4;
-		for(int i = 0; i < 40; i++){
-			if(i < 5){
+		for (int i = 0; i < 40; i++) {
+			if (i < 5) {
 				x++;
-			} else if(i < 9){
+			} else if (i < 9) {
 				y--;
-			} else if(i < 11){
+			} else if (i < 11) {
 				x++;
-			} else if(i < 15){
+			} else if (i < 15) {
 				y++;
-			} else if(i < 19){
+			} else if (i < 19) {
 				x++;
-			} else if(i < 21){
+			} else if (i < 21) {
 				y++;
-			} else if(i < 25){
+			} else if (i < 25) {
 				x--;
-			} else if(i < 29){
+			} else if (i < 29) {
 				y++;
-			} else if(i < 31){
+			} else if (i < 31) {
 				x--;
-			} else if(i < 35){
+			} else if (i < 35) {
 				y--;
-			} else if(i < 39){
+			} else if (i < 39) {
 				x--;
-			} else if(i == 39){
+			} else if (i == 39) {
 				y--;
 			}
-			gamePane.add(gameField[i], x, y);	
+			gamePane.add(gameField[i], x, y);
 		}
-		
-		for(int i = 0; i < 40; i++){
+
+		for (int i = 0; i < 40; i++) {
 			gameField[i].addEventHandler(ActionEvent.ACTION, event);
 		}
-	    startGame.addEventHandler(ActionEvent.ACTION, event);
+		startGame.addEventHandler(ActionEvent.ACTION, event);
 		startB.addEventHandler(ActionEvent.ACTION, event);
 		back.addEventHandler(ActionEvent.ACTION, event);
 		back2.addEventHandler(ActionEvent.ACTION, event);
@@ -480,117 +476,86 @@ public class FrameFX extends Stage {
 		creditsB.addEventHandler(ActionEvent.ACTION, event);
 		highscoreB.addEventHandler(ActionEvent.ACTION, event);
 	}
-	
-	
-	
+
 	public Button[] getGameField() {
 		return gameField;
 	}
-
-
 
 	public GridPane getGamePane() {
 		return gamePane;
 	}
 
-
-
 	public Scene getGameScene() {
 		return gameScene;
 	}
-
-
 
 	public Button[] getT1s() {
 		return t1s;
 	}
 
-
-
 	public Button[] getT2s() {
 		return t2s;
 	}
-
-
 
 	public Button[] getT3s() {
 		return t3s;
 	}
 
-
-
 	public Button[] getT4s() {
 		return t4s;
 	}
-
-
 
 	public Button[] getT1w() {
 		return t1w;
 	}
 
-
-
 	public Button[] getT2w() {
 		return t2w;
 	}
-
-
 
 	public Button[] getT3w() {
 		return t3w;
 	}
 
-
-
 	public Button[] getT4w() {
 		return t4w;
 	}
 
-
-
 	public Button getStartB() {
 		return startB;
 	}
-	
 
 	public Button getHighscoreB() {
 		return highscoreB;
 	}
 
-
 	public Button getCreditsB() {
 		return creditsB;
 	}
-	
-	
+
 	public Button getBack() {
 		return back;
 	}
-	
+
 	public Button getBack2() {
 		return back2;
 	}
-	
+
 	public Stage getMainStage() {
 		return mainStage;
 	}
-
 
 	public BorderPane getRoot() {
 		return root;
 	}
 
-
 	public GridPane getGameSelectionPane() {
 		return gameSelectionPane;
 	}
 
-
 	public Scene getMainScene() {
 		return mainScene;
 	}
-
 
 	public Scene getGameSelectionScene() {
 		return gameSelectionScene;
@@ -599,19 +564,18 @@ public class FrameFX extends Stage {
 	public void setMainStage(Stage mainStage) {
 		this.mainStage = mainStage;
 	}
-	
-	public void setCreditsScene(){
-		
-	}
-	
-	public void setMainScene(){
-		mainStage.setScene(mainScene);
-	}
-	
-	public void setGameScene(){
-		mainStage.setScene(gameSelectionScene);
+
+	public void setCreditsScene() {
+
 	}
 
+	public void setMainScene() {
+		mainStage.setScene(mainScene);
+	}
+
+	public void setGameScene() {
+		mainStage.setScene(gameSelectionScene);
+	}
 
 	public ActionListenerFX getEvent() {
 		return event;
@@ -621,128 +585,120 @@ public class FrameFX extends Stage {
 		return t1TF;
 	}
 
-
 	public TextField getT2TF() {
 		return t2TF;
 	}
-
 
 	public TextField getT3TF() {
 		return t3TF;
 	}
 
-
 	public TextField getT4TF() {
 		return t4TF;
 	}
-
 
 	public ToggleGroup getGroupColorsT1() {
 		return groupColorsT1;
 	}
 
-
 	public ToggleGroup getGroupColorsT2() {
 		return groupColorsT2;
 	}
-
 
 	public ToggleGroup getGroupColorsT3() {
 		return groupColorsT3;
 	}
 
-
 	public ToggleGroup getGroupColorsT4() {
 		return groupColorsT4;
 	}
-
 
 	public Text getSelectionErrTxt() {
 		return selectionErrTxt;
 	}
 
-
 	public Button getStartGame() {
 		return startGame;
 	}
-
 
 	public GridPane getCreditPane() {
 		return creditPane;
 	}
 
-
 	public Scene getCreditScene() {
 		return creditScene;
 	}
-
 
 	public Button getBack3() {
 		return back3;
 	}
 
-
 	public GridPane getHighscorePane() {
 		return highscorePane;
 	}
-
 
 	public Scene getHighscoreScene() {
 		return highscoreScene;
 	}
 
-
 	public Text getHighscore1name() {
 		return highscore1name;
 	}
-
 
 	public Text getHighscore2name() {
 		return highscore2name;
 	}
 
-
 	public Text getHighscore3name() {
 		return highscore3name;
 	}
-
 
 	public Text getHighscore4name() {
 		return highscore4name;
 	}
 
-
 	public Text getHighscore5name() {
 		return highscore5name;
 	}
-
 
 	public Text getHighscore1points() {
 		return highscore1points;
 	}
 
-
 	public Text getHighscore2points() {
 		return highscore2points;
 	}
-
 
 	public Text getHighscore3points() {
 		return highscore3points;
 	}
 
-
 	public Text getHighscore4points() {
 		return highscore4points;
 	}
-
 
 	public Text getHighscore5points() {
 		return highscore5points;
 	}
 
+	public RadioButton[] getTbarr() {
+		return tbarr;
+	}
 
+	public Color getColorT1() {
+		return colorT1;
+	}
 
-	
-	
+	public Color getColorT2() {
+		return colorT2;
+	}
+
+	public Color getColorT3() {
+		return colorT3;
+	}
+
+	public Color getColorT4() {
+		return colorT4;
+	}
+
 }
