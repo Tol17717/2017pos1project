@@ -178,6 +178,43 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				gui.getT4s()[i].setBackground(new Background(new BackgroundFill(t4, null, null)));
 				gui.getT4w()[i].setBackground(new Background(new BackgroundFill(t4, null, null)));
 			}
+			if(gui.getT1TF().getText().equals("")){
+				gui.getShowT1name().setText("Bot");
+			} else {
+				gui.getShowT1name().setText(gui.getT1TF().getText());
+				gui.getShowT1name().setFill(t1);
+			}
+			gui.getShowT1name().setStyle("-fx-font: 20px Tahoma");
+			gui.getT1who().setStyle("-fx-font: 20px Tahoma");
+			gui.getT1who().setFill(t1);
+			if(gui.getT2TF().getText().equals("")){
+				gui.getShowT2name().setText("Bot");
+			} else {
+				gui.getShowT2name().setText(gui.getT2TF().getText());
+				gui.getShowT2name().setFill(t2);
+			}
+			gui.getShowT2name().setStyle("-fx-font: 20px Tahoma");
+			gui.getT2who().setStyle("-fx-font: 20px Tahoma");
+			gui.getT2who().setFill(t2);
+			if(gui.getT3TF().getText().equals("")){
+				gui.getShowT3name().setText("Bot");
+			} else {
+				gui.getShowT3name().setText(gui.getT3TF().getText());
+				gui.getShowT3name().setFill(t3);
+			}
+			gui.getShowT3name().setStyle("-fx-font: 20px Tahoma");
+			gui.getT3who().setStyle("-fx-font: 20px Tahoma");
+			gui.getT3who().setFill(t3);
+			if(gui.getT4TF().getText().equals("")){
+				gui.getShowT4name().setText("Bot");
+			} else {
+				gui.getShowT4name().setText(gui.getT4TF().getText());
+				gui.getShowT4name().setFill(t4);
+			}
+			gui.getShowT4name().setStyle("-fx-font: 20px Tahoma");
+			gui.getT4who().setStyle("-fx-font: 20px Tahoma");
+			gui.getT4who().setFill(t4);
+			
 			gui.getMainStage().setScene(gui.getGameScene());
 			for (int i = 0; i < 40; i++) {
 				if (source == gui.getGameField()[i]) {

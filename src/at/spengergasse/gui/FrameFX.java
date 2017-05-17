@@ -79,6 +79,15 @@ public class FrameFX extends Stage {
 	private final Text highscore3points;
 	private final Text highscore4points;
 	private final Text highscore5points;
+	private final Text showT1name;
+	private final Text showT2name;
+	private final Text showT3name;
+	private final Text showT4name;
+	private final Text t1who;
+	private final Text t2who;
+	private final Text t3who;
+	private final Text t4who;
+	
 	// ToggleButtons
 	private final RadioButton[] tbarr;
 	//Color
@@ -464,9 +473,35 @@ public class FrameFX extends Stage {
 			}
 			gamePane.add(gameField[i], x, y);
 		}
+		showT1name = new Text("");
+		showT2name = new Text("");
+		showT3name = new Text("");
+		showT4name = new Text("");
+		t1who = new Text("Team 1:");
+		t2who = new Text("Team 2:");
+		t3who = new Text("Team 3:");
+		t4who = new Text("Team 4:");
+		gamePane.add(t1who, 11, 0);
+		gamePane.add(t2who, 11, 1);
+		gamePane.add(t3who, 11, 2);
+		gamePane.add(t4who, 11, 3);
+		gamePane.add(showT1name, 12, 0);
+		gamePane.add(showT2name, 12, 1);
+		gamePane.add(showT3name, 12, 2);
+		gamePane.add(showT4name, 12, 3);
 
 		for (int i = 0; i < 40; i++) {
 			gameField[i].addEventHandler(ActionEvent.ACTION, event);
+		}
+		for (int i = 4; i < 4; i++){
+			t1s[i].addEventHandler(ActionEvent.ACTION, event);
+			t2s[i].addEventHandler(ActionEvent.ACTION, event);
+			t3s[i].addEventHandler(ActionEvent.ACTION, event);
+			t4s[i].addEventHandler(ActionEvent.ACTION, event);
+			t1w[i].addEventHandler(ActionEvent.ACTION, event);
+			t2w[i].addEventHandler(ActionEvent.ACTION, event);
+			t3w[i].addEventHandler(ActionEvent.ACTION, event);
+			t4w[i].addEventHandler(ActionEvent.ACTION, event);
 		}
 		startGame.addEventHandler(ActionEvent.ACTION, event);
 		startB.addEventHandler(ActionEvent.ACTION, event);
@@ -699,6 +734,38 @@ public class FrameFX extends Stage {
 
 	public Color getColorT4() {
 		return colorT4;
+	}
+
+	public Text getShowT1name() {
+		return showT1name;
+	}
+
+	public Text getShowT2name() {
+		return showT2name;
+	}
+
+	public Text getShowT3name() {
+		return showT3name;
+	}
+
+	public Text getShowT4name() {
+		return showT4name;
+	}
+
+	public Text getT1who() {
+		return t1who;
+	}
+
+	public Text getT2who() {
+		return t2who;
+	}
+
+	public Text getT3who() {
+		return t3who;
+	}
+
+	public Text getT4who() {
+		return t4who;
 	}
 
 }
