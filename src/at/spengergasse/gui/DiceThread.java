@@ -1,5 +1,6 @@
-package at.spengergasse.utils;
+package at.spengergasse.gui;
 
+import at.spengergasse.utils.Wuerfeln;
 import javafx.scene.control.Button;
 
 public class DiceThread extends Thread {
