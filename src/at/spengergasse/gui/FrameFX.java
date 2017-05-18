@@ -487,10 +487,10 @@ public class FrameFX extends Stage {
 		gamePane.add(t2who, 11, 1);
 		gamePane.add(t3who, 11, 2);
 		gamePane.add(t4who, 11, 3);
-		gamePane.add(showT1name, 12, 0);
-		gamePane.add(showT2name, 12, 1);
-		gamePane.add(showT3name, 12, 2);
-		gamePane.add(showT4name, 12, 3);
+		gamePane.add(showT1name, 12, 0, 2, 1);
+		gamePane.add(showT2name, 12, 1, 2, 1);
+		gamePane.add(showT3name, 12, 2, 2, 1);
+		gamePane.add(showT4name, 12, 3, 2, 1);
 		whosTurn = new Text("It is my turn");
 		gamePane.add(whosTurn, 14, 0);
 		dice = new Button("");

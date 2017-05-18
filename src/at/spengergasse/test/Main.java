@@ -14,6 +14,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
+		highscore.createFile();
 		highscore.read();
 		highscore.add("Elliott", 420);
 		highscore.print();
