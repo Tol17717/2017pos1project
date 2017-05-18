@@ -35,6 +35,9 @@ public class Highscore {
 	}
 
 	public void read() {
+		if(new File("\\POSProjectTOL_HRA_2017\\highscore.ser").exists() != true){
+			return;
+		}
 		highscore.clear();
 		try {
 			FileInputStream fileIn = new FileInputStream("C:\\POSProjectTOL_HRA_2017\\highscore.ser");
@@ -66,6 +69,8 @@ public class Highscore {
 	public void write() throws IOException {
 		if (new File("\\POSProjectTOL_HRA_2017\\highscore.ser").exists() != true) {
 			createFile();
+		} else {
+			return;
 		}
 		try {
 			
