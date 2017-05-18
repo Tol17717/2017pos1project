@@ -41,6 +41,7 @@ public class FrameFX extends Stage {
 	private final Button[] t2w;
 	private final Button[] t3w;
 	private final Button[] t4w;
+	private final Button dice;
 	// Panes
 	private final BorderPane root;
 	private final GridPane gameSelectionPane;
@@ -87,6 +88,7 @@ public class FrameFX extends Stage {
 	private final Text t2who;
 	private final Text t3who;
 	private final Text t4who;
+	private final Text whosTurn;
 	
 	// ToggleButtons
 	private final RadioButton[] tbarr;
@@ -489,7 +491,14 @@ public class FrameFX extends Stage {
 		gamePane.add(showT2name, 12, 1);
 		gamePane.add(showT3name, 12, 2);
 		gamePane.add(showT4name, 12, 3);
-
+		whosTurn = new Text("It is my turn");
+		gamePane.add(whosTurn, 14, 0);
+		dice = new Button("");
+		dice.setMinWidth(170);
+		dice.setMinHeight(170);
+		dice.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel6.jpg')");
+		gamePane.add(dice, 13, 4, 1, 3);
+		
 		for (int i = 0; i < 40; i++) {
 			gameField[i].addEventHandler(ActionEvent.ACTION, event);
 		}
@@ -510,6 +519,7 @@ public class FrameFX extends Stage {
 		back3.addEventHandler(ActionEvent.ACTION, event);
 		creditsB.addEventHandler(ActionEvent.ACTION, event);
 		highscoreB.addEventHandler(ActionEvent.ACTION, event);
+		dice.addEventHandler(ActionEvent.ACTION, event);
 	}
 
 	public Button[] getGameField() {
@@ -766,6 +776,14 @@ public class FrameFX extends Stage {
 
 	public Text getT4who() {
 		return t4who;
+	}
+
+	public Button getDice() {
+		return dice;
+	}
+
+	public Text getWhosTurn() {
+		return whosTurn;
 	}
 
 }

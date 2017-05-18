@@ -12,10 +12,12 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private final FrameFX gui;
 	private Game game;
 	private final Highscore highscore;
+	private final Wuerfeln wuerfel;
 
 	public ActionListenerFX(FrameFX frameFX) {
 		gui = frameFX;
 		highscore = new Highscore();
+		wuerfel = new Wuerfeln();
 	}
 
 	@Override
@@ -221,6 +223,10 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					System.out.println("button gedrückt");
 				}
 			}
+		}
+		if(source == gui.getDice()){
+			DiceThread d = new DiceThread(gui.getDice());
+			d.start();
 		}
 	}
 }

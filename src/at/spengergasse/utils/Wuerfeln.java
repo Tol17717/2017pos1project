@@ -9,7 +9,7 @@ public class Wuerfeln {
 
 	public int wuerfeln(){
 		Random rn = new Random();
-		int w = rn.nextInt(6) + 1;
+		int w = rn.nextInt(6);
 		return w;
 	}
 
