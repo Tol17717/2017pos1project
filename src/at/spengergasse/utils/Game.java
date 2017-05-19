@@ -22,6 +22,11 @@ public class Game {
 	private Spielfigur[] winT3;
 	private Spielfigur[] winT4;
 	
+	private Integer t1startpos;
+	private Integer t2startpos;
+	private Integer t3startpos;
+	private Integer t4startpos;
+	
 		public Game(boolean t1bot, boolean t2bot, boolean t3bot, boolean t4bot) {
 		t1 = new Team(1, t1bot);
 		t2 = new Team(2, t2bot);
@@ -36,6 +41,10 @@ public class Game {
 		winT2 = new Spielfigur[4];
 		winT3 = new Spielfigur[4];
 		winT4 = new Spielfigur[4];
+		t1startpos = 1;
+		t2startpos = 11;
+		t3startpos = 21;
+		t4startpos  = 31;
 	}
 		
 	public boolean getOutOfStart(int wuerfel){
@@ -68,22 +77,50 @@ public class Game {
 		startT2[3]=t4.getSf4();
 	}
 	
-	public boolean moveOutOfStart(int team, int position){
-		if(team == 1){
-			if(startT1[position] == null){
-				return false;
-			} else {
-				
+	//Bei einer gewürfelten Sechs wird diese Methode aufgerufen.
+	public boolean moveOutOfStart(int team, int position, int wuerfelwert){
+		if((team >= 1 && team <= 4) && wuerfelwert == 6) {
+			if(team == 1){
+				if(startT1[position] == null){
+					return false;
+				} else {
+					return true;
+				}
+			} 
+			if(team == 2) {
+				if(startT2[position] == null) {
+					return false;
+				} else {
+					return true;
+				}
 			}
-		}
+			if(team == 3) {
+				if(startT3[position] == null) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+			if(team == 4) {
+				if(startT4[position] == null) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+		} 
+		return false;
+		
 	}
 	
-	public boolean canKick(int feld){
+	
+	public boolean canKick( int feld){
 		if(gameField[feld] != null){
 			return true;
 		} else {
 			return true;
 		}
+
 	}
 	
 	public boolean putBackInStart(int team, int position){
