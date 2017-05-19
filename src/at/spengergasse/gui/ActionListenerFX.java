@@ -13,11 +13,26 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private Game game;
 	private final Highscore highscore;
 	private final Wuerfeln wuerfel;
+	private int itIsYourTurn;
+	private Color t1;
+	private Color t2;
+	private Color t3;
+	private Color t4;
+	private boolean t1isBot;
+	private boolean t2isBot;
+	private boolean t3isBot;
+	private boolean t4isBot;
+	private BotTime b;
 
 	public ActionListenerFX(FrameFX frameFX) {
 		gui = frameFX;
 		highscore = new Highscore();
 		wuerfel = new Wuerfeln();
+		itIsYourTurn = 0;
+		t1isBot = false;
+		t2isBot = false;
+		t3isBot = false;
+		t4isBot = false;
 	}
 
 	@Override
@@ -70,7 +85,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			}
 			boolean isSelected = false;
 			for (int i = 1; i < 17; i++) {
-				if (gui.getTbarr()[i-1].isSelected()) {
+				if (gui.getTbarr()[i - 1].isSelected()) {
 					isSelected = true;
 				}
 				if (i % 4 == 0) {
@@ -111,10 +126,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					}
 				}
 			}
-			Color t1 = Color.BLACK;
-			Color t2 = Color.BLACK;
-			Color t3 = Color.BLACK;
-			Color t4 = Color.BLACK;
 			for (int i = 0; i < 16; i++) {
 				if (i < 4) {
 					if (gui.getTbarr()[i].isSelected() && i == 0) {
@@ -168,7 +179,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					if (gui.getTbarr()[i].isSelected() && i == 15) {
 						t4 = Color.GREEN;
 					}
-				} 
+				}
 			}
 			for (int i = 0; i < 4; i++) {
 				gui.getT1s()[i].setBackground(new Background(new BackgroundFill(t1, null, null)));
@@ -180,8 +191,9 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				gui.getT4s()[i].setBackground(new Background(new BackgroundFill(t4, null, null)));
 				gui.getT4w()[i].setBackground(new Background(new BackgroundFill(t4, null, null)));
 			}
-			if(gui.getT1TF().getText().equals("")){
+			if (gui.getT1TF().getText().equals("")) {
 				gui.getShowT1name().setText("Bot");
+				t1isBot = true;
 			} else {
 				gui.getShowT1name().setText(gui.getT1TF().getText());
 				gui.getShowT1name().setFill(t1);
@@ -189,8 +201,9 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getShowT1name().setStyle("-fx-font: 20px Tahoma");
 			gui.getT1who().setStyle("-fx-font: 20px Tahoma");
 			gui.getT1who().setFill(t1);
-			if(gui.getT2TF().getText().equals("")){
+			if (gui.getT2TF().getText().equals("")) {
 				gui.getShowT2name().setText("Bot");
+				t2isBot = true;
 			} else {
 				gui.getShowT2name().setText(gui.getT2TF().getText());
 				gui.getShowT2name().setFill(t2);
@@ -198,8 +211,9 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getShowT2name().setStyle("-fx-font: 20px Tahoma");
 			gui.getT2who().setStyle("-fx-font: 20px Tahoma");
 			gui.getT2who().setFill(t2);
-			if(gui.getT3TF().getText().equals("")){
+			if (gui.getT3TF().getText().equals("")) {
 				gui.getShowT3name().setText("Bot");
+				t3isBot = true;
 			} else {
 				gui.getShowT3name().setText(gui.getT3TF().getText());
 				gui.getShowT3name().setFill(t3);
@@ -207,8 +221,9 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getShowT3name().setStyle("-fx-font: 20px Tahoma");
 			gui.getT3who().setStyle("-fx-font: 20px Tahoma");
 			gui.getT3who().setFill(t3);
-			if(gui.getT4TF().getText().equals("")){
+			if (gui.getT4TF().getText().equals("")) {
 				gui.getShowT4name().setText("Bot");
+				t4isBot = true;
 			} else {
 				gui.getShowT4name().setText(gui.getT4TF().getText());
 				gui.getShowT4name().setFill(t4);
@@ -216,17 +231,54 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getShowT4name().setStyle("-fx-font: 20px Tahoma");
 			gui.getT4who().setStyle("-fx-font: 20px Tahoma");
 			gui.getT4who().setFill(t4);
-			
+
+			gui.getWhosTurn().setFill(t1);
+
 			gui.getMainStage().setScene(gui.getGameScene());
-			for (int i = 0; i < 40; i++) {
-				if (source == gui.getGameField()[i]) {
-					System.out.println("button gedrückt");
-				}
+		}
+		
+		for (int i = 0; i < 40; i++) {
+			if (source == gui.getGameField()[i]) {
+				System.out.println("button gedrückt");
 			}
 		}
-		if(source == gui.getDice()){
+		for (int i = 0; i < 4; i++) {
+			if (source == gui.getT1s()[i] && itIsYourTurn == 0) {
+				System.out.println("Ich wurde gedrückt, lul xD");
+				gui.getWhosTurn().setText("Team 2 turn");
+				gui.getWhosTurn().setFill(t2);
+				itIsYourTurn++;
+			}
+		}
+		for (int i = 0; i < 4; i++) {
+			if (source == gui.getT2s()[i] && itIsYourTurn == 1) {
+				System.out.println("Ich wurde gedrückt, lul xD");
+				gui.getWhosTurn().setText("Team 3 turn");
+				gui.getWhosTurn().setFill(t3);
+				itIsYourTurn++;
+			}
+		}
+		for (int i = 0; i < 4; i++) {
+			if (source == gui.getT3s()[i] && itIsYourTurn == 2) {
+				System.out.println("Ich wurde gedrückt, lul xD");
+				gui.getWhosTurn().setText("Team 4 turn");
+				gui.getWhosTurn().setFill(t4);
+				itIsYourTurn++;
+			}
+		}
+		for (int i = 0; i < 4; i++) {
+			if (source == gui.getT4s()[i] && itIsYourTurn == 3) {
+				System.out.println("Ich wurde gedrückt, lul xD");
+				gui.getWhosTurn().setText("Team 1 turn");
+				gui.getWhosTurn().setFill(t1);
+				itIsYourTurn = 0;
+			}
+		}
+		if (source == gui.getDice()) {
 			DiceThread d = new DiceThread(gui.getDice());
 			d.start();
-		}
+		}		
 	}
+	
+	
 }

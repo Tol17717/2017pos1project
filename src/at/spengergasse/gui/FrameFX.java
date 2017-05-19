@@ -491,7 +491,8 @@ public class FrameFX extends Stage {
 		gamePane.add(showT2name, 12, 1, 2, 1);
 		gamePane.add(showT3name, 12, 2, 2, 1);
 		gamePane.add(showT4name, 12, 3, 2, 1);
-		whosTurn = new Text("It is my turn");
+		whosTurn = new Text("Team 1 turn");
+		whosTurn.setStyle("-fx-font: 20px Tahoma");
 		gamePane.add(whosTurn, 14, 0);
 		dice = new Button("");
 		dice.setMinWidth(170);
@@ -502,7 +503,7 @@ public class FrameFX extends Stage {
 		for (int i = 0; i < 40; i++) {
 			gameField[i].addEventHandler(ActionEvent.ACTION, event);
 		}
-		for (int i = 4; i < 4; i++){
+		for (int i = 0; i < 4; i++){
 			t1s[i].addEventHandler(ActionEvent.ACTION, event);
 			t2s[i].addEventHandler(ActionEvent.ACTION, event);
 			t3s[i].addEventHandler(ActionEvent.ACTION, event);
