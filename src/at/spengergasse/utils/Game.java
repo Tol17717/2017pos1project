@@ -10,32 +10,32 @@ public class Game {
 	private Team t3;
 	private Team t4;
 	
-	private ArrayList<Spielfigur> startT1;
-	private ArrayList<Spielfigur> startT2;
-	private ArrayList<Spielfigur> startT3;
-	private ArrayList<Spielfigur> startT4;
+	private Spielfigur[] startT1;
+	private Spielfigur[] startT2;
+	private Spielfigur[] startT3;
+	private Spielfigur[] startT4;
 	
 	private Spielfigur[] gameField;
 	
-	private ArrayList<Spielfigur> winT1;
-	private ArrayList<Spielfigur> winT2;
-	private ArrayList<Spielfigur> winT3;
-	private ArrayList<Spielfigur> winT4;
+	private Spielfigur[] winT1;
+	private Spielfigur[] winT2;
+	private Spielfigur[] winT3;
+	private Spielfigur[] winT4;
 	
-		public Game(String t1name, Color colort1, boolean t1bot, String t2name, Color colort2, boolean t2bot, String t3name, Color colort3, boolean t3bot, String t4name, Color colort4, boolean t4bot) {
-		t1 = new Team(t1name, colort1, t1bot);
-		t2 = new Team(t2name, colort2, t2bot);
-		t3 = new Team(t3name, colort3, t3bot);
-		t4 = new Team(t4name, colort4, t4bot);
-		startT1 = new ArrayList<Spielfigur>();	
-		startT2 = new ArrayList<Spielfigur>();	
-		startT3 = new ArrayList<Spielfigur>();
-		startT4 = new ArrayList<Spielfigur>();	
-		gameField = new Spielfigur[39];
-		winT1 = new ArrayList<Spielfigur>();
-		winT2 = new ArrayList<Spielfigur>();
-		winT3 = new ArrayList<Spielfigur>();
-		winT4 = new ArrayList<Spielfigur>();
+		public Game(boolean t1bot, boolean t2bot, boolean t3bot, boolean t4bot) {
+		t1 = new Team(1, t1bot);
+		t2 = new Team(2, t2bot);
+		t3 = new Team(3, t3bot);
+		t4 = new Team(4, t4bot);
+		startT1 = new Spielfigur[4];
+		startT2 = new Spielfigur[4];
+		startT3 = new Spielfigur[4];
+		startT4 = new Spielfigur[4];	
+		gameField = new Spielfigur[40];
+		winT1 = new Spielfigur[4];
+		winT2 = new Spielfigur[4];
+		winT3 = new Spielfigur[4];
+		winT4 = new Spielfigur[4];
 	}
 		
 	public boolean getOutOfStart(int wuerfel){
@@ -47,214 +47,64 @@ public class Game {
 	}
 	
 	public void teamsSetup(){
-		startT1.add(t1.getSf1());
-		startT1.add(t1.getSf2());
-		startT1.add(t1.getSf3());
-		startT1.add(t1.getSf4());
+		startT1[0]=t1.getSf1();
+		startT1[1]=t1.getSf2();
+		startT1[2]=t1.getSf3();
+		startT1[3]=t1.getSf4();
 		
-		startT2.add(t2.getSf1());
-		startT2.add(t2.getSf2());
-		startT2.add(t2.getSf3());
-		startT2.add(t2.getSf4());
+		startT2[0]=t2.getSf1();
+		startT2[1]=t2.getSf2();
+		startT2[2]=t2.getSf3();
+		startT2[3]=t2.getSf4();
 		
-		startT3.add(t3.getSf1());
-		startT3.add(t3.getSf2());
-		startT3.add(t3.getSf3());
-		startT3.add(t3.getSf4());
+		startT2[0]=t3.getSf1();
+		startT2[1]=t3.getSf2();
+		startT2[2]=t3.getSf3();
+		startT2[3]=t3.getSf4();
 		
-		startT4.add(t4.getSf1());
-		startT4.add(t4.getSf2());
-		startT4.add(t4.getSf3());
-		startT4.add(t4.getSf4());
+		startT2[0]=t4.getSf1();
+		startT2[1]=t4.getSf2();
+		startT2[2]=t4.getSf3();
+		startT2[3]=t4.getSf4();
 	}
 	
-	public boolean moveOutOfStart(int team){
+	public boolean moveOutOfStart(int team, int position){
 		if(team == 1){
-			if(startT1.isEmpty()){
+			if(startT1[position] == null){
 				return false;
 			} else {
-				if(canKick(t1.getName(), 0)){
-					gameField[0].setPosition(-1);
-					System.out.println(kick(0).toString()+" wurde zurück ins Startfeld geworfen");
-					gameField[0] = startT1.remove(0);
-					gameField[0].setPosition(0);
-					System.out.println(gameField[0].toString()+" ist auf Position 0");
-					return true;
-				}
-				gameField[0] = startT1.remove(0);
-				gameField[0].setPosition(0);
-				System.out.println(gameField[0].toString()+" ist auf Position 0");
-				return true;
+				
 			}
 		}
-		if(team == 2){
-			if(startT2.isEmpty()){
-				return false;
-			} else {
-				if(canKick(t2.getName(), 10)){
-					gameField[10].setPosition(-1);
-					System.out.println(kick(10).toString()+" wurde zurück ins Startfeld geworfen");
-					gameField[10] = startT1.remove(0);
-					gameField[10].setPosition(0);
-					System.out.println(gameField[10].toString()+" ist auf Position 10");
-					return true;
-				}
-				gameField[10] = startT1.remove(0);
-				gameField[10].setPosition(0);
-				System.out.println(gameField[10].toString()+" ist auf Position 10");
-				return true;
-			}
-		}
-		if(team == 3){
-			if(startT1.isEmpty()){
-				return false;
-			} else {
-				if(canKick(t3.getName(), 20)){
-					gameField[20].setPosition(-1);
-					System.out.println(kick(20).toString()+" wurde zurück ins Startfeld geworfen");
-					gameField[20] = startT1.remove(0);
-					gameField[20].setPosition(0);
-					System.out.println(gameField[20].toString()+" ist auf Position 20");
-					return true;
-				}
-				gameField[20] = startT1.remove(0);
-				gameField[20].setPosition(0);
-				System.out.println(gameField[20].toString()+" ist auf Position 20");
-				return true;
-			}
-		}
-		if(team == 4){
-			if(startT1.isEmpty()){
-				return false;
-			} else {
-				if(canKick(t4.getName(), 30)){
-					gameField[30].setPosition(-1);
-					System.out.println(kick(30).toString()+" wurde zurück ins Startfeld geworfen");
-					gameField[30] = startT1.remove(0);
-					gameField[30].setPosition(0);
-					System.out.println(gameField[30].toString()+" ist auf Position 30");
-					return true;
-				}
-				gameField[30] = startT1.remove(0);
-				gameField[30].setPosition(0);
-				System.out.println(gameField[30].toString()+" ist auf Position 30");
-				return true;
-			}
-		}
-		return false;
 	}
 	
-	public boolean canKick(String teamname, int feld){
-		if(gameField[feld] != null && !teamname.equals(t1.getName())){
+	public boolean canKick(int feld){
+		if(gameField[feld] != null){
 			return true;
-		} 
-		return false;
+		} else {
+			return true;
+		}
 	}
 	
-	public Spielfigur kick(int feld){
-		Spielfigur k = gameField[feld];
-		k.setPosition(-1);
-		if(k.getTeamName().equals(t1.getName())){
-			gameField[feld] = null;
-			startT1.add(k);
-			return k;
+	public boolean putBackInStart(int team, int position){
+		for(int i = 0; i < 4; i++){
+			if(team == i){
+				
+			}
 		}
-		if(k.getTeamName().equals(t2.getName())){
-			gameField[feld] = null;
-			startT2.add(k);
-			return k;
+	}
+	
+	public boolean kick(int feld){
+		if(gameField[feld].getTeam() == 1){
+			
 		}
-		if(k.getTeamName().equals(t3.getName())){
-			gameField[feld] = null;
-			startT3.add(k);
-			return k;
-		}
-		if(k.getTeamName().equals(t4.getName())){
-			gameField[feld] = null;
-			startT4.add(k);
-			return k;
-		}
-		return null;
 	}
 	
 	public void move(Spielfigur k, int steps){
-		k.setPosition(k.getPosition()+steps);
-		if(k.getTeamName().equals(t1.getName())){
-			if((k.getPosition())>39){
-				winT1.add(k);
-				gameField[k.getPosition()] = null;
-				return;
-			}
-			if(canKick(k.getTeamName(), k.getPosition())){
-				kick(k.getPosition());
-				k.setPosition(k.getPosition());
-				gameField[k.getPosition()] = k;
-				return;
-			}
-		}
 		
-		if(k.getTeamName().equals(t2.getName())){
-			
-			if((k.getPosition())>39){
-				winT2.add(k);
-				gameField[k.getPosition()] = null;
-				return;
-			}
-			k.setPosition(k.getPosition()+10);
-			if(k.getPosition()<40){
-				k.setPosition(k.getPosition()-40);
-			}
-			if(canKick(k.getTeamName(), k.getPosition())){
-				kick(k.getPosition());
-				k.setPosition(k.getPosition());
-				gameField[k.getPosition()] = k;
-				return;
-			}
-		}
-		
-		if(k.getTeamName().equals(t3.getName())){
-			
-			if((k.getPosition())>39){
-				winT3.add(k);
-				gameField[k.getPosition()] = null;
-				return;
-			}
-			k.setPosition(k.getPosition()+20);
-			if(k.getPosition()<40){
-				k.setPosition(k.getPosition()-40);
-			}
-			if(canKick(k.getTeamName(), k.getPosition())){
-				kick(k.getPosition());
-				k.setPosition(k.getPosition());
-				gameField[k.getPosition()] = k;
-				return;
-			}
-		}
-		
-		if(k.getTeamName().equals(t4.getName())){
-			
-			if((k.getPosition())>39){
-				winT4.add(k);
-				gameField[k.getPosition()] = null;
-				return;
-			}
-			k.setPosition(k.getPosition()+30);
-			if(k.getPosition()<40){
-				k.setPosition(k.getPosition()-40);
-			}
-			if(canKick(k.getTeamName(), k.getPosition())){
-				kick(k.getPosition());
-				k.setPosition(k.getPosition());
-				gameField[k.getPosition()] = k;
-				return;
-			}
-		}
 	}
 	
-	public boolean win(ArrayList<Spielfigur> k){
-		if(k.size() == 4){
-			return true;
-		}
-		return false;
+	public boolean win(){
+		
 	}
 }

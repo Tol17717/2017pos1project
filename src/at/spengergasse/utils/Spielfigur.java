@@ -3,20 +3,20 @@ package at.spengergasse.utils;
 public class Spielfigur {
 
 	private String name;
-	private String teamname;
+	private int team;
 	private int position;
 
-	public Spielfigur(String name, String teamname) {
+	public Spielfigur(String name, int team) {
 		this.name = name;
-		this.teamname = teamname;
+		this.team = team;
 		setPosition(-1);
 	}
 
 	public String getName(){
 		return name;
 	}
-	public String getTeamName(){
-		return teamname;
+	public int getTeam(){
+		return team;
 	}
 	
 	public int getPosition() {
@@ -29,8 +29,10 @@ public class Spielfigur {
 
 	@Override
 	public String toString() {
-		return "Spielfigur [name=" + name + ", teamname=" + teamname + ", position=" + position + "]";
+		return "Spielfigur [name=" + name + ", team=" + team + ", position=" + position + "]";
 	}
+
+	
 
 	
 	

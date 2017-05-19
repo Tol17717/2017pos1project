@@ -1,28 +1,25 @@
 package at.spengergasse.utils;
 
-import javafx.scene.paint.Color;
 
 public class Team {
 	
-	private String tname;
+	private int tname;
 	private Spielfigur sf1;
 	private Spielfigur sf2;
 	private Spielfigur sf3;
 	private Spielfigur sf4;
-	private Color c;
 	private boolean isBot;
 
-	public Team(String tname, Color c, boolean isBot) {
+	public Team(int tname, boolean isBot) {
 		setTname(tname);
 		sf1 = new Spielfigur(tname+"1", tname);
 		sf2 = new Spielfigur(tname+"2", tname);
 		sf3 = new Spielfigur(tname+"3", tname);
 		sf4 = new Spielfigur(tname+"4", tname);
-		setColor(c);
 		setBot(isBot);
 	}
 
-	public String getName() {
+	public int getName() {
 		return tname;
 	}
 	public Spielfigur getSf1() {
@@ -37,15 +34,8 @@ public class Team {
 	public Spielfigur getSf4() {
 		return sf4;
 	}
-	public Color getColor() {
-		return c;
-	}
 	
-	private void setColor(Color c){
-		this.c = c;
-	}
-	
-	private void setTname(String tname) {
+	private void setTname(int tname) {
 		this.tname = tname;
 	}
 
