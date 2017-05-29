@@ -18,11 +18,10 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private Color t2;
 	private Color t3;
 	private Color t4;
-	private boolean t1isBot;
-	private boolean t2isBot;
-	private boolean t3isBot;
-	private boolean t4isBot;
-	private BotTime b;
+	private static boolean t1isBot;
+	private static boolean t2isBot;
+	private static boolean t3isBot;
+	private static boolean t4isBot;
 
 	public ActionListenerFX(FrameFX frameFX) {
 		gui = frameFX;
@@ -236,49 +235,77 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 
 			gui.getMainStage().setScene(gui.getGameScene());
 		}
-		
+
 		for (int i = 0; i < 40; i++) {
 			if (source == gui.getGameField()[i]) {
 				System.out.println("button gedrückt");
 			}
 		}
-		for (int i = 0; i < 4; i++) {
-			if (source == gui.getT1s()[i] && itIsYourTurn == 0) {
-				System.out.println("Ich wurde gedrückt, lul xD");
-				gui.getWhosTurn().setText("Team 2 turn");
-				gui.getWhosTurn().setFill(t2);
-				itIsYourTurn++;
+		if (t1isBot && itIsYourTurn == 0) {
+			System.out.println("Bot 1 hat gedrückt");
+			gui.getWhosTurn().setText("Team 2 turn");
+			gui.getWhosTurn().setFill(t2);
+			itIsYourTurn++;
+		} else if(t1isBot == false && itIsYourTurn == 0) {
+			for (int i = 0; i < 4; i++) {
+				if (source == gui.getT1s()[i]) {
+					System.out.println("Ich wurde gedrückt, lul xD");
+					gui.getWhosTurn().setText("Team 2 turn");
+					gui.getWhosTurn().setFill(t2);
+					itIsYourTurn++;
+				}
+			}
+
+		}
+		if (t2isBot  && itIsYourTurn == 1) {
+			System.out.println("Bot 2 hat gedrückt");
+			gui.getWhosTurn().setText("Team 3 turn");
+			gui.getWhosTurn().setFill(t3);
+			itIsYourTurn++;
+		} else if(t2isBot == false && itIsYourTurn == 1){
+			for (int i = 0; i < 4; i++) {
+				if (source == gui.getT2s()[i]) {
+					System.out.println("Ich wurde gedrückt, lul xD");
+					gui.getWhosTurn().setText("Team 3 turn");
+					gui.getWhosTurn().setFill(t3);
+					itIsYourTurn++;
+				}
 			}
 		}
-		for (int i = 0; i < 4; i++) {
-			if (source == gui.getT2s()[i] && itIsYourTurn == 1) {
-				System.out.println("Ich wurde gedrückt, lul xD");
-				gui.getWhosTurn().setText("Team 3 turn");
-				gui.getWhosTurn().setFill(t3);
-				itIsYourTurn++;
+		if (t3isBot  && itIsYourTurn == 2) {
+			System.out.println("Bot 3 hat gedrückt");
+			gui.getWhosTurn().setText("Team 4 turn");
+			gui.getWhosTurn().setFill(t4);
+			itIsYourTurn++;
+		} else if(t3isBot == false && itIsYourTurn == 2){
+			for (int i = 0; i < 4; i++) {
+				if (source == gui.getT3s()[i]) {
+					System.out.println("Ich wurde gedrückt, lul xD");
+					gui.getWhosTurn().setText("Team 4 turn");
+					gui.getWhosTurn().setFill(t4);
+					itIsYourTurn++;
+				}
 			}
 		}
-		for (int i = 0; i < 4; i++) {
-			if (source == gui.getT3s()[i] && itIsYourTurn == 2) {
-				System.out.println("Ich wurde gedrückt, lul xD");
-				gui.getWhosTurn().setText("Team 4 turn");
-				gui.getWhosTurn().setFill(t4);
-				itIsYourTurn++;
-			}
-		}
-		for (int i = 0; i < 4; i++) {
-			if (source == gui.getT4s()[i] && itIsYourTurn == 3) {
-				System.out.println("Ich wurde gedrückt, lul xD");
-				gui.getWhosTurn().setText("Team 1 turn");
-				gui.getWhosTurn().setFill(t1);
-				itIsYourTurn = 0;
+		if (t4isBot  && itIsYourTurn == 3) {
+			System.out.println("Bot 4 hat gedrückt");
+			gui.getWhosTurn().setText("Team 1 turn");
+			gui.getWhosTurn().setFill(t1);
+			itIsYourTurn = 0;
+		} else if(t4isBot == false && itIsYourTurn == 3){
+			for (int i = 0; i < 4; i++) {
+				if (source == gui.getT4s()[i]) {
+					System.out.println("Ich wurde gedrückt, lul xD");
+					gui.getWhosTurn().setText("Team 1 turn");
+					gui.getWhosTurn().setFill(t1);
+					itIsYourTurn = 0;
+				}
 			}
 		}
 		if (source == gui.getDice()) {
 			DiceThread d = new DiceThread(gui.getDice());
 			d.start();
-		}		
+		}
 	}
-	
-	
+
 }
