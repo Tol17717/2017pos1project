@@ -242,6 +242,8 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			}
 		}
 		if (t1isBot && itIsYourTurn == 0) {
+			BotTime b = new BotTime();
+			b.start();
 			System.out.println("Bot 1 hat gedrückt");
 			gui.getWhosTurn().setText("Team 2 turn");
 			gui.getWhosTurn().setFill(t2);

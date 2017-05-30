@@ -2,15 +2,12 @@ package at.spengergasse.gui;
 
 public class BotTime extends Thread {
 	
-	private int i;
 
 	public BotTime() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BotTime(int whichBot){
-		i = whichBot;
-	}
+
 	
 	public BotTime(Runnable target) {
 		super(target);
@@ -51,10 +48,12 @@ public class BotTime extends Thread {
 	public void run(){
 		try {
 			Thread.sleep(2000);
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Bot "+i+" hat gedrückt");
+		
+		System.out.println("Bot exiting");
 	}
 }
