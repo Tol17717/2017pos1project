@@ -3,6 +3,9 @@ package at.spengergasse.gui;
 import at.spengergasse.utils.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
@@ -254,6 +257,9 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					System.out.println("Ich wurde gedrückt, lul xD");
 					gui.getWhosTurn().setText("Team 2 turn");
 					gui.getWhosTurn().setFill(t2);
+					gui.getT1s()[i].setShape(null);
+					gui.getT1s()[i].setMinSize(20, 20);
+					gui.getT1s()[i].setStyle("-fx-background-image: url('at/spengergasse/img/playerfiguremodelv2')");
 					itIsYourTurn++;
 				}
 			}

@@ -14,10 +14,12 @@ public class Main {
 
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
+		
 		highscore.read();
 		highscore.add("Elliott", 420);
 		highscore.print();
 		highscore.write();
+		
 		/*highscore.read();
 		highscore.print();*/
 		/*highscore.add("Chris", 25);
