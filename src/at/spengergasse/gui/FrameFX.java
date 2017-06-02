@@ -366,22 +366,22 @@ public class FrameFX extends Stage {
 			gameField[i].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
 		}
 		for (int i = 0; i < 4; i++) {
-			t1s[i] = new Button("  ");
+			t1s[i] = new Button("O");
 			t1s[i].setShape(new Circle(1.5));
 			t1s[i].setBackground(new Background(new BackgroundFill(colorT1, null, null)));
 		}
 		for (int i = 0; i < 4; i++) {
-			t2s[i] = new Button("  ");
+			t2s[i] = new Button("O");
 			t2s[i].setShape(new Circle(1.5));
 			t2s[i].setBackground(new Background(new BackgroundFill(colorT2, null, null)));
 		}
 		for (int i = 0; i < 4; i++) {
-			t3s[i] = new Button("  ");
+			t3s[i] = new Button("O");
 			t3s[i].setShape(new Circle(1.5));
 			t3s[i].setBackground(new Background(new BackgroundFill(colorT3, null, null)));
 		}
 		for (int i = 0; i < 4; i++) {
-			t4s[i] = new Button("  ");
+			t4s[i] = new Button("O");
 			t4s[i].setShape(new Circle(1.5));
 			t4s[i].setBackground(new Background(new BackgroundFill(colorT4, null, null)));
 		}

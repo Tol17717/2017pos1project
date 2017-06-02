@@ -4,6 +4,7 @@ import at.spengergasse.utils.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -21,6 +22,10 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private Color t2;
 	private Color t3;
 	private Color t4;
+	private Color t1b;
+	private Color t2b;
+	private Color t3b;
+	private Color t4b;
 	private static boolean t1isBot;
 	private static boolean t2isBot;
 	private static boolean t3isBot;
@@ -132,66 +137,82 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				if (i < 4) {
 					if (gui.getTbarr()[i].isSelected() && i == 0) {
 						t1 = Color.RED;
+						t1b = Color.INDIANRED;
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 1) {
 						t1 = Color.BLUE;
+						t1b = Color.STEELBLUE;
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 2) {
 						t1 = Color.YELLOW;
+						t1b = Color.web("#f7ff9b");
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 3) {
 						t1 = Color.GREEN;
+						t1b = Color.LIGHTGREEN;
 					}
 				} else if (i < 8) {
 					if (gui.getTbarr()[i].isSelected() && i == 4) {
 						t2 = Color.RED;
+						t2b = Color.INDIANRED;
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 5) {
 						t2 = Color.BLUE;
+						t2b = Color.STEELBLUE;
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 6) {
 						t2 = Color.YELLOW;
+						t2b = Color.web("#f7ff9b");
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 7) {
 						t2 = Color.GREEN;
+						t2b = Color.LIGHTGREEN;
 					}
 				} else if (i < 12) {
 					if (gui.getTbarr()[i].isSelected() && i == 8) {
 						t3 = Color.RED;
+						t3b = Color.INDIANRED;
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 9) {
 						t3 = Color.BLUE;
+						t3b = Color.STEELBLUE;
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 10) {
 						t3 = Color.YELLOW;
+						t3b = Color.web("#f7ff9b");
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 11) {
 						t3 = Color.GREEN;
+						t3b = Color.LIGHTGREEN;
 					}
 				} else if (i < 16) {
 					if (gui.getTbarr()[i].isSelected() && i == 12) {
 						t4 = Color.RED;
+						t4b = Color.INDIANRED;
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 13) {
 						t4 = Color.BLUE;
+						t4b = Color.STEELBLUE;
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 14) {
 						t4 = Color.YELLOW;
+						t4b = Color.web("#f7ff9b");
 					}
 					if (gui.getTbarr()[i].isSelected() && i == 15) {
 						t4 = Color.GREEN;
+						t4b = Color.LIGHTGREEN;
 					}
 				}
 			}
 			for (int i = 0; i < 4; i++) {
 				gui.getT1s()[i].setBackground(new Background(new BackgroundFill(t1, null, null)));
-				gui.getT1w()[i].setBackground(new Background(new BackgroundFill(t1, null, null)));
+				gui.getT1w()[i].setBackground(new Background(new BackgroundFill(t1b, null, null)));
 				gui.getT2s()[i].setBackground(new Background(new BackgroundFill(t2, null, null)));
-				gui.getT2w()[i].setBackground(new Background(new BackgroundFill(t2, null, null)));
+				gui.getT2w()[i].setBackground(new Background(new BackgroundFill(t2b, null, null)));
 				gui.getT3s()[i].setBackground(new Background(new BackgroundFill(t3, null, null)));
-				gui.getT3w()[i].setBackground(new Background(new BackgroundFill(t3, null, null)));
+				gui.getT3w()[i].setBackground(new Background(new BackgroundFill(t3b, null, null)));
 				gui.getT4s()[i].setBackground(new Background(new BackgroundFill(t4, null, null)));
-				gui.getT4w()[i].setBackground(new Background(new BackgroundFill(t4, null, null)));
+				gui.getT4w()[i].setBackground(new Background(new BackgroundFill(t4b, null, null)));
 			}
 			if (gui.getT1TF().getText().equals("")) {
 				gui.getShowT1name().setText("Bot");
@@ -257,9 +278,8 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					System.out.println("Ich wurde gedrückt, lul xD");
 					gui.getWhosTurn().setText("Team 2 turn");
 					gui.getWhosTurn().setFill(t2);
-					gui.getT1s()[i].setShape(null);
-					gui.getT1s()[i].setMinSize(20, 20);
-					gui.getT1s()[i].setStyle("-fx-background-image: url('at/spengergasse/img/playerfiguremodelv2')");
+					gui.getT1s()[i].setBackground(new Background(new BackgroundFill(t1b, null, null)));
+					gui.getT1s()[i].setText("  ");
 					itIsYourTurn++;
 				}
 			}
@@ -276,6 +296,8 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					System.out.println("Ich wurde gedrückt, lul xD");
 					gui.getWhosTurn().setText("Team 3 turn");
 					gui.getWhosTurn().setFill(t3);
+					gui.getT2s()[i].setBackground(new Background(new BackgroundFill(t2b, null, null)));
+					gui.getT2s()[i].setText("  ");
 					itIsYourTurn++;
 				}
 			}
@@ -291,6 +313,8 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					System.out.println("Ich wurde gedrückt, lul xD");
 					gui.getWhosTurn().setText("Team 4 turn");
 					gui.getWhosTurn().setFill(t4);
+					gui.getT3s()[i].setBackground(new Background(new BackgroundFill(t3b, null, null)));
+					gui.getT3s()[i].setText("  ");
 					itIsYourTurn++;
 				}
 			}
@@ -306,6 +330,8 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					System.out.println("Ich wurde gedrückt, lul xD");
 					gui.getWhosTurn().setText("Team 1 turn");
 					gui.getWhosTurn().setFill(t1);
+					gui.getT4s()[i].setBackground(new Background(new BackgroundFill(t4b, null, null)));
+					gui.getT4s()[i].setText("  ");
 					itIsYourTurn = 0;
 				}
 			}

@@ -54,11 +54,16 @@ public class DiceThread extends Thread {
 	}
 	@Override
 	public void run(){
+		float w = 75;
 		int c;
 		for(int i = 0; i < 12; i++){
 			c = wuerfel.wuerfeln();
 			if(c == 0){
+				if(i == 11){
+				a.setStyle("-fx-background-image: url('at/spengergasse/img/troll.png')");
+				Thread.sleep(w);
 				a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel1.jpg')");
+				}
 			}
 			if(c == 1){
 				a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel2.jpg')");
@@ -72,11 +77,12 @@ public class DiceThread extends Thread {
 			if(c == 4){
 				a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel5.jpg')");
 			}
-			if(c == 5){
+			if(c == 5 || i == 10){
 				a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel6.jpg')");
 			}
 			try {
-				Thread.sleep(75);
+				Thread.sleep((int)w);
+				w *= 1.15f;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
