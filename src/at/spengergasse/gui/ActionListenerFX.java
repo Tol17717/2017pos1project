@@ -18,6 +18,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private final Highscore highscore;
 	private final Wuerfeln wuerfel;
 	private int itIsYourTurn;
+	private int dice;
 	private Color t1;
 	private Color t2;
 	private Color t3;
@@ -30,6 +31,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private static boolean t2isBot;
 	private static boolean t3isBot;
 	private static boolean t4isBot;
+	private boolean hasDiced;
 
 	public ActionListenerFX(FrameFX frameFX) {
 		gui = frameFX;
@@ -40,6 +42,8 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		t2isBot = false;
 		t3isBot = false;
 		t4isBot = false;
+		hasDiced = false;
+		dice = 0;
 	}
 
 	@Override
@@ -272,73 +276,122 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getWhosTurn().setText("Team 2 turn");
 			gui.getWhosTurn().setFill(t2);
 			itIsYourTurn++;
-		} else if(t1isBot == false && itIsYourTurn == 0) {
-			for (int i = 0; i < 4; i++) {
-				if (source == gui.getT1s()[i]) {
+		} else if (t1isBot == false && itIsYourTurn == 0 && hasDiced) {
+			for (int i = 0; i < 40; i++) {
+				if (i < 4) {
+					if (source == gui.getT1s()[i]) {
+						//Hier kommt die Logik
+						System.out.println("Ich wurde gedrückt, lul xD");
+						gui.getWhosTurn().setText("Team 2 turn");
+						gui.getWhosTurn().setFill(t2);
+						itIsYourTurn++;
+						hasDiced = false;
+						refresh();
+					}
+					if (source == gui.getT1w()[i]) {
+						//Hier kommt die Logik
+						System.out.println("Ich wurde gedrückt, lul xD");
+						gui.getWhosTurn().setText("Team 2 turn");
+						gui.getWhosTurn().setFill(t2);
+						itIsYourTurn++;
+						hasDiced = false;
+						refresh();
+					}
+				}
+				if (source == gui.getGameField()[i]){
+					//Hier kommt die Logik
 					System.out.println("Ich wurde gedrückt, lul xD");
 					gui.getWhosTurn().setText("Team 2 turn");
 					gui.getWhosTurn().setFill(t2);
-					gui.getT1s()[i].setBackground(new Background(new BackgroundFill(t1b, null, null)));
-					gui.getT1s()[i].setText("  ");
 					itIsYourTurn++;
-				}
-			}
-
-		}
-		if (t2isBot  && itIsYourTurn == 1) {
-			System.out.println("Bot 2 hat gedrückt");
-			gui.getWhosTurn().setText("Team 3 turn");
-			gui.getWhosTurn().setFill(t3);
-			itIsYourTurn++;
-		} else if(t2isBot == false && itIsYourTurn == 1){
-			for (int i = 0; i < 4; i++) {
-				if (source == gui.getT2s()[i]) {
-					System.out.println("Ich wurde gedrückt, lul xD");
-					gui.getWhosTurn().setText("Team 3 turn");
-					gui.getWhosTurn().setFill(t3);
-					gui.getT2s()[i].setBackground(new Background(new BackgroundFill(t2b, null, null)));
-					gui.getT2s()[i].setText("  ");
-					itIsYourTurn++;
-				}
-			}
-		}
-		if (t3isBot  && itIsYourTurn == 2) {
-			System.out.println("Bot 3 hat gedrückt");
-			gui.getWhosTurn().setText("Team 4 turn");
-			gui.getWhosTurn().setFill(t4);
-			itIsYourTurn++;
-		} else if(t3isBot == false && itIsYourTurn == 2){
-			for (int i = 0; i < 4; i++) {
-				if (source == gui.getT3s()[i]) {
-					System.out.println("Ich wurde gedrückt, lul xD");
-					gui.getWhosTurn().setText("Team 4 turn");
-					gui.getWhosTurn().setFill(t4);
-					gui.getT3s()[i].setBackground(new Background(new BackgroundFill(t3b, null, null)));
-					gui.getT3s()[i].setText("  ");
-					itIsYourTurn++;
-				}
-			}
-		}
-		if (t4isBot  && itIsYourTurn == 3) {
-			System.out.println("Bot 4 hat gedrückt");
-			gui.getWhosTurn().setText("Team 1 turn");
-			gui.getWhosTurn().setFill(t1);
-			itIsYourTurn = 0;
-		} else if(t4isBot == false && itIsYourTurn == 3){
-			for (int i = 0; i < 4; i++) {
-				if (source == gui.getT4s()[i]) {
-					System.out.println("Ich wurde gedrückt, lul xD");
-					gui.getWhosTurn().setText("Team 1 turn");
-					gui.getWhosTurn().setFill(t1);
-					gui.getT4s()[i].setBackground(new Background(new BackgroundFill(t4b, null, null)));
-					gui.getT4s()[i].setText("  ");
-					itIsYourTurn = 0;
+					hasDiced = false;
+					refresh();
 				}
 			}
 		}
 		if (source == gui.getDice()) {
 			DiceThread d = new DiceThread(gui.getDice());
 			d.start();
+			dice = d.getDice();
+			hasDiced = true;
+		}
+	}
+	
+	public void refresh(){
+		for(int i = 0; i < 40; i++){
+			if(i < 4){
+				/*
+				if(game.getStartT1()[i] == null && gui.gett1s()[i].getText().equals("O")){
+					gui.changeStartField(i, 1, t1, t1b, true);
+				}
+				if(game.getStartT2()[i] == null && gui.gett2s()[i].getText().equals("O")){
+					gui.changeStartField(i, 2, t2, t2b, true);
+				}
+				if(game.getStartT3()[i] == null && gui.gett3s()[i].getText().equals("O")){
+					gui.changeStartField(i, 3, t3, t3b, true);
+				}
+				if(game.getStartT4()[i] == null && gui.gett4s()[i].getText().equals("O")){
+					gui.changeStartField(i, 4, t4, t4b, true);
+				}
+								
+				if(game.getStartT1()[i] != null && gui.gett1s()[i].getText().equals("  ")){
+					gui.changeStartField(i, 1, t1, t1b, false);
+				}
+				if(game.getStartT2()[i] != null && gui.gett2s()[i].getText().equals("  ")){
+					gui.changeStartField(i, 2, t2, t2b, false);
+				}
+				if(game.getStartT3()[i] != null && gui.gett3s()[i].getText().equals("  ")){
+					gui.changeStartField(i, 3, t3, t3b, false);
+				}
+				if(game.getStartT4()[i] != null && gui.gett4s()[i].getText().equals("  ")){
+					gui.changeStartField(i, 4, t4, t4b, false);
+				}
+				
+				
+				if(game.getWinT1()[i] == null && gui.gett1w()[i].getText().equals("O")){
+					gui.changeWinField(i, 1, t1, t1b, true);
+				}
+				if(game.getWinT2()[i] == null && gui.gett2w()[i].getText().equals("O")){
+					gui.changeWinField(i, 2, t2, t2b, true);
+				}
+				if(game.getWinT3()[i] == null && gui.gett3w()[i].getText().equals("O")){
+					gui.changeWinField(i, 3, t3, t3b, true);
+				}
+				if(game.getWinT4()[i] == null && gui.gett4w()[i].getText().equals("O")){
+					gui.changeWinField(i, 4, t4, t4b, true);
+				}
+				
+				if(game.getWinT1()[i] != null && gui.gett1w()[i].getText().equals("  ")){
+					gui.changeWinField(i, 1, t1, t1b, false);
+				}
+				if(game.getWinT2()[i] != null && gui.gett2w()[i].getText().equals("  ")){
+					gui.changeWinField(i, 2, t2, t2b, false);
+				}
+				if(game.getWinT3()[i] != null && gui.gett3w()[i].getText().equals("  ")){
+					gui.changeWinField(i, 3, t3, t3b, false);
+				}
+				if(game.getWinT4()[i] != null && gui.gett4w()[i].getText().equals("  ")){
+					gui.changeWinField(i, 4, t4, t4b, false);
+				}
+				 */
+			}
+			/*
+			if(game.getGameField()[i] == null && gui.getGameField()[i].getText().equals("O")){
+				gui.changeGameField(i, Color.BEIGE, true);
+			}
+			if(game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 1){
+				gui.changeGameField(i, t1, false);
+			}
+			if(game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 2){
+				gui.changeGameField(i, t2, false);
+			}
+			if(game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 3){
+				gui.changeGameField(i, t3, false);
+			}
+			if(game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 4){
+				gui.changeGameField(i, t4, false);
+			}
+			 */
 		}
 	}
 

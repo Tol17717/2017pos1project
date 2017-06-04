@@ -7,7 +7,8 @@ public class DiceThread extends Thread {
 	
 	private Button a;
 	private Wuerfeln wuerfel;
-
+	private int dice;
+	
 	public DiceThread() {
 		// TODO Auto-generated constructor stub
 	}
@@ -16,6 +17,7 @@ public class DiceThread extends Thread {
 		// TODO Auto-generated constructor stub
 		a=b;
 		wuerfel = new Wuerfeln();
+		dice = 0;
 	}
 
 	public DiceThread(Runnable target) {
@@ -52,16 +54,25 @@ public class DiceThread extends Thread {
 		super(group, target, name, stackSize);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public int getDice(){
+		return dice;
+	}
 	@Override
 	public void run(){
 		float w = 75;
-		int c;
+		int c = 0;
 		for(int i = 0; i < 12; i++){
 			c = wuerfel.wuerfeln();
 			if(c == 0){
 				if(i == 11){
 				a.setStyle("-fx-background-image: url('at/spengergasse/img/troll.png')");
-				Thread.sleep(w);
+				try {
+					Thread.sleep((long) w);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel1.jpg')");
 				}
 			}
@@ -82,11 +93,12 @@ public class DiceThread extends Thread {
 			}
 			try {
 				Thread.sleep((int)w);
-				w *= 1.15f;
+				w *= 1.175f;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		dice = c+1;
 	}
 }

@@ -522,6 +522,107 @@ public class FrameFX extends Stage {
 		highscoreB.addEventHandler(ActionEvent.ACTION, event);
 		dice.addEventHandler(ActionEvent.ACTION, event);
 	}
+	
+	public void changeGameField(int id, Color teamColor, boolean makeNull){
+		if(makeNull){
+			gameField[id].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
+			gameField[id].setText("  ");
+		} else {
+			gameField[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+			gameField[id].setText("O");
+			if(teamColor.equals(Color.BLUE)){
+				gameField[id].setTextFill(Color.WHITE);
+			}
+		}
+	}
+	
+	public void changeStartField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull){
+		if(makeNull){
+			if(team == 1){
+				t1s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
+				t1s[id].setText("  ");
+			} else if(team == 2) {
+				t2s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
+				t2s[id].setText("  ");
+			} else if(team == 3) {
+				t3s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
+				t3s[id].setText("  ");
+			} else if(team == 4) {
+				t4s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
+				t4s[id].setText("  ");
+			}
+		} else {
+			if(team == 1){
+				t1s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+				t1s[id].setText("O");
+				if(teamColor.equals(Color.BLUE)){
+					t1s[id].setTextFill(Color.WHITE);
+				}
+			} else if(team == 2){
+				t2s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+				t2s[id].setText("O");
+				if(teamColor.equals(Color.BLUE)){
+					t2s[id].setTextFill(Color.WHITE);
+				}
+			} else if(team == 3){
+				t3s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+				t3s[id].setText("O");
+				if(teamColor.equals(Color.BLUE)){
+					t3s[id].setTextFill(Color.WHITE);
+				}
+			} else if(team == 4){
+				t4s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+				t4s[id].setText("O");
+				if(teamColor.equals(Color.BLUE)){
+					t4s[id].setTextFill(Color.WHITE);
+				}
+			}
+		}
+	}
+	
+	public void changeWinField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull){
+		if(makeNull){
+			if(team == 1){
+				t1w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
+				t1w[id].setText("  ");
+			} else if(team == 2) {
+				t2w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
+				t2w[id].setText("  ");
+			} else if(team == 3) {
+				t3w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
+				t3w[id].setText("  ");
+			} else if(team == 4) {
+				t4w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
+				t4w[id].setText("  ");
+			}
+		} else {
+			if(team == 1){
+				t1w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+				t1w[id].setText("O");
+				if(teamColor.equals(Color.BLUE)){
+					t1w[id].setTextFill(Color.WHITE);
+				}
+			} else if(team == 2){
+				t2w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+				t2w[id].setText("O");
+				if(teamColor.equals(Color.BLUE)){
+					t2w[id].setTextFill(Color.WHITE);
+				}
+			} else if(team == 3){
+				t3w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+				t3w[id].setText("O");
+				if(teamColor.equals(Color.BLUE)){
+					t3w[id].setTextFill(Color.WHITE);
+				}
+			} else if(team == 4){
+				t4w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+				t4w[id].setText("O");
+				if(teamColor.equals(Color.BLUE)){
+					t4w[id].setTextFill(Color.WHITE);
+				}
+			}
+		}
+	}
 
 	public Button[] getGameField() {
 		return gameField;
