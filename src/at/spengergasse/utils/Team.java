@@ -12,10 +12,10 @@ public class Team {
 
 	public Team(int tname, boolean isBot) {
 		setTname(tname);
-		sf1 = new Spielfigur(tname+"1", tname);
-		sf2 = new Spielfigur(tname+"2", tname);
-		sf3 = new Spielfigur(tname+"3", tname);
-		sf4 = new Spielfigur(tname+"4", tname);
+		sf1 = new Spielfigur(tname);
+		sf2 = new Spielfigur(tname);
+		sf3 = new Spielfigur(tname);
+		sf4 = new Spielfigur(tname);
 		setBot(isBot);
 	}
 
@@ -45,6 +45,12 @@ public class Team {
 
 	private void setBot(boolean isBot) {
 		this.isBot = isBot;
+	}
+
+	@Override
+	public String toString() {
+		return "Team [tname=" + tname + ", sf1=" + sf1 + ", sf2=" + sf2 + ", sf3=" + sf3 + ", sf4=" + sf4 + ", isBot="
+				+ isBot + "]";
 	}
 	
 	
