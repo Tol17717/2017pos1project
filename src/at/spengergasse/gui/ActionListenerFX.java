@@ -31,6 +31,14 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private static boolean t2isBot;
 	private static boolean t3isBot;
 	private static boolean t4isBot;
+	private boolean t1hasWon;
+	private boolean t2hasWon;
+	private boolean t3hasWon;
+	private boolean t4hasWon;
+	private int t1winMessage;
+	private int t2winMessage;
+	private int t3winMessage;
+	private int t4winMessage;
 	private boolean hasDiced;
 
 	public ActionListenerFX(FrameFX frameFX) {
@@ -42,8 +50,16 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		t2isBot = false;
 		t3isBot = false;
 		t4isBot = false;
+		t1hasWon = false;
+		t2hasWon = false;
+		t3hasWon = false;
+		t4hasWon = false;
 		hasDiced = false;
 		dice = 0;
+		t1winMessage = 0;
+		t2winMessage = 0;
+		t3winMessage = 0;
+		t4winMessage = 0;
 	}
 
 	@Override
@@ -262,6 +278,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getWhosTurn().setFill(t1);
 
 			gui.getMainStage().setScene(gui.getGameScene());
+			refresh();
 		}
 
 		for (int i = 0; i < 40; i++) {
@@ -270,13 +287,18 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			}
 		}
 		if (t1isBot && itIsYourTurn == 0) {
-			BotTime b = new BotTime();
-			b.start();
+			DiceThread d = new DiceThread(gui.getDice());
+			d.start();
+			dice = d.getDice();
+			hasDiced = true;
 			System.out.println("Bot 1 hat gedrückt");
 			gui.getWhosTurn().setText("Team 2 turn");
 			gui.getWhosTurn().setFill(t2);
 			itIsYourTurn++;
-		} else if (t1isBot == false && itIsYourTurn == 0 && hasDiced) {
+			hasDiced = false;
+			refresh();
+			checkifWon();
+		} else if (t1isBot == false && itIsYourTurn == 0 && hasDiced && t1hasWon == false) {
 			for (int i = 0; i < 40; i++) {
 				if (i < 4) {
 					if (source == gui.getT1s()[i]) {
@@ -287,6 +309,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						itIsYourTurn++;
 						hasDiced = false;
 						refresh();
+						checkifWon();
 					}
 					if (source == gui.getT1w()[i]) {
 						//Hier kommt die Logik
@@ -296,6 +319,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						itIsYourTurn++;
 						hasDiced = false;
 						refresh();
+						checkifWon();
 					}
 				}
 				if (source == gui.getGameField()[i]){
@@ -306,6 +330,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					itIsYourTurn++;
 					hasDiced = false;
 					refresh();
+					checkifWon();
 				}
 			}
 		}
@@ -393,6 +418,59 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			}
 			 */
 		}
+	}
+	
+	public void checkifWon(){
+		/*
+		if(game.winT1){
+			t1winMessage++;
+		}
+		if(game.winT2){
+			t2winMessage++;
+		}
+		if(game.winT3){
+			t2winMessage++;
+		}
+		if(game.winT4){
+			t2winMessage++;
+		}
+		
+		if(t1winMessage == 1){
+			t1hasWon = true;
+			Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("We have a winner");
+            a.setContentText(gui.getT1name()+"just won the game");
+            a.setHeaderText("");
+            a.show();
+		}
+		if(t2winMessage == 1){
+			t1hasWon = true;
+			Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("We have a winner");
+            a.setContentText(gui.getT2name()+"just won the game");
+            a.setHeaderText("");
+            a.show();
+		}
+		if(t3winMessage == 1){
+			t1hasWon = true;
+			Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("We have a winner");
+            a.setContentText(gui.getT3name()+"just won the game");
+            a.setHeaderText("");
+            a.show();
+		}
+		if(t4winMessage == 1){
+			t1hasWon = true;
+			Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("We have a winner");
+            a.setContentText(gui.getT4name()+"just won the game");
+            a.setHeaderText("");
+            a.show();
+		}
+		if(t1hasWon, t2hasWon, t3hasWon, t4hasWon){
+			gui.getMainStage().setScene(gui.mainScene());
+		}
+		 */
 	}
 
 }

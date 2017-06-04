@@ -77,7 +77,7 @@ public class Game {
 		startT2[3]=t4.getSf4();
 	}
 	
-	//Bei einer gewürfelten Sechs wird diese Methode aufgerufen.
+	//Bei einer gewï¿½rfelten Sechs wird diese Methode aufgerufen.
 	public boolean moveOutOfStart(int team, int position, int wuerfelwert){
 		if((team >= 1 && team <= 4) && wuerfelwert == 6) {
 			if(team == 1){
@@ -141,7 +141,36 @@ public class Game {
 		
 	}
 	
-	public boolean win(){
-		
+	public boolean wint1(){
+		for(int i = 0; i < 4; i++){
+			if(winT1[i] == null){
+				return false;
+			}
+		}
+		return true;
+	}
+	public boolean wint2(){
+		for(int i = 0; i < 4; i++){
+			if(winT2[i] == null){
+				return false;
+			}
+		}
+		return true;
+	}
+	public boolean wint3(){
+		for(int i = 0; i < 4; i++){
+			if(winT2[i] == null){
+				return false;
+			}
+		}
+		return true;
+	}
+	public boolean wint4(){
+		for(int i = 0; i < 4; i++){
+			if(winT2[i] == null){
+				return false;
+			}
+		}
+		return true;
 	}
 }
