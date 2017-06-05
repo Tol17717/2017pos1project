@@ -1,6 +1,7 @@
 package at.spengergasse.utils;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Game {
 
@@ -60,15 +61,15 @@ public class Game {
 		startT2[2] = t2.getSf3();
 		startT2[3] = t2.getSf4();
 
-		startT2[0] = t3.getSf1();
-		startT2[1] = t3.getSf2();
-		startT2[2] = t3.getSf3();
-		startT2[3] = t3.getSf4();
+		startT3[0] = t3.getSf1();
+		startT3[1] = t3.getSf2();
+		startT3[2] = t3.getSf3();
+		startT3[3] = t3.getSf4();
 
-		startT2[0] = t4.getSf1();
-		startT2[1] = t4.getSf2();
-		startT2[2] = t4.getSf3();
-		startT2[3] = t4.getSf4();
+		startT4[0] = t4.getSf1();
+		startT4[1] = t4.getSf2();
+		startT4[2] = t4.getSf3();
+		startT4[3] = t4.getSf4();
 	}
 
 	public boolean moveOutOfStart(int team, int position, int wuerfelwert) {
@@ -584,6 +585,15 @@ public class Game {
 
 	public int getPlace() {
 		return place;
+	}
+
+	@Override
+	public String toString() {
+		return "Game [t1=" + t1 + ", t2=" + t2 + ", t3=" + t3 + ", t4=" + t4 + ", startT1=" + Arrays.toString(startT1)
+				+ ", startT2=" + Arrays.toString(startT2) + ", startT3=" + Arrays.toString(startT3) + ", startT4="
+				+ Arrays.toString(startT4) + ", gameField=" + Arrays.toString(gameField) + ", winT1="
+				+ Arrays.toString(winT1) + ", winT2=" + Arrays.toString(winT2) + ", winT3=" + Arrays.toString(winT3)
+				+ ", winT4=" + Arrays.toString(winT4) + ", place=" + place + "]";
 	}
 	
 	

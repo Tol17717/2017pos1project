@@ -7,7 +7,7 @@ public class DiceThread extends Thread {
 	
 	private Button a;
 	private Wuerfeln wuerfel;
-	private int dice;
+	private static int dice;
 	
 	public DiceThread() {
 		// TODO Auto-generated constructor stub
@@ -99,6 +99,6 @@ public class DiceThread extends Thread {
 				e.printStackTrace();
 			}
 		}
-		dice = c+1;
+		dice = c;
 	}
 }

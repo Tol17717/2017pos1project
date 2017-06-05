@@ -286,11 +286,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getWhosTurn().setFill(t1);
 
 			gui.getMainStage().setScene(gui.getGameScene());
-			game = new Game(t1isBot, t2isBot, t3isBot, t4isBot);
 			t1name = gui.getShowT1name().getText();
 			t2name = gui.getShowT2name().getText();
 			t3name = gui.getShowT3name().getText();
 			t4name = gui.getShowT4name().getText();
+			game = new Game(t1isBot, t2isBot, t3isBot, t4isBot);
 			refresh(game);
 		}
 		if (t1isBot && itIsYourTurn == 0) {
@@ -318,6 +318,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 2 turn");
 						gui.getWhosTurn().setFill(t2);
+						System.out.println(game.toString());
 						itIsYourTurn++;
 						hasDiced = false;
 						refresh(game);
@@ -363,12 +364,16 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				}
 			}
 		}
-		if (source == gui.getDice()) {
-			DiceThread d = new DiceThread(gui.getDice());
-			d.start();
-			dice = d.getDice();
-			hasDiced = true;
+		if (hasDiced == false) {
+			if (source == gui.getDice()) {
+				DiceThread d = new DiceThread(gui.getDice());
+				d.start();
+				dice = d.getDice();
+				hasDiced = true;
+				System.out.println(dice);
+			}
 		}
+
 	}
 
 	public void refresh(Game game) {
