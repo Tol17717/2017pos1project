@@ -8,7 +8,7 @@ public class Person implements Comparable<Person>, Serializable{
 	private String name;
 	private int place;
 
-	public Person(String name) { //komm
+	public Person(String name) { 
 		setName(name);
 		setScore(0);
 		setPlace(-1);

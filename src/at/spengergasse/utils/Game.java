@@ -1,7 +1,6 @@
 package at.spengergasse.utils;
 
-import java.util.ArrayList;
-import javafx.scene.paint.Color;
+import java.io.IOException;
 
 public class Game {
 
@@ -21,6 +20,8 @@ public class Game {
 	private Spielfigur[] winT2;
 	private Spielfigur[] winT3;
 	private Spielfigur[] winT4;
+	
+	private int place;
 
 	public Game(boolean t1bot, boolean t2bot, boolean t3bot, boolean t4bot) {
 		t1 = new Team(1, t1bot);
@@ -36,6 +37,8 @@ public class Game {
 		winT2 = new Spielfigur[4];
 		winT3 = new Spielfigur[4];
 		winT4 = new Spielfigur[4];
+		place = 1;
+		teamsSetup();
 	}
 
 	public boolean getOutOfStart(int wuerfel) {
@@ -69,7 +72,7 @@ public class Game {
 	}
 
 	public boolean moveOutOfStart(int team, int position, int wuerfelwert) {
-		if (wuerfelwert == 6) {
+		if (wuerfelwert == 5) {
 			if (team == 1) {
 				if (startT1[position] != null) {
 					if (gameField[0] == null) {
@@ -214,29 +217,13 @@ public class Game {
 				} else {
 					k = b - 40;
 					if (k < 4) {
-						if (winT1[k] != null) {
-							return false;
-						} else {
-							winT1[k] = gameField[position];
-							gameField[position] = null;
-							return true;
-						}
+						return canMoveInWinField(1, position, k);
 					} else {
 						if (k == 4) {
-							if (winT1[2] != null) {
-								return false;
-							}
-							winT1[2] = gameField[position];
-							gameField[position] = null;
-							return true;
+							return canMoveInWinField(1, position, 2);
 						}
 						if (k == 5) {
-							if (winT1[1] != null) {
-								return false;
-							}
-							winT1[1] = gameField[position];
-							gameField[position] = null;
-							return true;
+							return canMoveInWinField(1, position, 1);
 						}
 						return false;
 					}
@@ -257,29 +244,13 @@ public class Game {
 				} else {
 					k = b - 10;
 					if (k < 4) {
-						if (winT2[k] != null) {
-							return false;
-						} else {
-							winT2[k] = gameField[position];
-							gameField[position] = null;
-							return true;
-						}
+						return canMoveInWinField(2, position, k);
 					} else {
 						if (k == 4) {
-							if (winT2[2] != null) {
-								return false;
-							}
-							winT2[2] = gameField[position];
-							gameField[position] = null;
-							return true;
+							return canMoveInWinField(2, position, 2);
 						}
 						if (k == 5) {
-							if (winT2[1] != null) {
-								return false;
-							}
-							winT2[1] = gameField[position];
-							gameField[position] = null;
-							return true;
+							return canMoveInWinField(2, position, 1);
 						}
 						return false;
 					}
@@ -300,29 +271,13 @@ public class Game {
 				} else {
 					k = b - 20;
 					if (k < 4) {
-						if (winT3[k] != null) {
-							return false;
-						} else {
-							winT3[k] = gameField[position];
-							gameField[position] = null;
-							return true;
-						}
+						return canMoveInWinField(3, position, k);
 					} else {
 						if (k == 4) {
-							if (winT3[2] != null) {
-								return false;
-							}
-							winT3[2] = gameField[position];
-							gameField[position] = null;
-							return true;
+							return canMoveInWinField(3, position, 2);
 						}
 						if (k == 5) {
-							if (winT3[1] != null) {
-								return false;
-							}
-							winT3[1] = gameField[position];
-							gameField[position] = null;
-							return true;
+							return canMoveInWinField(3, position, 1);
 						}
 						return false;
 					}
@@ -343,29 +298,13 @@ public class Game {
 				} else {
 					k = b - 30;
 					if (k < 4) {
-						if (winT4[k] != null) {
-							return false;
-						} else {
-							winT4[k] = gameField[position];
-							gameField[position] = null;
-							return true;
-						}
+						return canMoveInWinField(4, position, k);
 					} else {
 						if (k == 4) {
-							if (winT4[2] != null) {
-								return false;
-							}
-							winT4[2] = gameField[position];
-							gameField[position] = null;
-							return true;
+							return canMoveInWinField(4, position, 2);
 						}
 						if (k == 5) {
-							if (winT4[1] != null) {
-								return false;
-							}
-							winT4[1] = gameField[position];
-							gameField[position] = null;
-							return true;
+							return canMoveInWinField(4, position, 1);
 						}
 						return false;
 					}
@@ -378,8 +317,113 @@ public class Game {
 
 	}
 
-	public void moveFromWinField(int team, int position, int steps) {
-
+	public boolean moveFromWinField(int team, int position, int steps) {
+		int k;
+		if (team == 1) {
+			k = steps + position;
+			if (k > 4) {
+				if (k == 4) {
+					return canMoveInWinField(1, position, 2);
+				}
+				if (k == 5) {
+					return canMoveInWinField(1, position, 1);
+				}
+				if (k == 6) {
+					return canMoveInWinField(1, position, 0);
+				}
+				if (k > 6) {
+					int y = 40 - (k - 6);
+					if(kick(1, y)){
+						gameField[y] = winT1[position];
+						winT1[position] = null;
+						return true;
+					} else {
+						return false;
+					}
+				}
+			} else {
+				return canMoveInWinField(1, position, k);
+			}
+		}
+		if (team == 2) {
+			k = steps + position;
+			if (k > 4) {
+				if (k == 4) {
+					return canMoveInWinField(2, position, 2);
+				}
+				if (k == 5) {
+					return canMoveInWinField(2, position, 1);
+				}
+				if (k == 6) {
+					return canMoveInWinField(2, position, 0);
+				}
+				if (k > 6) {
+					int y = 10 - (k - 6);
+					if(kick(2, y)){
+						gameField[y] = winT2[position];
+						winT2[position] = null;
+						return true;
+					} else {
+						return false;
+					}
+				}
+			} else {
+				return canMoveInWinField(2, position, k);
+			}
+		}
+		if (team == 3) {
+			k = steps + position;
+			if (k > 4) {
+				if (k == 4) {
+					return canMoveInWinField(3, position, 2);
+				}
+				if (k == 5) {
+					return canMoveInWinField(3, position, 1);
+				}
+				if (k == 6) {
+					return canMoveInWinField(3, position, 0);
+				}
+				if (k > 6) {
+					int y = 20 - (k - 6);
+					if(kick(3, y)){
+						gameField[y] = winT3[position];
+						winT3[position] = null;
+						return true;
+					} else {
+						return false;
+					}
+				}
+			} else {
+				return canMoveInWinField(3, position, k);
+			}
+		}
+		if (team == 4) {
+			k = steps + position;
+			if (k > 4) {
+				if (k == 4) {
+					return canMoveInWinField(4, position, 2);
+				}
+				if (k == 5) {
+					return canMoveInWinField(4, position, 1);
+				}
+				if (k == 6) {
+					return canMoveInWinField(4, position, 0);
+				}
+				if (k > 6) {
+					int y = 30 - (k - 6);
+					if(kick(4, y)){
+						gameField[y] = winT4[position];
+						winT4[position] = null;
+						return true;
+					} else {
+						return false;
+					}
+				}
+			} else {
+				return canMoveInWinField(4, position, k);
+			}
+		}
+		return false;
 	}
 
 	public boolean wint1() {
@@ -417,4 +461,130 @@ public class Game {
 		}
 		return true;
 	}
+
+	public boolean highscoreEntry(String teamname) throws IOException {
+		Highscore h = new Highscore();
+		if (place == 1) {
+			if(t1.isBot()){
+				place ++;
+				return true;
+			}
+			h.read();
+			h.add(teamname, 10);
+			h.write();
+			place++;
+			return true;
+		}
+		if (place == 2) {
+			if(t2.isBot()){
+				place ++;
+				return true;
+			}
+			h.read();
+			h.add(teamname, 5);
+			h.write();
+			place++;
+			return true;
+		}
+		if (place == 3) {
+			if(t3.isBot()){
+				place ++;
+				return true;
+			}
+			h.read();
+			h.add(teamname, 3);
+			h.write();
+			place++;
+			return true;
+		}
+		if (place == 4) {
+			if(t4.isBot()){
+				place ++;
+				return true;
+			}
+			h.read();
+			h.add(teamname, 1);
+			h.write();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean canMoveInWinField(int team, int from, int to) {
+		if (team == 1) {
+			if(winT1[to] != null){
+				winT1[to] = winT1[from];
+				winT1[from] = null;
+				return true;
+			}
+			return false;
+		}
+		if (team == 2) {
+			if(winT2[to] != null){
+				winT2[to] = winT1[from];
+				winT2[from] = null;
+				return true;
+			}
+			return false;
+		}
+		if (team == 3) {
+			if(winT3[to] != null){
+				winT3[to] = winT1[from];
+				winT3[from] = null;
+				return true;
+			}
+			return false;
+		}
+		if (team == 4) {
+			if(winT4[to] != null){
+				winT4[to] = winT1[from];
+				winT4[from] = null;
+				return true;
+			}
+			return false;
+		}	
+		return false;
+	}
+
+	public Spielfigur[] getStartT1() {
+		return startT1;
+	}
+
+	public Spielfigur[] getStartT2() {
+		return startT2;
+	}
+
+	public Spielfigur[] getStartT3() {
+		return startT3;
+	}
+
+	public Spielfigur[] getStartT4() {
+		return startT4;
+	}
+
+	public Spielfigur[] getGameField() {
+		return gameField;
+	}
+
+	public Spielfigur[] getWinT1() {
+		return winT1;
+	}
+
+	public Spielfigur[] getWinT2() {
+		return winT2;
+	}
+
+	public Spielfigur[] getWinT3() {
+		return winT3;
+	}
+
+	public Spielfigur[] getWinT4() {
+		return winT4;
+	}
+
+	public int getPlace() {
+		return place;
+	}
+	
+	
 }

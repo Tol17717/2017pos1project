@@ -1,8 +1,12 @@
 package at.spengergasse.gui;
 
+import java.io.IOException;
+
 import at.spengergasse.utils.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
@@ -40,6 +44,10 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private int t3winMessage;
 	private int t4winMessage;
 	private boolean hasDiced;
+	private String t1name;
+	private String t2name;
+	private String t3name;
+	private String t4name;
 
 	public ActionListenerFX(FrameFX frameFX) {
 		gui = frameFX;
@@ -278,7 +286,12 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getWhosTurn().setFill(t1);
 
 			gui.getMainStage().setScene(gui.getGameScene());
-			refresh();
+			game = new Game(t1isBot, t2isBot, t3isBot, t4isBot);
+			t1name = gui.getShowT1name().getText();
+			t2name = gui.getShowT2name().getText();
+			t3name = gui.getShowT3name().getText();
+			t4name = gui.getShowT4name().getText();
+			refresh(game);
 		}
 
 		for (int i = 0; i < 40; i++) {
@@ -296,41 +309,63 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getWhosTurn().setFill(t2);
 			itIsYourTurn++;
 			hasDiced = false;
-			refresh();
-			checkifWon();
+			refresh(game);
+			try {
+				checkifWon(game);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if (t1isBot == false && itIsYourTurn == 0 && hasDiced && t1hasWon == false) {
 			for (int i = 0; i < 40; i++) {
 				if (i < 4) {
 					if (source == gui.getT1s()[i]) {
-						//Hier kommt die Logik
+						game.moveOutOfStart(1, i, dice);
 						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 2 turn");
 						gui.getWhosTurn().setFill(t2);
 						itIsYourTurn++;
 						hasDiced = false;
-						refresh();
-						checkifWon();
+						refresh(game);
+						try {
+							checkifWon(game);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 					if (source == gui.getT1w()[i]) {
-						//Hier kommt die Logik
+						if (game.moveFromWinField(1, i, dice)) {
+							System.out.println("Ich wurde gedrückt, lul xD");
+							gui.getWhosTurn().setText("Team 2 turn");
+							gui.getWhosTurn().setFill(t2);
+							itIsYourTurn++;
+							hasDiced = false;
+							refresh(game);
+							try {
+								checkifWon(game);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					}
+				}
+				if (source == gui.getGameField()[i]) {
+					if (game.moveFromField(1, i, dice)) {
 						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 2 turn");
 						gui.getWhosTurn().setFill(t2);
 						itIsYourTurn++;
 						hasDiced = false;
-						refresh();
-						checkifWon();
+						refresh(game);
+						try {
+							checkifWon(game);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
-				}
-				if (source == gui.getGameField()[i]){
-					//Hier kommt die Logik
-					System.out.println("Ich wurde gedrückt, lul xD");
-					gui.getWhosTurn().setText("Team 2 turn");
-					gui.getWhosTurn().setFill(t2);
-					itIsYourTurn++;
-					hasDiced = false;
-					refresh();
-					checkifWon();
 				}
 			}
 		}
@@ -341,136 +376,139 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			hasDiced = true;
 		}
 	}
-	
-	public void refresh(){
-		for(int i = 0; i < 40; i++){
-			if(i < 4){
-				/*
-				if(game.getStartT1()[i] == null && gui.gett1s()[i].getText().equals("O")){
+
+	public void refresh(Game game) {
+		for (int i = 0; i < 40; i++) {
+			if (i < 4) {
+
+				if (game.getStartT1()[i] == null && gui.getT1s()[i].getText().equals("O")) {
 					gui.changeStartField(i, 1, t1, t1b, true);
 				}
-				if(game.getStartT2()[i] == null && gui.gett2s()[i].getText().equals("O")){
+				if (game.getStartT2()[i] == null && gui.getT2s()[i].getText().equals("O")) {
 					gui.changeStartField(i, 2, t2, t2b, true);
 				}
-				if(game.getStartT3()[i] == null && gui.gett3s()[i].getText().equals("O")){
+				if (game.getStartT3()[i] == null && gui.getT3s()[i].getText().equals("O")) {
 					gui.changeStartField(i, 3, t3, t3b, true);
 				}
-				if(game.getStartT4()[i] == null && gui.gett4s()[i].getText().equals("O")){
+				if (game.getStartT4()[i] == null && gui.getT4s()[i].getText().equals("O")) {
 					gui.changeStartField(i, 4, t4, t4b, true);
 				}
-								
-				if(game.getStartT1()[i] != null && gui.gett1s()[i].getText().equals("  ")){
+
+				if (game.getStartT1()[i] != null && gui.getT1s()[i].getText().equals("  ")) {
 					gui.changeStartField(i, 1, t1, t1b, false);
 				}
-				if(game.getStartT2()[i] != null && gui.gett2s()[i].getText().equals("  ")){
+				if (game.getStartT2()[i] != null && gui.getT2s()[i].getText().equals("  ")) {
 					gui.changeStartField(i, 2, t2, t2b, false);
 				}
-				if(game.getStartT3()[i] != null && gui.gett3s()[i].getText().equals("  ")){
+				if (game.getStartT3()[i] != null && gui.getT3s()[i].getText().equals("  ")) {
 					gui.changeStartField(i, 3, t3, t3b, false);
 				}
-				if(game.getStartT4()[i] != null && gui.gett4s()[i].getText().equals("  ")){
+				if (game.getStartT4()[i] != null && gui.getT4s()[i].getText().equals("  ")) {
 					gui.changeStartField(i, 4, t4, t4b, false);
 				}
-				
-				
-				if(game.getWinT1()[i] == null && gui.gett1w()[i].getText().equals("O")){
+
+				if (game.getWinT1()[i] == null && gui.getT1w()[i].getText().equals("O")) {
 					gui.changeWinField(i, 1, t1, t1b, true);
 				}
-				if(game.getWinT2()[i] == null && gui.gett2w()[i].getText().equals("O")){
+				if (game.getWinT2()[i] == null && gui.getT2w()[i].getText().equals("O")) {
 					gui.changeWinField(i, 2, t2, t2b, true);
 				}
-				if(game.getWinT3()[i] == null && gui.gett3w()[i].getText().equals("O")){
+				if (game.getWinT3()[i] == null && gui.getT3w()[i].getText().equals("O")) {
 					gui.changeWinField(i, 3, t3, t3b, true);
 				}
-				if(game.getWinT4()[i] == null && gui.gett4w()[i].getText().equals("O")){
+				if (game.getWinT4()[i] == null && gui.getT4w()[i].getText().equals("O")) {
 					gui.changeWinField(i, 4, t4, t4b, true);
 				}
-				
-				if(game.getWinT1()[i] != null && gui.gett1w()[i].getText().equals("  ")){
+
+				if (game.getWinT1()[i] != null && gui.getT1w()[i].getText().equals("  ")) {
 					gui.changeWinField(i, 1, t1, t1b, false);
 				}
-				if(game.getWinT2()[i] != null && gui.gett2w()[i].getText().equals("  ")){
+				if (game.getWinT2()[i] != null && gui.getT2w()[i].getText().equals("  ")) {
 					gui.changeWinField(i, 2, t2, t2b, false);
 				}
-				if(game.getWinT3()[i] != null && gui.gett3w()[i].getText().equals("  ")){
+				if (game.getWinT3()[i] != null && gui.getT3w()[i].getText().equals("  ")) {
 					gui.changeWinField(i, 3, t3, t3b, false);
 				}
-				if(game.getWinT4()[i] != null && gui.gett4w()[i].getText().equals("  ")){
+				if (game.getWinT4()[i] != null && gui.getT4w()[i].getText().equals("  ")) {
 					gui.changeWinField(i, 4, t4, t4b, false);
 				}
-				 */
+
 			}
-			/*
-			if(game.getGameField()[i] == null && gui.getGameField()[i].getText().equals("O")){
+
+			if (game.getGameField()[i] == null && gui.getGameField()[i].getText().equals("O")) {
 				gui.changeGameField(i, Color.BEIGE, true);
 			}
-			if(game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 1){
+			if (game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 1) {
 				gui.changeGameField(i, t1, false);
 			}
-			if(game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 2){
+			if (game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 2) {
 				gui.changeGameField(i, t2, false);
 			}
-			if(game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 3){
+			if (game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 3) {
 				gui.changeGameField(i, t3, false);
 			}
-			if(game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 4){
+			if (game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 4) {
 				gui.changeGameField(i, t4, false);
 			}
-			 */
+
 		}
 	}
-	
-	public void checkifWon(){
-		/*
-		if(game.winT1){
+
+	public void checkifWon(Game game) throws IOException {
+
+		if (game.wint1()) {
 			t1winMessage++;
 		}
-		if(game.winT2){
+		if (game.wint2()) {
 			t2winMessage++;
 		}
-		if(game.winT3){
+		if (game.wint3()) {
 			t2winMessage++;
 		}
-		if(game.winT4){
+		if (game.wint4()) {
 			t2winMessage++;
 		}
-		
-		if(t1winMessage == 1){
+
+		if (t1winMessage == 1) {
 			t1hasWon = true;
+			game.highscoreEntry(t1name);
 			Alert a = new Alert(AlertType.INFORMATION);
-            a.setTitle("We have a winner");
-            a.setContentText(gui.getT1name()+"just won the game");
-            a.setHeaderText("");
-            a.show();
+			a.setTitle("We have a winner");
+			a.setContentText(t1name + "just won the game");
+			a.setHeaderText("");
+			a.show();
 		}
-		if(t2winMessage == 1){
+		if (t2winMessage == 1) {
 			t1hasWon = true;
+			game.highscoreEntry(t2name);
 			Alert a = new Alert(AlertType.INFORMATION);
-            a.setTitle("We have a winner");
-            a.setContentText(gui.getT2name()+"just won the game");
-            a.setHeaderText("");
-            a.show();
+			a.setTitle("We have a winner");
+			a.setContentText(t2name + "just won the game");
+			a.setHeaderText("");
+			a.show();
 		}
-		if(t3winMessage == 1){
+		if (t3winMessage == 1) {
 			t1hasWon = true;
+			game.highscoreEntry(t3name);
 			Alert a = new Alert(AlertType.INFORMATION);
-            a.setTitle("We have a winner");
-            a.setContentText(gui.getT3name()+"just won the game");
-            a.setHeaderText("");
-            a.show();
+			a.setTitle("We have a winner");
+			a.setContentText(t3name + "just won the game");
+			a.setHeaderText("");
+			a.show();
 		}
-		if(t4winMessage == 1){
+		if (t4winMessage == 1) {
 			t1hasWon = true;
+			game.highscoreEntry(t4name);
 			Alert a = new Alert(AlertType.INFORMATION);
-            a.setTitle("We have a winner");
-            a.setContentText(gui.getT4name()+"just won the game");
-            a.setHeaderText("");
-            a.show();
+			a.setTitle("We have a winner");
+			a.setContentText(t4name + "just won the game");
+			a.setHeaderText("");
+			a.show();
 		}
-		if(t1hasWon, t2hasWon, t3hasWon, t4hasWon){
-			gui.getMainStage().setScene(gui.mainScene());
+		if (t1hasWon && t2hasWon && t3hasWon && t4hasWon) {
+			gui.getMainStage().setScene(gui.getMainScene());
 		}
-		 */
+
 	}
 
 }

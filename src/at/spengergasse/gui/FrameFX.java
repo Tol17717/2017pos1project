@@ -119,7 +119,7 @@ public class FrameFX extends Stage {
 		groupColorsT2 = new ToggleGroup();
 		groupColorsT3 = new ToggleGroup();
 		groupColorsT4 = new ToggleGroup();
-		selectionErrTxt = new Text("ERROR MESSAGE TEST");
+		selectionErrTxt = new Text("");
 		startGame = new Button("Start Game");
 		highscorePane = new GridPane();
 		highscore1name = new Text("");
