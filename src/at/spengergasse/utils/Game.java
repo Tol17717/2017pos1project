@@ -73,7 +73,7 @@ public class Game {
 	}
 
 	public boolean moveOutOfStart(int team, int position, int wuerfelwert) {
-		if (wuerfelwert == 5) {
+		if (wuerfelwert == 6) {
 			if (team == 1) {
 				if (startT1[position] != null) {
 					if (gameField[0] == null) {
@@ -232,7 +232,7 @@ public class Game {
 			}
 			if (team == gameField[position].getTeam() && team == 2) {
 				b = position + steps;
-				if (b < 39) {
+				if (b > 39) {
 					b -= 40;
 				}
 				if (position < 9 && b < 9 || position >= 10) {
@@ -259,7 +259,7 @@ public class Game {
 			}
 			if (team == gameField[position].getTeam() && team == 3) {
 				b = position + steps;
-				if (b < 39) {
+				if (b > 39) {
 					b -= 40;
 				}
 				if (position < 19 && b < 19 || position >= 20) {
@@ -286,7 +286,7 @@ public class Game {
 			}
 			if (team == gameField[position].getTeam() && team == 4) {
 				b = position + steps;
-				if (b < 39) {
+				if (b > 39) {
 					b -= 40;
 				}
 				if (position < 29 && b < 29 || position >= 30) {

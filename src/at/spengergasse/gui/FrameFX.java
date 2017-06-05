@@ -415,15 +415,15 @@ public class FrameFX extends Stage {
 		gamePane.add(t2s[2], 9, 1);
 		gamePane.add(t2s[3], 10, 1);
 
-		gamePane.add(t3s[0], 0, 9);
-		gamePane.add(t3s[1], 1, 9);
-		gamePane.add(t3s[2], 0, 10);
-		gamePane.add(t3s[3], 1, 10);
+		gamePane.add(t4s[0], 0, 9);
+		gamePane.add(t4s[1], 1, 9);
+		gamePane.add(t4s[2], 0, 10);
+		gamePane.add(t4s[3], 1, 10);
 
-		gamePane.add(t4s[0], 9, 9);
-		gamePane.add(t4s[1], 10, 9);
-		gamePane.add(t4s[2], 9, 10);
-		gamePane.add(t4s[3], 10, 10);
+		gamePane.add(t3s[0], 9, 9);
+		gamePane.add(t3s[1], 10, 9);
+		gamePane.add(t3s[2], 9, 10);
+		gamePane.add(t3s[3], 10, 10);
 
 		gamePane.add(t1w[0], 1, 5);
 		gamePane.add(t1w[1], 2, 5);
@@ -435,15 +435,15 @@ public class FrameFX extends Stage {
 		gamePane.add(t2w[2], 5, 3);
 		gamePane.add(t2w[3], 5, 4);
 
-		gamePane.add(t3w[0], 5, 6);
-		gamePane.add(t3w[1], 5, 7);
-		gamePane.add(t3w[2], 5, 8);
-		gamePane.add(t3w[3], 5, 9);
+		gamePane.add(t4w[0], 5, 6);
+		gamePane.add(t4w[1], 5, 7);
+		gamePane.add(t4w[2], 5, 8);
+		gamePane.add(t4w[3], 5, 9);
 
-		gamePane.add(t4w[0], 6, 5);
-		gamePane.add(t4w[1], 7, 5);
-		gamePane.add(t4w[2], 8, 5);
-		gamePane.add(t4w[3], 9, 5);
+		gamePane.add(t3w[0], 6, 5);
+		gamePane.add(t3w[1], 7, 5);
+		gamePane.add(t3w[2], 8, 5);
+		gamePane.add(t3w[3], 9, 5);
 
 		int x = -1;
 		int y = 4;
