@@ -7,10 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
@@ -20,7 +16,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private final FrameFX gui;
 	private Game game;
 	private final Highscore highscore;
-	private final Wuerfeln wuerfel;
 	private int itIsYourTurn;
 	private int dice;
 	private Color t1;
@@ -52,7 +47,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	public ActionListenerFX(FrameFX frameFX) {
 		gui = frameFX;
 		highscore = new Highscore();
-		wuerfel = new Wuerfeln();
 		itIsYourTurn = 0;
 		t1isBot = false;
 		t2isBot = false;

@@ -1,18 +1,13 @@
 package at.spengergasse.gui;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -138,6 +133,7 @@ public class FrameFX extends Stage {
 		t4w = new Button[4];
 
 		mainStage.setTitle("Mensch Aergere Dich Nicht!");
+		mainStage.getIcons().add(new Image("at/spengergasse/img/titleicon.jpg"));
 		HBox hbox = new HBox();
 		hbox.setPadding(new Insets(50, 50, 50, 50));
 		Text title = new Text(" ");
@@ -354,6 +350,7 @@ public class FrameFX extends Stage {
 		for (int i = 0; i < 40; i++) {
 			gameField[i] = new Button("  ");
 			gameField[i].setShape(new Circle(1.5));
+			gameField[i].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
 
 		}
 		for (int i = 0; i < 4; i++) {
