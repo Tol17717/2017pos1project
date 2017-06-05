@@ -110,7 +110,7 @@ public class FrameFX extends Stage {
 		groupColorsT3 = new ToggleGroup();
 		groupColorsT4 = new ToggleGroup();
 		selectionErrTxt = new Text("");
-		startGame = new Button("Start Game");
+		startGame = new Button("");
 		highscorePane = new GridPane();
 		highscore1name = new Text("");
 		highscore2name = new Text("");
@@ -242,6 +242,8 @@ public class FrameFX extends Stage {
 				b++;
 			}
 		}
+		startGame.setMinSize(100, 50);
+		startGame.setStyle("-fx-background-image: url('at/spengergasse/img/start.png')");
 		selectionErrTxt.setStyle("-fx-font: 30px Tahoma;");
 		selectionErrTxt.setFill(Color.RED);
 		gameSelectionPane.add(selectionErrTxt, 1, 5);
