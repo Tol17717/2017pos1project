@@ -293,12 +293,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			t4name = gui.getShowT4name().getText();
 			refresh(game);
 		}
-
-		for (int i = 0; i < 40; i++) {
-			if (source == gui.getGameField()[i]) {
-				System.out.println("button gedrückt");
-			}
-		}
 		if (t1isBot && itIsYourTurn == 0) {
 			DiceThread d = new DiceThread(gui.getDice());
 			d.start();
