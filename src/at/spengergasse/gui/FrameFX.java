@@ -89,14 +89,9 @@ public class FrameFX extends Stage {
 	private final Text t3who;
 	private final Text t4who;
 	private final Text whosTurn;
-	
+
 	// ToggleButtons
 	private final RadioButton[] tbarr;
-	//Color
-	private final Color colorT1;
-	private final Color colorT2;
-	private final Color colorT3;
-	private final Color colorT4;
 
 	public FrameFX() {
 		startB = new Button(" ");
@@ -356,54 +351,50 @@ public class FrameFX extends Stage {
 		gamePane.setVgap(25);
 		gamePane.setHgap(25);
 		gamePane.setPadding(new Insets(50, 50, 50, 50));
-		colorT1 = null;
-		colorT2 = null;
-		colorT3 = null;
-		colorT4 = null;
 		for (int i = 0; i < 40; i++) {
 			gameField[i] = new Button("  ");
 			gameField[i].setShape(new Circle(1.5));
-			gameField[i].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
+
 		}
 		for (int i = 0; i < 4; i++) {
 			t1s[i] = new Button("O");
 			t1s[i].setShape(new Circle(1.5));
-			t1s[i].setBackground(new Background(new BackgroundFill(colorT1, null, null)));
+
 		}
 		for (int i = 0; i < 4; i++) {
 			t2s[i] = new Button("O");
 			t2s[i].setShape(new Circle(1.5));
-			t2s[i].setBackground(new Background(new BackgroundFill(colorT2, null, null)));
+
 		}
 		for (int i = 0; i < 4; i++) {
 			t3s[i] = new Button("O");
 			t3s[i].setShape(new Circle(1.5));
-			t3s[i].setBackground(new Background(new BackgroundFill(colorT3, null, null)));
+
 		}
 		for (int i = 0; i < 4; i++) {
 			t4s[i] = new Button("O");
 			t4s[i].setShape(new Circle(1.5));
-			t4s[i].setBackground(new Background(new BackgroundFill(colorT4, null, null)));
+
 		}
 		for (int i = 0; i < 4; i++) {
 			t1w[i] = new Button("  ");
 			t1w[i].setShape(new Circle(1.5));
-			t1w[i].setBackground(new Background(new BackgroundFill(colorT1, null, null)));
+
 		}
 		for (int i = 0; i < 4; i++) {
 			t2w[i] = new Button("  ");
 			t2w[i].setShape(new Circle(1.5));
-			t2w[i].setBackground(new Background(new BackgroundFill(colorT2, null, null)));
+
 		}
 		for (int i = 0; i < 4; i++) {
 			t3w[i] = new Button("  ");
 			t3w[i].setShape(new Circle(1.5));
-			t3w[i].setBackground(new Background(new BackgroundFill(colorT3, null, null)));
+
 		}
 		for (int i = 0; i < 4; i++) {
 			t4w[i] = new Button("  ");
 			t4w[i].setShape(new Circle(1.5));
-			t4w[i].setBackground(new Background(new BackgroundFill(colorT4, null, null)));
+
 		}
 		gamePane.add(t1s[0], 0, 0);
 		gamePane.add(t1s[1], 1, 0);
@@ -499,11 +490,11 @@ public class FrameFX extends Stage {
 		dice.setMinHeight(170);
 		dice.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel6.jpg')");
 		gamePane.add(dice, 13, 4, 1, 3);
-		
+
 		for (int i = 0; i < 40; i++) {
 			gameField[i].addEventHandler(ActionEvent.ACTION, event);
 		}
-		for (int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 			t1s[i].addEventHandler(ActionEvent.ACTION, event);
 			t2s[i].addEventHandler(ActionEvent.ACTION, event);
 			t3s[i].addEventHandler(ActionEvent.ACTION, event);
@@ -522,102 +513,102 @@ public class FrameFX extends Stage {
 		highscoreB.addEventHandler(ActionEvent.ACTION, event);
 		dice.addEventHandler(ActionEvent.ACTION, event);
 	}
-	
-	public void changeGameField(int id, Color teamColor, boolean makeNull){
-		if(makeNull){
+
+	public void changeGameField(int id, Color teamColor, boolean makeNull) {
+		if (makeNull) {
 			gameField[id].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
 			gameField[id].setText("  ");
 		} else {
 			gameField[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
 			gameField[id].setText("O");
-			if(teamColor.equals(Color.BLUE)){
+			if (teamColor.equals(Color.BLUE)) {
 				gameField[id].setTextFill(Color.WHITE);
 			}
 		}
 	}
-	
-	public void changeStartField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull){
-		if(makeNull){
-			if(team == 1){
+
+	public void changeStartField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull) {
+		if (makeNull) {
+			if (team == 1) {
 				t1s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
 				t1s[id].setText("  ");
-			} else if(team == 2) {
+			} else if (team == 2) {
 				t2s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
 				t2s[id].setText("  ");
-			} else if(team == 3) {
+			} else if (team == 3) {
 				t3s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
 				t3s[id].setText("  ");
-			} else if(team == 4) {
+			} else if (team == 4) {
 				t4s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
 				t4s[id].setText("  ");
 			}
 		} else {
-			if(team == 1){
+			if (team == 1) {
 				t1s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
 				t1s[id].setText("O");
-				if(teamColor.equals(Color.BLUE)){
+				if (teamColor.equals(Color.BLUE)) {
 					t1s[id].setTextFill(Color.WHITE);
 				}
-			} else if(team == 2){
+			} else if (team == 2) {
 				t2s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
 				t2s[id].setText("O");
-				if(teamColor.equals(Color.BLUE)){
+				if (teamColor.equals(Color.BLUE)) {
 					t2s[id].setTextFill(Color.WHITE);
 				}
-			} else if(team == 3){
+			} else if (team == 3) {
 				t3s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
 				t3s[id].setText("O");
-				if(teamColor.equals(Color.BLUE)){
+				if (teamColor.equals(Color.BLUE)) {
 					t3s[id].setTextFill(Color.WHITE);
 				}
-			} else if(team == 4){
+			} else if (team == 4) {
 				t4s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
 				t4s[id].setText("O");
-				if(teamColor.equals(Color.BLUE)){
+				if (teamColor.equals(Color.BLUE)) {
 					t4s[id].setTextFill(Color.WHITE);
 				}
 			}
 		}
 	}
-	
-	public void changeWinField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull){
-		if(makeNull){
-			if(team == 1){
+
+	public void changeWinField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull) {
+		if (makeNull) {
+			if (team == 1) {
 				t1w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
 				t1w[id].setText("  ");
-			} else if(team == 2) {
+			} else if (team == 2) {
 				t2w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
 				t2w[id].setText("  ");
-			} else if(team == 3) {
+			} else if (team == 3) {
 				t3w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
 				t3w[id].setText("  ");
-			} else if(team == 4) {
+			} else if (team == 4) {
 				t4w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
 				t4w[id].setText("  ");
 			}
 		} else {
-			if(team == 1){
+			if (team == 1) {
 				t1w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
 				t1w[id].setText("O");
-				if(teamColor.equals(Color.BLUE)){
+				if (teamColor.equals(Color.BLUE)) {
 					t1w[id].setTextFill(Color.WHITE);
 				}
-			} else if(team == 2){
+			} else if (team == 2) {
 				t2w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
 				t2w[id].setText("O");
-				if(teamColor.equals(Color.BLUE)){
+				if (teamColor.equals(Color.BLUE)) {
 					t2w[id].setTextFill(Color.WHITE);
 				}
-			} else if(team == 3){
+			} else if (team == 3) {
 				t3w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
 				t3w[id].setText("O");
-				if(teamColor.equals(Color.BLUE)){
+				if (teamColor.equals(Color.BLUE)) {
 					t3w[id].setTextFill(Color.WHITE);
 				}
-			} else if(team == 4){
+			} else if (team == 4) {
 				t4w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
 				t4w[id].setText("O");
-				if(teamColor.equals(Color.BLUE)){
+				if (teamColor.equals(Color.BLUE)) {
 					t4w[id].setTextFill(Color.WHITE);
 				}
 			}
@@ -830,22 +821,6 @@ public class FrameFX extends Stage {
 
 	public RadioButton[] getTbarr() {
 		return tbarr;
-	}
-
-	public Color getColorT1() {
-		return colorT1;
-	}
-
-	public Color getColorT2() {
-		return colorT2;
-	}
-
-	public Color getColorT3() {
-		return colorT3;
-	}
-
-	public Color getColorT4() {
-		return colorT4;
 	}
 
 	public Text getShowT1name() {

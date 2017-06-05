@@ -233,12 +233,24 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			}
 			for (int i = 0; i < 4; i++) {
 				gui.getT1s()[i].setBackground(new Background(new BackgroundFill(t1, null, null)));
+				if(t1.equals(Color.BLUE)){
+					gui.getT1s()[i].setTextFill(Color.WHITE);
+				}
 				gui.getT1w()[i].setBackground(new Background(new BackgroundFill(t1b, null, null)));
 				gui.getT2s()[i].setBackground(new Background(new BackgroundFill(t2, null, null)));
+				if(t2.equals(Color.BLUE)){
+					gui.getT2s()[i].setTextFill(Color.WHITE);
+				}
 				gui.getT2w()[i].setBackground(new Background(new BackgroundFill(t2b, null, null)));
 				gui.getT3s()[i].setBackground(new Background(new BackgroundFill(t3, null, null)));
+				if(t3.equals(Color.BLUE)){
+					gui.getT3s()[i].setTextFill(Color.WHITE);
+				}
 				gui.getT3w()[i].setBackground(new Background(new BackgroundFill(t3b, null, null)));
 				gui.getT4s()[i].setBackground(new Background(new BackgroundFill(t4, null, null)));
+				if(t4.equals(Color.BLUE)){
+					gui.getT4s()[i].setTextFill(Color.WHITE);
+				}
 				gui.getT4w()[i].setBackground(new Background(new BackgroundFill(t4b, null, null)));
 			}
 			if (gui.getT1TF().getText().equals("")) {

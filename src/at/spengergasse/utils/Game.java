@@ -81,7 +81,7 @@ public class Game {
 						startT1[position] = null;
 						return true;
 					}
-					return false;
+					return kick(1, 0);
 				}
 				return false;
 			}
@@ -92,7 +92,7 @@ public class Game {
 						startT2[position] = null;
 						return true;
 					}
-					return false;
+					return kick(2, 10);
 				}
 				return false;
 			}
@@ -103,7 +103,7 @@ public class Game {
 						startT3[position] = null;
 						return true;
 					}
-					return false;
+					return kick(3, 20);
 				}
 				return false;
 			}
@@ -114,7 +114,7 @@ public class Game {
 						startT4[position] = null;
 						return true;
 					}
-					return false;
+					return kick(4, 30);
 				}
 				return false;
 			}
@@ -123,6 +123,9 @@ public class Game {
 	}
 
 	public boolean kick(int team, int feld) {
+		if (gameField[feld] == null){
+			return true;
+		}
 		if (gameField[feld].getTeam() == 1 && team != 1) {
 			if (startT1[0] == null) {
 				startT1[0] = gameField[feld];
@@ -208,7 +211,7 @@ public class Game {
 		if (gameField[position] != null) {
 			if (team == gameField[position].getTeam() && team == 1) {
 				b = position + steps;
-				if ((b) < 40) {
+				if (b < 40) {
 					if (kick(1, b) == false) {
 						return false;
 					}
@@ -235,7 +238,7 @@ public class Game {
 				if (b > 39) {
 					b -= 40;
 				}
-				if (position < 9 && b < 9 || position >= 10) {
+				if (position < 10 && b < 10 || position >= 10) {
 					if (kick(2, b) == false) {
 						return false;
 					}
@@ -262,7 +265,7 @@ public class Game {
 				if (b > 39) {
 					b -= 40;
 				}
-				if (position < 19 && b < 19 || position >= 20) {
+				if (position < 20 && b < 20 || position >= 20) {
 					if (kick(3, b) == false) {
 						return false;
 					}
@@ -289,7 +292,7 @@ public class Game {
 				if (b > 39) {
 					b -= 40;
 				}
-				if (position < 29 && b < 29 || position >= 30) {
+				if (position < 30 && b < 30 || position >= 30) {
 					if (kick(4, b) == false) {
 						return false;
 					}

@@ -8,7 +8,9 @@ public class Test {
 	
 		Game g = new Game(false, false, false, false);
 		System.out.println(g.toString());
-		g.moveOutOfStart(1, 1, 5);
+		g.moveOutOfStart(1, 1, 6);
+		System.out.println(g.toString());
+		g.moveFromField(1, 0, 4);
 		System.out.println(g.toString());
 	}
 
