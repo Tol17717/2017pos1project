@@ -325,15 +325,15 @@ public class Game {
 		int k;
 		if (team == 1) {
 			k = steps + position;
-			if (k > 4) {
+			if (k > 3) {
 				if (k == 4) {
-					return canMoveInWinField(1, position, 2);
+					return canMoveWithinWinField(1, position, 2);
 				}
 				if (k == 5) {
-					return canMoveInWinField(1, position, 1);
+					return canMoveWithinWinField(1, position, 1);
 				}
 				if (k == 6) {
-					return canMoveInWinField(1, position, 0);
+					return canMoveWithinWinField(1, position, 0);
 				}
 				if (k > 6) {
 					int y = 40 - (k - 6);
@@ -346,20 +346,20 @@ public class Game {
 					}
 				}
 			} else {
-				return canMoveInWinField(1, position, k);
+				return canMoveWithinWinField(1, position, k);
 			}
 		}
 		if (team == 2) {
 			k = steps + position;
-			if (k > 4) {
+			if (k > 3) {
 				if (k == 4) {
-					return canMoveInWinField(2, position, 2);
+					return canMoveWithinWinField(2, position, 2);
 				}
 				if (k == 5) {
-					return canMoveInWinField(2, position, 1);
+					return canMoveWithinWinField(2, position, 1);
 				}
 				if (k == 6) {
-					return canMoveInWinField(2, position, 0);
+					return canMoveWithinWinField(2, position, 0);
 				}
 				if (k > 6) {
 					int y = 10 - (k - 6);
@@ -372,20 +372,20 @@ public class Game {
 					}
 				}
 			} else {
-				return canMoveInWinField(2, position, k);
+				return canMoveWithinWinField(2, position, k);
 			}
 		}
 		if (team == 3) {
 			k = steps + position;
-			if (k > 4) {
+			if (k > 3) {
 				if (k == 4) {
-					return canMoveInWinField(3, position, 2);
+					return canMoveWithinWinField(3, position, 2);
 				}
 				if (k == 5) {
-					return canMoveInWinField(3, position, 1);
+					return canMoveWithinWinField(3, position, 1);
 				}
 				if (k == 6) {
-					return canMoveInWinField(3, position, 0);
+					return canMoveWithinWinField(3, position, 0);
 				}
 				if (k > 6) {
 					int y = 20 - (k - 6);
@@ -398,20 +398,20 @@ public class Game {
 					}
 				}
 			} else {
-				return canMoveInWinField(3, position, k);
+				return canMoveWithinWinField(3, position, k);
 			}
 		}
 		if (team == 4) {
 			k = steps + position;
-			if (k > 4) {
+			if (k > 3) {
 				if (k == 4) {
-					return canMoveInWinField(4, position, 2);
+					return canMoveWithinWinField(4, position, 2);
 				}
 				if (k == 5) {
-					return canMoveInWinField(4, position, 1);
+					return canMoveWithinWinField(4, position, 1);
 				}
 				if (k == 6) {
-					return canMoveInWinField(4, position, 0);
+					return canMoveWithinWinField(4, position, 0);
 				}
 				if (k > 6) {
 					int y = 30 - (k - 6);
@@ -424,7 +424,7 @@ public class Game {
 					}
 				}
 			} else {
-				return canMoveInWinField(4, position, k);
+				return canMoveWithinWinField(4, position, k);
 			}
 		}
 		return false;
@@ -516,7 +516,43 @@ public class Game {
 
 	public boolean canMoveInWinField(int team, int from, int to) {
 		if (team == 1) {
-			if(winT1[to] != null){
+			if(winT1[to] == null){
+				winT1[to] = gameField[from];
+				gameField[from] = null;
+				return true;
+			}
+			return false;
+		}
+		if (team == 2) {
+			if(winT2[to] == null){
+				winT2[to] = gameField[from];
+				gameField[from] = null;
+				return true;
+			}
+			return false;
+		}
+		if (team == 3) {
+			if(winT3[to] == null){
+				winT3[to] =  gameField[from];
+				gameField[from] = null;
+				return true;
+			}
+			return false;
+		}
+		if (team == 4) {
+			if(winT4[to] == null){
+				winT4[to] = gameField[from];
+				gameField[from] = null;
+				return true;
+			}
+			return false;
+		}	
+		return false;
+	}
+	
+	public boolean canMoveWithinWinField(int team, int from, int to) {
+		if (team == 1) {
+			if(winT1[to] == null){
 				winT1[to] = winT1[from];
 				winT1[from] = null;
 				return true;
@@ -524,24 +560,24 @@ public class Game {
 			return false;
 		}
 		if (team == 2) {
-			if(winT2[to] != null){
-				winT2[to] = winT1[from];
+			if(winT2[to] == null){
+				winT2[to] = winT2[from];
 				winT2[from] = null;
 				return true;
 			}
 			return false;
 		}
 		if (team == 3) {
-			if(winT3[to] != null){
-				winT3[to] = winT1[from];
+			if(winT3[to] == null){
+				winT3[to] =  winT3[from];
 				winT3[from] = null;
 				return true;
 			}
 			return false;
 		}
 		if (team == 4) {
-			if(winT4[to] != null){
-				winT4[to] = winT1[from];
+			if(winT4[to] == null){
+				winT4[to] = winT4[from];
 				winT4[from] = null;
 				return true;
 			}

@@ -531,64 +531,113 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				DiceThread d = new DiceThread(gui.getDice(), dice);
 				d.start();
 				System.out.println(dice);
-				if(itIsYourTurn == 0 && t1hasStarted == false){
-					clickCount ++;
-					if(clickCount == 3 && dice != 6){
+				if (itIsYourTurn == 0 && t1hasStarted == false) {
+					clickCount++;
+					if (clickCount == 3 && dice != 6) {
 						clickCount = 0;
-						itIsYourTurn ++;
+						itIsYourTurn++;
 						gui.getWhosTurn().setText("Team 2 turn");
 						gui.getWhosTurn().setFill(t2);
 						hasDiced = false;
 					}
-					if(dice == 6){
+					if (dice == 6) {
 						clickCount = 0;
 						hasDiced = true;
 						t1hasStarted = true;
 					}
-				}
-				else if(itIsYourTurn == 1 && t2hasStarted == false){
-					clickCount ++;
-					if(clickCount == 3 && dice != 6){
+				} else if (itIsYourTurn == 1 && t2hasStarted == false) {
+					clickCount++;
+					if (clickCount == 3 && dice != 6) {
 						clickCount = 0;
-						itIsYourTurn ++;
+						itIsYourTurn++;
 						gui.getWhosTurn().setText("Team 3 turn");
 						gui.getWhosTurn().setFill(t3);
 						hasDiced = false;
 					}
-					if(dice == 6){
+					if (dice == 6) {
 						clickCount = 0;
 						hasDiced = true;
 						t2hasStarted = true;
 					}
-				}
-				else if(itIsYourTurn == 2 && t3hasStarted == false){
-					clickCount ++;
-					if(clickCount == 3 && dice != 6){
+				} else if (itIsYourTurn == 2 && t3hasStarted == false) {
+					clickCount++;
+					if (clickCount == 3 && dice != 6) {
 						clickCount = 0;
-						itIsYourTurn ++;
+						itIsYourTurn++;
 						gui.getWhosTurn().setText("Team 4 turn");
 						gui.getWhosTurn().setFill(t4);
 						hasDiced = false;
 					}
-					if(dice == 6){
+					if (dice == 6) {
 						clickCount = 0;
 						hasDiced = true;
 						t3hasStarted = true;
 					}
-				}
-				else if(itIsYourTurn == 3 && t4hasStarted == false){
-					clickCount ++;
-					if(clickCount == 3 && dice != 6){
+				} else if (itIsYourTurn == 3 && t4hasStarted == false) {
+					clickCount++;
+					if (clickCount == 3 && dice != 6) {
 						clickCount = 0;
 						itIsYourTurn = 0;
 						gui.getWhosTurn().setText("Team 1 turn");
 						gui.getWhosTurn().setFill(t1);
 						hasDiced = false;
 					}
-					if(dice == 6){
+					if (dice == 6) {
 						clickCount = 0;
 						hasDiced = true;
 						t4hasStarted = true;
+					}
+				} else if (itIsYourTurn == 0) {
+					int c = 0;
+					for (int i = 0; i < 4; i++) {
+						if (gui.getT1s()[i] == null) {
+							c++;
+						}
+					}
+					if (c == 4) {
+						itIsYourTurn++;
+						gui.getWhosTurn().setText("Team 2 turn");
+						gui.getWhosTurn().setFill(t2);
+						hasDiced = false;
+					}
+				} else if (itIsYourTurn == 1) {
+					int c = 0;
+					for (int i = 0; i < 4; i++) {
+						if (gui.getT2s()[i] == null) {
+							c++;
+						}
+					}
+					if (c == 4) {
+						itIsYourTurn++;
+						gui.getWhosTurn().setText("Team 3 turn");
+						gui.getWhosTurn().setFill(t3);
+						hasDiced = false;
+					}
+				} else if (itIsYourTurn == 2) {
+					int c = 0;
+					for (int i = 0; i < 4; i++) {
+						if (gui.getT3s()[i] == null) {
+							c++;
+						}
+					}
+					if (c == 4) {
+						itIsYourTurn++;
+						gui.getWhosTurn().setText("Team 4 turn");
+						gui.getWhosTurn().setFill(t4);
+						hasDiced = false;
+					}
+				} else if (itIsYourTurn == 3) {
+					int c = 0;
+					for (int i = 0; i < 4; i++) {
+						if (gui.getT4s()[i] == null) {
+							c++;
+						}
+					}
+					if (c == 4) {
+						itIsYourTurn = 0;
+						gui.getWhosTurn().setText("Team 1 turn");
+						gui.getWhosTurn().setFill(t1);
+						hasDiced = false;
 					}
 				} else {
 					hasDiced = true;
