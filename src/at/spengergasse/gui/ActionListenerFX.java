@@ -332,7 +332,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						}
 					}
 					if (source == gui.getT1w()[i]) {
-						if (game.moveFromWinField(1, i, dice)) {
+						game.moveFromWinField(1, i, dice);
 							gui.getWhosTurn().setText("Team 2 turn");
 							gui.getWhosTurn().setFill(t2);
 							itIsYourTurn++;
@@ -346,7 +346,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 							}
 							bot();
 						}
-					}
+					
 				}
 				if (source == gui.getGameField()[i]) {
 					if (game.moveFromField(1, i, dice)) {
@@ -387,7 +387,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						}
 					}
 					if (source == gui.getT2w()[i]) {
-						if (game.moveFromWinField(2, i, dice)) {
+						game.moveFromWinField(2, i, dice);
 							gui.getWhosTurn().setText("Team 3 turn");
 							gui.getWhosTurn().setFill(t3);
 							itIsYourTurn++;
@@ -400,7 +400,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 								e.printStackTrace();
 							}
 							bot();
-						}
+						
 					}
 				}
 				if (source == gui.getGameField()[i]) {
@@ -442,7 +442,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						}
 					}
 					if (source == gui.getT3w()[i]) {
-						if (game.moveFromWinField(3, i, dice)) {
+						game.moveFromWinField(3, i, dice);
 							gui.getWhosTurn().setText("Team 4 turn");
 							gui.getWhosTurn().setFill(t4);
 							itIsYourTurn++;
@@ -455,7 +455,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 								e.printStackTrace();
 							}
 							bot();
-						}
+						
 					}
 				}
 				if (source == gui.getGameField()[i]) {
@@ -497,7 +497,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						}
 					}
 					if (source == gui.getT4w()[i]) {
-						if (game.moveFromWinField(4, i, dice)) {
+						game.moveFromWinField(4, i, dice);
 							gui.getWhosTurn().setText("Team 1 turn");
 							gui.getWhosTurn().setFill(t1);
 							itIsYourTurn = 0;
@@ -510,7 +510,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 								e.printStackTrace();
 							}
 							bot();
-						}
+						
 					}
 				}
 				if (source == gui.getGameField()[i]) {
