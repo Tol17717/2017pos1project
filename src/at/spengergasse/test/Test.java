@@ -1,6 +1,13 @@
 package at.spengergasse.test;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import at.spengergasse.gui.ActionListenerFX;
+import at.spengergasse.gui.FrameFX;
 import at.spengergasse.utils.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Test {
 
@@ -27,7 +34,11 @@ public class Test {
 		System.out.println(g.toString());
 		g.moveFromField(1, 0, 43);
 		System.out.println(g.toString());
+			
+			
 		
 	}
+	
+	
 
 }

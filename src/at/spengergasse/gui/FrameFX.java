@@ -3,10 +3,12 @@ package at.spengergasse.gui;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -131,7 +133,7 @@ public class FrameFX extends Stage {
 		t2w = new Button[4];
 		t3w = new Button[4];
 		t4w = new Button[4];
-
+		
 		mainStage.setTitle("Mensch Aergere Dich Nicht!");
 		mainStage.getIcons().add(new Image("at/spengergasse/img/titleicon.jpg"));
 		HBox hbox = new HBox();
@@ -415,25 +417,25 @@ public class FrameFX extends Stage {
 		gamePane.add(t3s[2], 9, 10);
 		gamePane.add(t3s[3], 10, 10);
 
-		gamePane.add(t1w[0], 1, 5);
-		gamePane.add(t1w[1], 2, 5);
-		gamePane.add(t1w[2], 3, 5);
-		gamePane.add(t1w[3], 4, 5);
+		gamePane.add(t1w[0], 4, 5);
+		gamePane.add(t1w[1], 3, 5);
+		gamePane.add(t1w[2], 2, 5);
+		gamePane.add(t1w[3], 1, 5);
 
-		gamePane.add(t2w[0], 5, 1);
-		gamePane.add(t2w[1], 5, 2);
-		gamePane.add(t2w[2], 5, 3);
-		gamePane.add(t2w[3], 5, 4);
+		gamePane.add(t2w[0], 5, 4);
+		gamePane.add(t2w[1], 5, 3);
+		gamePane.add(t2w[2], 5, 2);
+		gamePane.add(t2w[3], 5, 1);
 
-		gamePane.add(t4w[0], 5, 6);
-		gamePane.add(t4w[1], 5, 7);
-		gamePane.add(t4w[2], 5, 8);
-		gamePane.add(t4w[3], 5, 9);
+		gamePane.add(t4w[0], 5, 9);
+		gamePane.add(t4w[1], 5, 8);
+		gamePane.add(t4w[2], 5, 7);
+		gamePane.add(t4w[3], 5, 6);
 
-		gamePane.add(t3w[0], 6, 5);
-		gamePane.add(t3w[1], 7, 5);
-		gamePane.add(t3w[2], 8, 5);
-		gamePane.add(t3w[3], 9, 5);
+		gamePane.add(t3w[0], 9, 5);
+		gamePane.add(t3w[1], 8, 5);
+		gamePane.add(t3w[2], 7, 5);
+		gamePane.add(t3w[3], 6, 5);
 
 		int x = -1;
 		int y = 4;

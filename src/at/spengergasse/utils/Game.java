@@ -21,7 +21,7 @@ public class Game {
 	private Spielfigur[] winT2;
 	private Spielfigur[] winT3;
 	private Spielfigur[] winT4;
-	
+
 	private int place;
 
 	public Game(boolean t1bot, boolean t2bot, boolean t3bot, boolean t4bot) {
@@ -81,7 +81,11 @@ public class Game {
 						startT1[position] = null;
 						return true;
 					}
-					return kick(1, 0);
+					if(kick(1, 0)){
+						gameField[0] = startT1[position];
+						startT1[position] = null;
+						return true;
+					}
 				}
 				return false;
 			}
@@ -92,7 +96,11 @@ public class Game {
 						startT2[position] = null;
 						return true;
 					}
-					return kick(2, 10);
+					if (kick(2, 10)){
+						gameField[10] = startT2[position];
+						startT2[position] = null;
+						return true;
+					}
 				}
 				return false;
 			}
@@ -103,7 +111,11 @@ public class Game {
 						startT3[position] = null;
 						return true;
 					}
-					return kick(3, 20);
+					if (kick(3, 20)){
+						gameField[20] = startT3[position];
+						startT3[position] = null;
+						return true;
+					}
 				}
 				return false;
 			}
@@ -114,7 +126,11 @@ public class Game {
 						startT4[position] = null;
 						return true;
 					}
-					return kick(4, 30);
+					if (kick(4, 30)){
+						gameField[30] = startT4[position];
+						startT4[position] = null;
+						return true;
+					}
 				}
 				return false;
 			}
@@ -123,7 +139,7 @@ public class Game {
 	}
 
 	public boolean kick(int team, int feld) {
-		if (gameField[feld] == null){
+		if (gameField[feld] == null) {
 			return true;
 		}
 		if (gameField[feld].getTeam() == 1 && team != 1) {
@@ -337,7 +353,7 @@ public class Game {
 				}
 				if (k > 6) {
 					int y = 40 - (k - 6);
-					if(kick(1, y)){
+					if (kick(1, y)) {
 						gameField[y] = winT1[position];
 						winT1[position] = null;
 						return true;
@@ -363,7 +379,7 @@ public class Game {
 				}
 				if (k > 6) {
 					int y = 10 - (k - 6);
-					if(kick(2, y)){
+					if (kick(2, y)) {
 						gameField[y] = winT2[position];
 						winT2[position] = null;
 						return true;
@@ -389,7 +405,7 @@ public class Game {
 				}
 				if (k > 6) {
 					int y = 20 - (k - 6);
-					if(kick(3, y)){
+					if (kick(3, y)) {
 						gameField[y] = winT3[position];
 						winT3[position] = null;
 						return true;
@@ -415,7 +431,7 @@ public class Game {
 				}
 				if (k > 6) {
 					int y = 30 - (k - 6);
-					if(kick(4, y)){
+					if (kick(4, y)) {
 						gameField[y] = winT4[position];
 						winT4[position] = null;
 						return true;
@@ -469,8 +485,8 @@ public class Game {
 	public boolean highscoreEntry(String teamname) throws IOException {
 		Highscore h = new Highscore();
 		if (place == 1) {
-			if(t1.isBot()){
-				place ++;
+			if (t1.isBot()) {
+				place++;
 				return true;
 			}
 			h.read();
@@ -480,8 +496,8 @@ public class Game {
 			return true;
 		}
 		if (place == 2) {
-			if(t2.isBot()){
-				place ++;
+			if (t2.isBot()) {
+				place++;
 				return true;
 			}
 			h.read();
@@ -491,8 +507,8 @@ public class Game {
 			return true;
 		}
 		if (place == 3) {
-			if(t3.isBot()){
-				place ++;
+			if (t3.isBot()) {
+				place++;
 				return true;
 			}
 			h.read();
@@ -502,8 +518,8 @@ public class Game {
 			return true;
 		}
 		if (place == 4) {
-			if(t4.isBot()){
-				place ++;
+			if (t4.isBot()) {
+				place++;
 				return true;
 			}
 			h.read();
@@ -516,7 +532,7 @@ public class Game {
 
 	public boolean canMoveInWinField(int team, int from, int to) {
 		if (team == 1) {
-			if(winT1[to] == null){
+			if (winT1[to] == null) {
 				winT1[to] = gameField[from];
 				gameField[from] = null;
 				return true;
@@ -524,7 +540,7 @@ public class Game {
 			return false;
 		}
 		if (team == 2) {
-			if(winT2[to] == null){
+			if (winT2[to] == null) {
 				winT2[to] = gameField[from];
 				gameField[from] = null;
 				return true;
@@ -532,27 +548,27 @@ public class Game {
 			return false;
 		}
 		if (team == 3) {
-			if(winT3[to] == null){
-				winT3[to] =  gameField[from];
+			if (winT3[to] == null) {
+				winT3[to] = gameField[from];
 				gameField[from] = null;
 				return true;
 			}
 			return false;
 		}
 		if (team == 4) {
-			if(winT4[to] == null){
+			if (winT4[to] == null) {
 				winT4[to] = gameField[from];
 				gameField[from] = null;
 				return true;
 			}
 			return false;
-		}	
+		}
 		return false;
 	}
-	
+
 	public boolean canMoveWithinWinField(int team, int from, int to) {
 		if (team == 1) {
-			if(winT1[to] == null){
+			if (winT1[to] == null) {
 				winT1[to] = winT1[from];
 				winT1[from] = null;
 				return true;
@@ -560,7 +576,7 @@ public class Game {
 			return false;
 		}
 		if (team == 2) {
-			if(winT2[to] == null){
+			if (winT2[to] == null) {
 				winT2[to] = winT2[from];
 				winT2[from] = null;
 				return true;
@@ -568,21 +584,126 @@ public class Game {
 			return false;
 		}
 		if (team == 3) {
-			if(winT3[to] == null){
-				winT3[to] =  winT3[from];
+			if (winT3[to] == null) {
+				winT3[to] = winT3[from];
 				winT3[from] = null;
 				return true;
 			}
 			return false;
 		}
 		if (team == 4) {
-			if(winT4[to] == null){
+			if (winT4[to] == null) {
 				winT4[to] = winT4[from];
 				winT4[from] = null;
 				return true;
 			}
 			return false;
-		}	
+		}
+		return false;
+	}
+
+	public boolean botmove(int team, int steps) {
+		if (team == 1) {
+			if (t1.isBot()) {
+				for (int i = 0; i < 40; i++) {
+					if (i < 4) {
+						if (startT1[i] != null) {
+							if (moveOutOfStart(1, i, steps)) {
+								return true;
+							}
+						}
+					}
+					if (gameField[i] != null && gameField[i].getTeam() == 1) {
+						if (moveFromField(1, i, steps)) {
+							return true;
+						}
+					}
+				}
+				for (int i = 0; i < 4; i++) {
+					if (winT1[i] != null) {
+						if (moveFromWinField(1, i, steps)) {
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		} else if (team == 2) {
+			if (t2.isBot()) {
+				for (int i = 0; i < 40; i++) {
+					if (i < 4) {
+						if (startT2[i] != null) {
+							if (moveOutOfStart(2, i, steps)) {
+								return true;
+							}
+						}
+					}
+					if (gameField[i] != null && gameField[i].getTeam() == 2) {
+						if (moveFromField(2, i, steps)) {
+							return true;
+						}
+					}
+				}
+				for (int i = 0; i < 4; i++) {
+					if (winT2[i] != null) {
+						if (moveFromWinField(2, i, steps)) {
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		} else if (team == 3) {
+			if (t3.isBot()) {
+				for (int i = 0; i < 40; i++) {
+					if (i < 4) {
+						if (startT3[i] != null) {
+							if (moveOutOfStart(3, i, steps)) {
+								return true;
+							}
+						}
+					}
+					if (gameField[i] != null && gameField[i].getTeam() == 3) {
+						if (moveFromField(3, i, steps)) {
+							return true;
+						}
+					}
+				}
+				for (int i = 0; i < 4; i++) {
+					if (winT3[i] != null) {
+						if (moveFromWinField(3, i, steps)) {
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		} else if (team == 4) {
+			if (t4.isBot()) {
+				for (int i = 0; i < 40; i++) {
+					if (i < 4) {
+						if (startT4[i] != null) {
+							if (moveOutOfStart(4, i, steps)) {
+								return true;
+							}
+						}
+					}
+					if (gameField[i] != null && gameField[i].getTeam() == 4) {
+						if (moveFromField(4, i, steps)) {
+							return true;
+						}
+					}
+				}
+				for (int i = 0; i < 4; i++) {
+					if (winT4[i] != null) {
+						if (moveFromWinField(4, i, steps)) {
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		}
 		return false;
 	}
 
@@ -634,6 +755,5 @@ public class Game {
 				+ Arrays.toString(winT1) + ", winT2=" + Arrays.toString(winT2) + ", winT3=" + Arrays.toString(winT3)
 				+ ", winT4=" + Arrays.toString(winT4) + ", place=" + place + "]";
 	}
-	
-	
+
 }
