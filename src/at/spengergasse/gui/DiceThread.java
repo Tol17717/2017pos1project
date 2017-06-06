@@ -66,18 +66,7 @@ public class DiceThread extends Thread {
 				c = wuerfel.wuerfeln();
 			}
 			if (c == 1) {
-			/*	if (i == 11) {
-					a.setStyle("-fx-background-image: url('at/spengergasse/img/troll.png')");
-					try {
-						Thread.sleep((long) w);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel1.jpg')");
-				} else {*/
-					a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel1.jpg')");
-			//	}
+				a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel1.jpg')");
 			}
 			if (c == 2) {
 				a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel2.jpg')");

@@ -417,10 +417,10 @@ public class FrameFX extends Stage {
 		gamePane.add(t3s[2], 9, 10);
 		gamePane.add(t3s[3], 10, 10);
 
-		gamePane.add(t1w[0], 4, 5);
-		gamePane.add(t1w[1], 3, 5);
-		gamePane.add(t1w[2], 2, 5);
-		gamePane.add(t1w[3], 1, 5);
+		gamePane.add(t1w[0], 1, 5);
+		gamePane.add(t1w[1], 2, 5);
+		gamePane.add(t1w[2], 3, 5);
+		gamePane.add(t1w[3], 4, 5);
 
 		gamePane.add(t2w[0], 5, 4);
 		gamePane.add(t2w[1], 5, 3);
