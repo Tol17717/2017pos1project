@@ -350,7 +350,7 @@ public class FrameFX extends Stage {
 		gamePane.setHgap(25);
 		gamePane.setPadding(new Insets(50, 50, 50, 50));
 		for (int i = 0; i < 40; i++) {
-			gameField[i] = new Button("  ");
+			gameField[i] = new Button("O");
 			gameField[i].setShape(new Circle(1.5));
 			gameField[i].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
 
@@ -376,22 +376,22 @@ public class FrameFX extends Stage {
 
 		}
 		for (int i = 0; i < 4; i++) {
-			t1w[i] = new Button("  ");
+			t1w[i] = new Button("O");
 			t1w[i].setShape(new Circle(1.5));
 
 		}
 		for (int i = 0; i < 4; i++) {
-			t2w[i] = new Button("  ");
+			t2w[i] = new Button("O");
 			t2w[i].setShape(new Circle(1.5));
 
 		}
 		for (int i = 0; i < 4; i++) {
-			t3w[i] = new Button("  ");
+			t3w[i] = new Button("O");
 			t3w[i].setShape(new Circle(1.5));
 
 		}
 		for (int i = 0; i < 4; i++) {
-			t4w[i] = new Button("  ");
+			t4w[i] = new Button("O");
 			t4w[i].setShape(new Circle(1.5));
 
 		}
@@ -465,6 +465,22 @@ public class FrameFX extends Stage {
 			}
 			gamePane.add(gameField[i], x, y);
 		}
+		Button up = new Button();
+		up.setMinSize(29, 150);
+		up.setStyle("-fx-background-image: url('at/spengergasse/img/up.png')");
+		Button down = new Button();
+		down.setMinSize(29, 150);
+		down.setStyle("-fx-background-image: url('at/spengergasse/img/down.png')");
+		Button left = new Button();
+		left.setMinSize(150, 29);
+		left.setStyle("-fx-background-image: url('at/spengergasse/img/left.png')");
+		Button right = new Button();
+		right.setMinSize(150, 29);
+		right.setStyle("-fx-background-image: url('at/spengergasse/img/right.png')");
+		gamePane.add(right, 0, 3, 3, 1);
+		gamePane.add(left, 8, 7, 3, 1);
+		gamePane.add(down, 7, 0, 1, 3);
+		gamePane.add(up, 3, 8, 1, 3);
 		showT1name = new Text("");
 		showT2name = new Text("");
 		showT3name = new Text("");
@@ -515,13 +531,19 @@ public class FrameFX extends Stage {
 
 	public void changeGameField(int id, Color teamColor, boolean makeNull) {
 		if (makeNull) {
-			gameField[id].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
-			gameField[id].setText("  ");
+			if (id == 0 || id == 10 || id == 20 || id == 30) {
+				gameField[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
+				gameField[id].setTextFill(teamColor);
+			} else {
+				gameField[id].setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
+				gameField[id].setTextFill(Color.BEIGE);
+			}
 		} else {
 			gameField[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
-			gameField[id].setText("O");
 			if (teamColor.equals(Color.BLUE)) {
 				gameField[id].setTextFill(Color.WHITE);
+			} else {
+				gameField[id].setTextFill(Color.BLACK);
 			}
 		}
 	}
@@ -530,41 +552,45 @@ public class FrameFX extends Stage {
 		if (makeNull) {
 			if (team == 1) {
 				t1s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
-				t1s[id].setText("  ");
+				t1s[id].setTextFill(teamBgColor);
 			} else if (team == 2) {
 				t2s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
-				t2s[id].setText("  ");
+				t2s[id].setTextFill(teamBgColor);
 			} else if (team == 3) {
 				t3s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
-				t3s[id].setText("  ");
+				t3s[id].setTextFill(teamBgColor);
 			} else if (team == 4) {
 				t4s[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
-				t4s[id].setText("  ");
+				t4s[id].setTextFill(teamBgColor);
 			}
 		} else {
 			if (team == 1) {
 				t1s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
-				t1s[id].setText("O");
 				if (teamColor.equals(Color.BLUE)) {
 					t1s[id].setTextFill(Color.WHITE);
+				} else {
+					t1s[id].setTextFill(Color.BLACK);
 				}
 			} else if (team == 2) {
 				t2s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
-				t2s[id].setText("O");
 				if (teamColor.equals(Color.BLUE)) {
 					t2s[id].setTextFill(Color.WHITE);
+				} else {
+					t2s[id].setTextFill(Color.BLACK);
 				}
 			} else if (team == 3) {
 				t3s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
-				t3s[id].setText("O");
 				if (teamColor.equals(Color.BLUE)) {
 					t3s[id].setTextFill(Color.WHITE);
+				} else {
+					t3s[id].setTextFill(Color.BLACK);
 				}
 			} else if (team == 4) {
 				t4s[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
-				t4s[id].setText("O");
 				if (teamColor.equals(Color.BLUE)) {
 					t4s[id].setTextFill(Color.WHITE);
+				} else {
+					t4s[id].setTextFill(Color.BLACK);
 				}
 			}
 		}
@@ -574,41 +600,45 @@ public class FrameFX extends Stage {
 		if (makeNull) {
 			if (team == 1) {
 				t1w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
-				t1w[id].setText("  ");
+				t1w[id].setTextFill(teamBgColor);
 			} else if (team == 2) {
 				t2w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
-				t2w[id].setText("  ");
+				t2w[id].setTextFill(teamBgColor);
 			} else if (team == 3) {
 				t3w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
-				t3w[id].setText("  ");
+				t3w[id].setTextFill(teamBgColor);
 			} else if (team == 4) {
 				t4w[id].setBackground(new Background(new BackgroundFill(teamBgColor, null, null)));
-				t4w[id].setText("  ");
+				t4w[id].setTextFill(teamBgColor);
 			}
 		} else {
 			if (team == 1) {
 				t1w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
-				t1w[id].setText("O");
 				if (teamColor.equals(Color.BLUE)) {
 					t1w[id].setTextFill(Color.WHITE);
+				} else {
+					t1w[id].setTextFill(Color.BLACK);
 				}
 			} else if (team == 2) {
 				t2w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
-				t2w[id].setText("O");
 				if (teamColor.equals(Color.BLUE)) {
 					t2w[id].setTextFill(Color.WHITE);
+				} else {
+					t2w[id].setTextFill(Color.BLACK);
 				}
 			} else if (team == 3) {
 				t3w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
-				t3w[id].setText("O");
 				if (teamColor.equals(Color.BLUE)) {
 					t3w[id].setTextFill(Color.WHITE);
+				} else {
+					t3w[id].setTextFill(Color.BLACK);
 				}
 			} else if (team == 4) {
 				t4w[id].setBackground(new Background(new BackgroundFill(teamColor, null, null)));
-				t4w[id].setText("O");
 				if (teamColor.equals(Color.BLUE)) {
 					t4w[id].setTextFill(Color.WHITE);
+				} else {
+					t4w[id].setTextFill(Color.BLACK);
 				}
 			}
 		}

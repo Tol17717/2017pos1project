@@ -34,6 +34,10 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private boolean t2hasWon;
 	private boolean t3hasWon;
 	private boolean t4hasWon;
+	private boolean t1hasStarted;
+	private boolean t2hasStarted;
+	private boolean t3hasStarted;
+	private boolean t4hasStarted;
 	private int t1winMessage;
 	private int t2winMessage;
 	private int t3winMessage;
@@ -43,6 +47,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	private String t2name;
 	private String t3name;
 	private String t4name;
+	private int clickCount;
 
 	public ActionListenerFX(FrameFX frameFX) {
 		gui = frameFX;
@@ -61,6 +66,10 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		t2winMessage = 0;
 		t3winMessage = 0;
 		t4winMessage = 0;
+		t1hasStarted = false;
+		t2hasStarted = false;
+		t3hasStarted = false;
+		t4hasStarted = false;
 	}
 
 	@Override
@@ -227,22 +236,22 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			}
 			for (int i = 0; i < 4; i++) {
 				gui.getT1s()[i].setBackground(new Background(new BackgroundFill(t1, null, null)));
-				if(t1.equals(Color.BLUE)){
+				if (t1.equals(Color.BLUE)) {
 					gui.getT1s()[i].setTextFill(Color.WHITE);
 				}
 				gui.getT1w()[i].setBackground(new Background(new BackgroundFill(t1b, null, null)));
 				gui.getT2s()[i].setBackground(new Background(new BackgroundFill(t2, null, null)));
-				if(t2.equals(Color.BLUE)){
+				if (t2.equals(Color.BLUE)) {
 					gui.getT2s()[i].setTextFill(Color.WHITE);
 				}
 				gui.getT2w()[i].setBackground(new Background(new BackgroundFill(t2b, null, null)));
 				gui.getT3s()[i].setBackground(new Background(new BackgroundFill(t3, null, null)));
-				if(t3.equals(Color.BLUE)){
+				if (t3.equals(Color.BLUE)) {
 					gui.getT3s()[i].setTextFill(Color.WHITE);
 				}
 				gui.getT3w()[i].setBackground(new Background(new BackgroundFill(t3b, null, null)));
 				gui.getT4s()[i].setBackground(new Background(new BackgroundFill(t4, null, null)));
-				if(t4.equals(Color.BLUE)){
+				if (t4.equals(Color.BLUE)) {
 					gui.getT4s()[i].setTextFill(Color.WHITE);
 				}
 				gui.getT4w()[i].setBackground(new Background(new BackgroundFill(t4b, null, null)));
@@ -300,7 +309,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		}
 		if (t1isBot && itIsYourTurn == 0) {
 			Wuerfeln w = new Wuerfeln();
-			dice = w.wuerfeln()+1;
+			dice = w.wuerfeln() + 1;
 			DiceThread d = new DiceThread(gui.getDice(), dice);
 			d.start();
 			hasDiced = true;
@@ -310,19 +319,12 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			itIsYourTurn++;
 			hasDiced = false;
 			refresh(game);
-			try {
-				checkifWon(game);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		} else if (t1isBot == false && itIsYourTurn == 0 && hasDiced && t1hasWon == false) {
 			for (int i = 0; i < 40; i++) {
 				if (i < 4) {
 					if (source == gui.getT1s()[i]) {
 						System.out.println(dice);
 						game.moveOutOfStart(1, i, dice);
-						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 2 turn");
 						gui.getWhosTurn().setFill(t2);
 						System.out.println(game.toString());
@@ -338,7 +340,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					}
 					if (source == gui.getT1w()[i]) {
 						if (game.moveFromWinField(1, i, dice)) {
-							System.out.println("Ich wurde gedrückt, lul xD");
 							gui.getWhosTurn().setText("Team 2 turn");
 							gui.getWhosTurn().setFill(t2);
 							itIsYourTurn++;
@@ -355,7 +356,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				}
 				if (source == gui.getGameField()[i]) {
 					if (game.moveFromField(1, i, dice)) {
-						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 2 turn");
 						gui.getWhosTurn().setFill(t2);
 						itIsYourTurn++;
@@ -376,7 +376,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					if (source == gui.getT2s()[i]) {
 						System.out.println(dice);
 						game.moveOutOfStart(2, i, dice);
-						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 3 turn");
 						gui.getWhosTurn().setFill(t3);
 						System.out.println(game.toString());
@@ -392,7 +391,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					}
 					if (source == gui.getT2w()[i]) {
 						if (game.moveFromWinField(2, i, dice)) {
-							System.out.println("Ich wurde gedrückt, lul xD");
 							gui.getWhosTurn().setText("Team 3 turn");
 							gui.getWhosTurn().setFill(t3);
 							itIsYourTurn++;
@@ -409,7 +407,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				}
 				if (source == gui.getGameField()[i]) {
 					if (game.moveFromField(2, i, dice)) {
-						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 3 turn");
 						gui.getWhosTurn().setFill(t3);
 						itIsYourTurn++;
@@ -430,7 +427,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					if (source == gui.getT3s()[i]) {
 						System.out.println(dice);
 						game.moveOutOfStart(3, i, dice);
-						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 4 turn");
 						gui.getWhosTurn().setFill(t4);
 						System.out.println(game.toString());
@@ -446,7 +442,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					}
 					if (source == gui.getT3w()[i]) {
 						if (game.moveFromWinField(3, i, dice)) {
-							System.out.println("Ich wurde gedrückt, lul xD");
 							gui.getWhosTurn().setText("Team 4 turn");
 							gui.getWhosTurn().setFill(t4);
 							itIsYourTurn++;
@@ -463,7 +458,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				}
 				if (source == gui.getGameField()[i]) {
 					if (game.moveFromField(3, i, dice)) {
-						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 4 turn");
 						gui.getWhosTurn().setFill(t4);
 						itIsYourTurn++;
@@ -484,7 +478,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					if (source == gui.getT4s()[i]) {
 						System.out.println(dice);
 						game.moveOutOfStart(4, i, dice);
-						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 1 turn");
 						gui.getWhosTurn().setFill(t1);
 						System.out.println(game.toString());
@@ -500,7 +493,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					}
 					if (source == gui.getT4w()[i]) {
 						if (game.moveFromWinField(4, i, dice)) {
-							System.out.println("Ich wurde gedrückt, lul xD");
 							gui.getWhosTurn().setText("Team 1 turn");
 							gui.getWhosTurn().setFill(t1);
 							itIsYourTurn = 0;
@@ -517,7 +509,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				}
 				if (source == gui.getGameField()[i]) {
 					if (game.moveFromField(4, i, dice)) {
-						System.out.println("Ich wurde gedrückt, lul xD");
 						gui.getWhosTurn().setText("Team 1 turn");
 						gui.getWhosTurn().setFill(t1);
 						itIsYourTurn = 0;
@@ -536,11 +527,72 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		if (hasDiced == false) {
 			if (source == gui.getDice()) {
 				Wuerfeln w = new Wuerfeln();
-				dice = w.wuerfeln()+1;
+				dice = w.wuerfeln() + 1;
 				DiceThread d = new DiceThread(gui.getDice(), dice);
 				d.start();
-				hasDiced = true;
 				System.out.println(dice);
+				if(itIsYourTurn == 0 && t1hasStarted == false){
+					clickCount ++;
+					if(clickCount == 3 && dice != 6){
+						clickCount = 0;
+						itIsYourTurn ++;
+						gui.getWhosTurn().setText("Team 2 turn");
+						gui.getWhosTurn().setFill(t2);
+						hasDiced = false;
+					}
+					if(dice == 6){
+						clickCount = 0;
+						hasDiced = true;
+						t1hasStarted = true;
+					}
+				}
+				else if(itIsYourTurn == 1 && t2hasStarted == false){
+					clickCount ++;
+					if(clickCount == 3 && dice != 6){
+						clickCount = 0;
+						itIsYourTurn ++;
+						gui.getWhosTurn().setText("Team 3 turn");
+						gui.getWhosTurn().setFill(t3);
+						hasDiced = false;
+					}
+					if(dice == 6){
+						clickCount = 0;
+						hasDiced = true;
+						t2hasStarted = true;
+					}
+				}
+				else if(itIsYourTurn == 2 && t3hasStarted == false){
+					clickCount ++;
+					if(clickCount == 3 && dice != 6){
+						clickCount = 0;
+						itIsYourTurn ++;
+						gui.getWhosTurn().setText("Team 4 turn");
+						gui.getWhosTurn().setFill(t4);
+						hasDiced = false;
+					}
+					if(dice == 6){
+						clickCount = 0;
+						hasDiced = true;
+						t3hasStarted = true;
+					}
+				}
+				else if(itIsYourTurn == 3 && t4hasStarted == false){
+					clickCount ++;
+					if(clickCount == 3 && dice != 6){
+						clickCount = 0;
+						itIsYourTurn = 0;
+						gui.getWhosTurn().setText("Team 1 turn");
+						gui.getWhosTurn().setFill(t1);
+						hasDiced = false;
+					}
+					if(dice == 6){
+						clickCount = 0;
+						hasDiced = true;
+						t4hasStarted = true;
+					}
+				} else {
+					hasDiced = true;
+				}
 			}
 		}
 
@@ -550,62 +602,72 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		for (int i = 0; i < 40; i++) {
 			if (i < 4) {
 
-				if (game.getStartT1()[i] == null && gui.getT1s()[i].getText().equals("O")) {
+				if (game.getStartT1()[i] == null) {
 					gui.changeStartField(i, 1, t1, t1b, true);
 				}
-				if (game.getStartT2()[i] == null && gui.getT2s()[i].getText().equals("O")) {
+				if (game.getStartT2()[i] == null) {
 					gui.changeStartField(i, 2, t2, t2b, true);
 				}
-				if (game.getStartT3()[i] == null && gui.getT3s()[i].getText().equals("O")) {
+				if (game.getStartT3()[i] == null) {
 					gui.changeStartField(i, 3, t3, t3b, true);
 				}
-				if (game.getStartT4()[i] == null && gui.getT4s()[i].getText().equals("O")) {
+				if (game.getStartT4()[i] == null) {
 					gui.changeStartField(i, 4, t4, t4b, true);
 				}
 
-				if (game.getStartT1()[i] != null && gui.getT1s()[i].getText().equals("  ")) {
+				if (game.getStartT1()[i] != null) {
 					gui.changeStartField(i, 1, t1, t1b, false);
 				}
-				if (game.getStartT2()[i] != null && gui.getT2s()[i].getText().equals("  ")) {
+				if (game.getStartT2()[i] != null) {
 					gui.changeStartField(i, 2, t2, t2b, false);
 				}
-				if (game.getStartT3()[i] != null && gui.getT3s()[i].getText().equals("  ")) {
+				if (game.getStartT3()[i] != null) {
 					gui.changeStartField(i, 3, t3, t3b, false);
 				}
-				if (game.getStartT4()[i] != null && gui.getT4s()[i].getText().equals("  ")) {
+				if (game.getStartT4()[i] != null) {
 					gui.changeStartField(i, 4, t4, t4b, false);
 				}
 
-				if (game.getWinT1()[i] == null && gui.getT1w()[i].getText().equals("O")) {
+				if (game.getWinT1()[i] == null) {
 					gui.changeWinField(i, 1, t1, t1b, true);
 				}
-				if (game.getWinT2()[i] == null && gui.getT2w()[i].getText().equals("O")) {
+				if (game.getWinT2()[i] == null) {
 					gui.changeWinField(i, 2, t2, t2b, true);
 				}
-				if (game.getWinT3()[i] == null && gui.getT3w()[i].getText().equals("O")) {
+				if (game.getWinT3()[i] == null) {
 					gui.changeWinField(i, 3, t3, t3b, true);
 				}
-				if (game.getWinT4()[i] == null && gui.getT4w()[i].getText().equals("O")) {
+				if (game.getWinT4()[i] == null) {
 					gui.changeWinField(i, 4, t4, t4b, true);
 				}
 
-				if (game.getWinT1()[i] != null && gui.getT1w()[i].getText().equals("  ")) {
+				if (game.getWinT1()[i] != null) {
 					gui.changeWinField(i, 1, t1, t1b, false);
 				}
-				if (game.getWinT2()[i] != null && gui.getT2w()[i].getText().equals("  ")) {
+				if (game.getWinT2()[i] != null) {
 					gui.changeWinField(i, 2, t2, t2b, false);
 				}
-				if (game.getWinT3()[i] != null && gui.getT3w()[i].getText().equals("  ")) {
+				if (game.getWinT3()[i] != null) {
 					gui.changeWinField(i, 3, t3, t3b, false);
 				}
-				if (game.getWinT4()[i] != null && gui.getT4w()[i].getText().equals("  ")) {
+				if (game.getWinT4()[i] != null) {
 					gui.changeWinField(i, 4, t4, t4b, false);
 				}
 
 			}
 
-			if (game.getGameField()[i] == null && gui.getGameField()[i].getText().equals("O")) {
-				gui.changeGameField(i, Color.BEIGE, true);
+			if (game.getGameField()[i] == null) {
+				if (i == 0) {
+					gui.changeGameField(i, t1b, true);
+				} else if (i == 10) {
+					gui.changeGameField(i, t2b, true);
+				} else if (i == 20) {
+					gui.changeGameField(i, t3b, true);
+				} else if (i == 30) {
+					gui.changeGameField(i, t4b, true);
+				} else {
+					gui.changeGameField(i, Color.BEIGE, true);
+				}
 			}
 			if (game.getGameField()[i] != null && game.getGameField()[i].getTeam() == 1) {
 				gui.changeGameField(i, t1, false);
