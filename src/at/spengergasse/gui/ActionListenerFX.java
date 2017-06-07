@@ -996,7 +996,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 	}
 
 	public void bot() {
-		for (int x = 0; x < 4; x++) {
+		for (int x = 0; x < 5; x++) {
 			if (t1isBot && itIsYourTurn == 0) {
 				if (t1hasStarted == false) {
 					for (int i = 0; i < 3; i++) {
@@ -1117,8 +1117,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					System.out.println("Bot 4 hat gedrückt");
 					gui.getWhosTurn().setText("Team 1 turn");
 					gui.getWhosTurn().setFill(t1);
-					if (dice == 6)
-						itIsYourTurn = 0;
+					itIsYourTurn = 0;
 					refresh(game);
 					if(t1hasStarted){
 						gui.getWhatToDo().setText("1 roll available");
@@ -1132,8 +1131,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					System.out.println("Bot 4 hat gedrückt");
 					gui.getWhosTurn().setText("Team 1 turn");
 					gui.getWhosTurn().setFill(t1);
-					itIsYourTurn = 0;
-					hasDiced = false;
 					if(t1hasStarted){
 						gui.getWhatToDo().setText("1 roll available");
 					} else {
@@ -1141,6 +1138,8 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					}
 					refresh(game);
 				}
+				hasDiced = false;
+				itIsYourTurn = 0;
 			}
 			try {
 				checkifWon(game);
