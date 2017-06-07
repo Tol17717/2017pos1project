@@ -587,6 +587,9 @@ public class Game {
 	}
 
 	public boolean canMoveWithinWinField(int team, int from, int to) {
+		if(from == to){
+			return true;
+		}
 		if (team == 1) {
 			if (winT1[to] == null) {
 				winT1[to] = winT1[from];

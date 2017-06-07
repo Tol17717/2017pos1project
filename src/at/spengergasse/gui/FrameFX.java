@@ -43,6 +43,7 @@ public class FrameFX extends Stage {
 	private final Button[] t3w;
 	private final Button[] t4w;
 	private final Button dice;
+	private final Button skipRound;
 	// Panes
 	private final BorderPane root;
 	private final GridPane gameSelectionPane;
@@ -525,6 +526,11 @@ public class FrameFX extends Stage {
 		dice.setMinHeight(170);
 		dice.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel6.jpg')");
 		gamePane.add(dice, 13, 4, 1, 3);
+		skipRound = new Button("Skip Turn");
+		skipRound.setStyle("-fx-font: 20px Tahoma");
+		skipRound.setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
+		gamePane.add(skipRound, 14, 6);
+		
 
 		for (int i = 0; i < 40; i++) {
 			gameField[i].addEventHandler(ActionEvent.ACTION, event);
@@ -547,6 +553,7 @@ public class FrameFX extends Stage {
 		creditsB.addEventHandler(ActionEvent.ACTION, event);
 		highscoreB.addEventHandler(ActionEvent.ACTION, event);
 		dice.addEventHandler(ActionEvent.ACTION, event);
+		skipRound.addEventHandler(ActionEvent.ACTION, event);
 	}
 
 	public void changeGameField(int id, Color teamColor, boolean makeNull) {
@@ -914,6 +921,10 @@ public class FrameFX extends Stage {
 
 	public Text getWhatToDo() {
 		return whatToDo;
+	}
+
+	public Button getSkipRound() {
+		return skipRound;
 	}
 
 }

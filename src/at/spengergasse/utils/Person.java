@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class Person implements Comparable<Person>, Serializable{
 
-	private int score;
+
+	private  int score;
 	private String name;
 	private int place;
 
