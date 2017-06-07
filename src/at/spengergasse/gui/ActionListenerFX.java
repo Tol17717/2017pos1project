@@ -905,6 +905,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		}
 		if (game.wint3()) {
 			t2winMessage++;
+			;
 		}
 		if (game.wint4()) {
 			t2winMessage++;
@@ -1005,6 +1006,18 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 
 	public void bot() {
 		for (int x = 0; x < 5; x++) {
+			if (itIsYourTurn == 0 && t1hasWon) {
+				itIsYourTurn++;
+			}
+			if (itIsYourTurn == 1 && t2hasWon) {
+				itIsYourTurn++;
+			}
+			if (itIsYourTurn == 2 && t3hasWon) {
+				itIsYourTurn++;
+			}
+			if (itIsYourTurn == 3 && t4hasWon) {
+				itIsYourTurn = 0;
+			}
 			if (t1isBot && itIsYourTurn == 0) {
 				if (t1hasStarted == false) {
 					for (int i = 0; i < 3; i++) {

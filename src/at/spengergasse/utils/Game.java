@@ -499,6 +499,10 @@ public class Game {
 	}
 
 	public boolean highscoreEntry(String teamname) throws IOException {
+		if(teamname.equals("Bot")){
+			place++;
+			return true;
+		}
 		Highscore h = new Highscore();
 		if (place == 1) {
 			if (t1.isBot()) {
