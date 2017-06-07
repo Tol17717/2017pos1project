@@ -41,7 +41,11 @@ public class Game {
 		place = 1;
 		teamsSetup();
 	}
-
+	/**
+	 * Was die Methode macht
+	 * @param wuerfel, was parameter macht
+	 * @return was wird zurückgegeben
+	 */
 	public boolean getOutOfStart(int wuerfel) {
 		if (wuerfel == 6) {
 			return true;

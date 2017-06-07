@@ -12,6 +12,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -422,10 +426,10 @@ public class FrameFX extends Stage {
 		gamePane.add(t1w[2], 3, 5);
 		gamePane.add(t1w[3], 4, 5);
 
-		gamePane.add(t2w[0], 5, 4);
-		gamePane.add(t2w[1], 5, 3);
-		gamePane.add(t2w[2], 5, 2);
-		gamePane.add(t2w[3], 5, 1);
+		gamePane.add(t2w[0], 5, 1);
+		gamePane.add(t2w[1], 5, 2);
+		gamePane.add(t2w[2], 5, 3);
+		gamePane.add(t2w[3], 5, 4);
 
 		gamePane.add(t4w[0], 5, 9);
 		gamePane.add(t4w[1], 5, 8);
@@ -467,18 +471,28 @@ public class FrameFX extends Stage {
 			}
 			gamePane.add(gameField[i], x, y);
 		}
+		
+		BackgroundImage backgroundImageButtonUp = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/up.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundUp = new Background(backgroundImageButtonUp);
+        BackgroundImage backgroundImageButtonDown = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/down.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundDown = new Background(backgroundImageButtonDown);
+        BackgroundImage backgroundImageButtonLeft = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/left.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundLeft = new Background(backgroundImageButtonLeft);
+        BackgroundImage backgroundImageButtonRight = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/right.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundRight = new Background(backgroundImageButtonRight);
+		
 		Button up = new Button();
+		up.setBackground(backgroundUp);
 		up.setMinSize(29, 150);
-		up.setStyle("-fx-background-image: url('at/spengergasse/img/up.png')");
 		Button down = new Button();
+		down.setBackground(backgroundDown);
 		down.setMinSize(29, 150);
-		down.setStyle("-fx-background-image: url('at/spengergasse/img/down.png')");
 		Button left = new Button();
+		left.setBackground(backgroundLeft);
 		left.setMinSize(150, 29);
-		left.setStyle("-fx-background-image: url('at/spengergasse/img/left.png')");
 		Button right = new Button();
+		right.setBackground(backgroundRight);
 		right.setMinSize(150, 29);
-		right.setStyle("-fx-background-image: url('at/spengergasse/img/right.png')");
 		gamePane.add(right, 0, 3, 3, 1);
 		gamePane.add(left, 8, 7, 3, 1);
 		gamePane.add(down, 7, 0, 1, 3);
