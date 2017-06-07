@@ -344,6 +344,9 @@ public class Game {
 	public boolean moveFromWinField(int team, int position, int steps) {
 		int k;
 		if (team == 1) {
+			if(winT1[position] == null){
+				return false;
+			}
 			k = steps + position;
 			if (k > 3) {
 				if (k == 4) {
@@ -370,6 +373,9 @@ public class Game {
 			}
 		}
 		if (team == 2) {
+			if(winT2[position] == null){
+				return false;
+			}
 			k = steps + position;
 			if (k > 3) {
 				if (k == 4) {
@@ -396,6 +402,9 @@ public class Game {
 			}
 		}
 		if (team == 3) {
+			if(winT3[position] == null){
+				return false;
+			}
 			k = steps + position;
 			if (k > 3) {
 				if (k == 4) {
@@ -422,6 +431,9 @@ public class Game {
 			}
 		}
 		if (team == 4) {
+			if(winT4[position] == null){
+				return false;
+			}
 			k = steps + position;
 			if (k > 3) {
 				if (k == 4) {

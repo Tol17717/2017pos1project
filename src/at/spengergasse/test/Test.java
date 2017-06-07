@@ -17,24 +17,7 @@ public class Test {
 		System.out.println(g.toString());
 		g.moveOutOfStart(1, 0, 6);
 		System.out.println(g.toString());
-		g.moveFromField(1, 0, 40);
-		System.out.println(g.toString());
-		
-		g.moveOutOfStart(1, 1, 6);
-		System.out.println(g.toString());
-		g.moveFromField(1, 0, 41);
-		System.out.println(g.toString());
-		
-		g.moveOutOfStart(1, 2, 6);
-		System.out.println(g.toString());
-		g.moveFromField(1, 0, 42);
-		System.out.println(g.toString());
-		
-		g.moveOutOfStart(1, 3, 6);
-		System.out.println(g.toString());
-		g.moveFromField(1, 0, 43);
-		System.out.println(g.toString());
-			
+		System.out.println(g.moveFromWinField(1, 0, 1));
 			
 		
 	}

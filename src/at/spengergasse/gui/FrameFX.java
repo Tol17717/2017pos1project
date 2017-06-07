@@ -356,6 +356,31 @@ public class FrameFX extends Stage {
 		gamePane.setVgap(25);
 		gamePane.setHgap(25);
 		gamePane.setPadding(new Insets(50, 50, 50, 50));
+		BackgroundImage backgroundImageButtonUp = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/uparr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundUp = new Background(backgroundImageButtonUp);
+        BackgroundImage backgroundImageButtonDown = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/downarr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundDown = new Background(backgroundImageButtonDown);
+        BackgroundImage backgroundImageButtonLeft = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/leftarr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundLeft = new Background(backgroundImageButtonLeft);
+        BackgroundImage backgroundImageButtonRight = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/rightarr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundRight = new Background(backgroundImageButtonRight);
+		
+		Button up = new Button();
+		up.setBackground(backgroundUp);
+		up.setMinSize(64, 150);
+		Button down = new Button();
+		down.setBackground(backgroundDown);
+		down.setMinSize(64, 150);
+		Button left = new Button();
+		left.setBackground(backgroundLeft);
+		left.setMinSize(150, 64);
+		Button right = new Button();
+		right.setBackground(backgroundRight);
+		right.setMinSize(150, 64);
+		gamePane.add(right, 0, 3, 3, 2);
+		gamePane.add(left, 8, 7, 3, 2);
+		gamePane.add(down, 7, 0, 2, 3);
+		gamePane.add(up, 3, 8, 2, 3);
 		for (int i = 0; i < 40; i++) {
 			gameField[i] = new Button("O");
 			gameField[i].setShape(new Circle(1.5));
@@ -473,31 +498,6 @@ public class FrameFX extends Stage {
 			gamePane.add(gameField[i], x, y);
 		}
 		
-		BackgroundImage backgroundImageButtonUp = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/uparr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundUp = new Background(backgroundImageButtonUp);
-        BackgroundImage backgroundImageButtonDown = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/downarr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundDown = new Background(backgroundImageButtonDown);
-        BackgroundImage backgroundImageButtonLeft = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/leftarr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundLeft = new Background(backgroundImageButtonLeft);
-        BackgroundImage backgroundImageButtonRight = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/rightarr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundRight = new Background(backgroundImageButtonRight);
-		
-		Button up = new Button();
-		up.setBackground(backgroundUp);
-		up.setMinSize(64, 150);
-		Button down = new Button();
-		down.setBackground(backgroundDown);
-		down.setMinSize(64, 150);
-		Button left = new Button();
-		left.setBackground(backgroundLeft);
-		left.setMinSize(150, 64);
-		Button right = new Button();
-		right.setBackground(backgroundRight);
-		right.setMinSize(150, 64);
-		gamePane.add(right, 0, 3, 3, 2);
-		gamePane.add(left, 8, 7, 3, 2);
-		gamePane.add(down, 7, 0, 2, 3);
-		gamePane.add(up, 3, 8, 2, 3);
 		showT1name = new Text("");
 		showT2name = new Text("");
 		showT3name = new Text("");
