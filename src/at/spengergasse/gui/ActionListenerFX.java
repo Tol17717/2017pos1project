@@ -533,6 +533,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		if (hasDiced == false) {
 			if (source == gui.getDice()) {
 				dice();
+				bot();
 			}
 		}
 
@@ -804,7 +805,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			Alert a = new Alert(AlertType.INFORMATION);
 			if (countWinner == 1) {
 				a.setTitle("We have a winner");
-				a.setContentText(t3name + "just won the game");
+				a.setContentText(t3name + " just won the game");
 			} else {
 				a.setTitle("The " + countWinner + ". place goes to:");
 				a.setContentText(t3name);
