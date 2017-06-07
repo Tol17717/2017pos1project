@@ -328,6 +328,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							if(t2hasStarted){
+								gui.getWhatToDo().setText("1 roll available");
+							} else {
+								gui.getWhatToDo().setText("3 rolls available");
+							}
 							bot();
 						}
 					}
@@ -343,6 +348,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+						}
+						if(t2hasStarted){
+							gui.getWhatToDo().setText("1 roll available");
+						} else {
+							gui.getWhatToDo().setText("3 rolls available");
 						}
 						bot();
 					}
@@ -360,6 +370,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+						}
+						if(t2hasStarted){
+							gui.getWhatToDo().setText("1 roll available");
+						} else {
+							gui.getWhatToDo().setText("3 rolls available");
 						}
 						bot();
 					}
@@ -383,6 +398,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							if(t3hasStarted){
+								gui.getWhatToDo().setText("1 roll available");
+							} else {
+								gui.getWhatToDo().setText("3 rolls available");
+							}
 							bot();
 						}
 					}
@@ -398,6 +418,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+						}
+						if(t3hasStarted){
+							gui.getWhatToDo().setText("1 roll available");
+						} else {
+							gui.getWhatToDo().setText("3 rolls available");
 						}
 						bot();
 
@@ -415,6 +440,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+						}
+						if(t3hasStarted){
+							gui.getWhatToDo().setText("1 roll available");
+						} else {
+							gui.getWhatToDo().setText("3 rolls available");
 						}
 						bot();
 					}
@@ -438,6 +468,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							if(t4hasStarted){
+								gui.getWhatToDo().setText("1 roll available");
+							} else {
+								gui.getWhatToDo().setText("3 rolls available");
+							}
 							bot();
 						}
 					}
@@ -453,6 +488,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+						}
+						if(t4hasStarted){
+							gui.getWhatToDo().setText("1 roll available");
+						} else {
+							gui.getWhatToDo().setText("3 rolls available");
 						}
 						bot();
 
@@ -470,6 +510,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+						}
+						if(t4hasStarted){
+							gui.getWhatToDo().setText("1 roll available");
+						} else {
+							gui.getWhatToDo().setText("3 rolls available");
 						}
 						bot();
 					}
@@ -493,6 +538,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							if(t1hasStarted){
+								gui.getWhatToDo().setText("1 roll available");
+							} else {
+								gui.getWhatToDo().setText("3 rolls available");
+							}
 							bot();
 						}
 					}
@@ -509,6 +559,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						if(t1hasStarted){
+							gui.getWhatToDo().setText("1 roll available");
+						} else {
+							gui.getWhatToDo().setText("3 rolls available");
+						}
 						bot();
 					}
 				}
@@ -524,6 +579,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+						}
+						if(t1hasStarted){
+							gui.getWhatToDo().setText("1 roll available");
+						} else {
+							gui.getWhatToDo().setText("3 rolls available");
 						}
 						bot();
 					}
@@ -638,59 +698,107 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		System.out.println(dice);
 		if (itIsYourTurn == 0 && t1hasStarted == false) {
 			clickCount++;
+			if(clickCount == 1){
+				gui.getWhatToDo().setText("2 rolls available");
+			}
+			if(clickCount == 2){
+				gui.getWhatToDo().setText("1 roll available");
+			}
 			if (clickCount == 3 && dice != 6) {
 				clickCount = 0;
 				itIsYourTurn++;
 				gui.getWhosTurn().setText("Team 2 turn");
 				gui.getWhosTurn().setFill(t2);
 				hasDiced = false;
+				if(t2hasStarted){
+					gui.getWhatToDo().setText("1 roll available");
+				} else {
+					gui.getWhatToDo().setText("3 rolls available");
+				}
 			}
 			if (dice == 6) {
 				clickCount = 0;
 				hasDiced = true;
 				t1hasStarted = true;
+				gui.getWhatToDo().setText("Move now");
 			}
 		} else if (itIsYourTurn == 1 && t2hasStarted == false) {
 			clickCount++;
+			if(clickCount == 1){
+				gui.getWhatToDo().setText("2 rolls available");
+			}
+			if(clickCount == 2){
+				gui.getWhatToDo().setText("1 roll available");
+			}
 			if (clickCount == 3 && dice != 6) {
 				clickCount = 0;
 				itIsYourTurn++;
 				gui.getWhosTurn().setText("Team 3 turn");
 				gui.getWhosTurn().setFill(t3);
 				hasDiced = false;
+				if(t3hasStarted){
+					gui.getWhatToDo().setText("1 roll available");
+				} else {
+					gui.getWhatToDo().setText("3 rolls available");
+				}
 			}
 			if (dice == 6) {
 				clickCount = 0;
 				hasDiced = true;
 				t2hasStarted = true;
+				gui.getWhatToDo().setText("Move now");
 			}
 		} else if (itIsYourTurn == 2 && t3hasStarted == false) {
 			clickCount++;
+			if(clickCount == 1){
+				gui.getWhatToDo().setText("2 rolls available");
+			}
+			if(clickCount == 2){
+				gui.getWhatToDo().setText("1 roll available");
+			}
 			if (clickCount == 3 && dice != 6) {
 				clickCount = 0;
 				itIsYourTurn++;
 				gui.getWhosTurn().setText("Team 4 turn");
 				gui.getWhosTurn().setFill(t4);
 				hasDiced = false;
+				if(t4hasStarted){
+					gui.getWhatToDo().setText("1 roll available");
+				} else {
+					gui.getWhatToDo().setText("3 rolls available");
+				}
 			}
 			if (dice == 6) {
 				clickCount = 0;
 				hasDiced = true;
 				t3hasStarted = true;
+				gui.getWhatToDo().setText("Move now");
 			}
 		} else if (itIsYourTurn == 3 && t4hasStarted == false) {
 			clickCount++;
+			if(clickCount == 1){
+				gui.getWhatToDo().setText("2 rolls available");
+			}
+			if(clickCount == 2){
+				gui.getWhatToDo().setText("1 roll available");
+			}
 			if (clickCount == 3 && dice != 6) {
 				clickCount = 0;
 				itIsYourTurn = 0;
 				gui.getWhosTurn().setText("Team 1 turn");
 				gui.getWhosTurn().setFill(t1);
 				hasDiced = false;
+				if(t1hasStarted){
+					gui.getWhatToDo().setText("1 roll available");
+				} else {
+					gui.getWhatToDo().setText("3 rolls available");
+				}
 			}
 			if (dice == 6) {
 				clickCount = 0;
 				hasDiced = true;
 				t4hasStarted = true;
+				gui.getWhatToDo().setText("Move now");
 			}
 		} else if (itIsYourTurn == 0 && t1hasStarted) {
 			int c = 0;
@@ -704,8 +812,14 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				gui.getWhosTurn().setText("Team 2 turn");
 				gui.getWhosTurn().setFill(t2);
 				hasDiced = false;
+				if(t2hasStarted){
+					gui.getWhatToDo().setText("1 roll available");
+				} else {
+					gui.getWhatToDo().setText("3 rolls available");
+				}
 			} else {
 				hasDiced = true;
+				gui.getWhatToDo().setText("Move now");
 			}
 		} else if (itIsYourTurn == 1 && t2hasStarted) {
 			int c = 0;
@@ -719,8 +833,14 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				gui.getWhosTurn().setText("Team 3 turn");
 				gui.getWhosTurn().setFill(t3);
 				hasDiced = false;
+				if(t3hasStarted){
+					gui.getWhatToDo().setText("1 roll available");
+				} else {
+					gui.getWhatToDo().setText("3 rolls available");
+				}
 			} else {
 				hasDiced = true;
+				gui.getWhatToDo().setText("Move now");
 			}
 		} else if (itIsYourTurn == 2 && t3hasStarted) {
 			int c = 0;
@@ -734,8 +854,14 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				gui.getWhosTurn().setText("Team 4 turn");
 				gui.getWhosTurn().setFill(t4);
 				hasDiced = false;
+				if(t4hasStarted){
+					gui.getWhatToDo().setText("1 roll available");
+				} else {
+					gui.getWhatToDo().setText("3 rolls available");
+				}
 			} else {
 				hasDiced = true;
+				gui.getWhatToDo().setText("Move now");
 			}
 		} else if (itIsYourTurn == 3 && t4hasStarted) {
 			int c = 0;
@@ -748,8 +874,15 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				itIsYourTurn = 0;
 				gui.getWhosTurn().setText("Team 1 turn");
 				gui.getWhosTurn().setFill(t1);
+				hasDiced = false;
+				if(t1hasStarted){
+					gui.getWhatToDo().setText("1 roll available");
+				} else {
+					gui.getWhatToDo().setText("3 rolls available");
+				}
 			} else {
 				hasDiced = true;
+				gui.getWhatToDo().setText("Move now");
 			}
 		}
 	}
@@ -878,6 +1011,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					gui.getWhosTurn().setFill(t2);
 					if (dice == 6)
 						itIsYourTurn++;
+					if(t2hasStarted){
+						gui.getWhatToDo().setText("1 roll available");
+					} else {
+						gui.getWhatToDo().setText("3 rolls available");
+					}
 					hasDiced = false;
 					refresh(game);
 				} else {
@@ -888,6 +1026,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					gui.getWhosTurn().setFill(t2);
 					itIsYourTurn++;
 					hasDiced = false;
+					if(t2hasStarted){
+						gui.getWhatToDo().setText("1 roll available");
+					} else {
+						gui.getWhatToDo().setText("3 rolls available");
+					}
 					refresh(game);
 				}
 			} else if (t2isBot && itIsYourTurn == 1) {
@@ -904,6 +1047,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					gui.getWhosTurn().setFill(t3);
 					if (dice == 6)
 						itIsYourTurn++;
+					if(t2hasStarted){
+						gui.getWhatToDo().setText("1 roll available");
+					} else {
+						gui.getWhatToDo().setText("3 rolls available");
+					}
 					hasDiced = false;
 					refresh(game);
 				} else {
@@ -914,6 +1062,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					gui.getWhosTurn().setFill(t3);
 					itIsYourTurn++;
 					hasDiced = false;
+					if(t3hasStarted){
+						gui.getWhatToDo().setText("1 roll available");
+					} else {
+						gui.getWhatToDo().setText("3 rolls available");
+					}
 					refresh(game);
 				}
 			} else if (t3isBot && itIsYourTurn == 2) {
@@ -930,6 +1083,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					gui.getWhosTurn().setFill(t4);
 					if (dice == 6)
 						itIsYourTurn++;
+					if(t4hasStarted){
+						gui.getWhatToDo().setText("1 roll available");
+					} else {
+						gui.getWhatToDo().setText("3 rolls available");
+					}
 					hasDiced = false;
 					refresh(game);
 				} else {
@@ -940,6 +1098,11 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					gui.getWhosTurn().setFill(t4);
 					itIsYourTurn++;
 					hasDiced = false;
+					if(t4hasStarted){
+						gui.getWhatToDo().setText("1 roll available");
+					} else {
+						gui.getWhatToDo().setText("3 rolls available");
+					}
 					refresh(game);
 				}
 			} else if (t4isBot && itIsYourTurn == 3) {
@@ -954,17 +1117,30 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 					System.out.println("Bot 4 hat gedrückt");
 					gui.getWhosTurn().setText("Team 1 turn");
 					gui.getWhosTurn().setFill(t1);
+					if (dice == 6)
+						itIsYourTurn = 0;
 					refresh(game);
+					if(t1hasStarted){
+						gui.getWhatToDo().setText("1 roll available");
+					} else {
+						gui.getWhatToDo().setText("3 rolls available");
+					}
+					hasDiced = false;
 				} else {
 					dice();
 					game.botmove(4, dice);
 					System.out.println("Bot 4 hat gedrückt");
 					gui.getWhosTurn().setText("Team 1 turn");
 					gui.getWhosTurn().setFill(t1);
+					itIsYourTurn = 0;
+					hasDiced = false;
+					if(t1hasStarted){
+						gui.getWhatToDo().setText("1 roll available");
+					} else {
+						gui.getWhatToDo().setText("3 rolls available");
+					}
 					refresh(game);
 				}
-				itIsYourTurn = 0;
-				hasDiced = false;
 			}
 			try {
 				checkifWon(game);

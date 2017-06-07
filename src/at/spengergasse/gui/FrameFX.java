@@ -90,6 +90,7 @@ public class FrameFX extends Stage {
 	private final Text t3who;
 	private final Text t4who;
 	private final Text whosTurn;
+	private final Text whatToDo;
 
 	// ToggleButtons
 	private final RadioButton[] tbarr;
@@ -515,7 +516,10 @@ public class FrameFX extends Stage {
 		gamePane.add(showT4name, 12, 3, 2, 1);
 		whosTurn = new Text("Team 1 turn");
 		whosTurn.setStyle("-fx-font: 20px Tahoma");
-		gamePane.add(whosTurn, 14, 0);
+		gamePane.add(whosTurn, 14, 4);
+		whatToDo = new Text("3 rolls available");
+		whatToDo.setStyle("-fx-font: 20px Tahoma");
+		gamePane.add(whatToDo, 14, 5);
 		dice = new Button("");
 		dice.setMinWidth(170);
 		dice.setMinHeight(170);
@@ -906,6 +910,10 @@ public class FrameFX extends Stage {
 
 	public Text getWhosTurn() {
 		return whosTurn;
+	}
+
+	public Text getWhatToDo() {
+		return whatToDo;
 	}
 
 }
