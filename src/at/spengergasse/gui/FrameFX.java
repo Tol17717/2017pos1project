@@ -555,7 +555,12 @@ public class FrameFX extends Stage {
 		dice.addEventHandler(ActionEvent.ACTION, event);
 		skipRound.addEventHandler(ActionEvent.ACTION, event);
 	}
-
+	/**
+	 * Verändert das Aussehen des Spielfeldes
+	 * @param id, Position  
+	 * @param teamColor, Teamfarbe
+	 * @param makeNull, Ob das Spielfeld leer ist
+	 */
 	public void changeGameField(int id, Color teamColor, boolean makeNull) {
 		if (makeNull) {
 			if (id == 0 || id == 10 || id == 20 || id == 30) {
@@ -574,7 +579,14 @@ public class FrameFX extends Stage {
 			}
 		}
 	}
-
+	/**
+	 * Verändert das Aussehen der Startfelder
+	 * @param id, position 
+	 * @param team, welches Team
+	 * @param teamColor, Teamfarbe
+	 * @param teamBgColor, Hintergrundfarbe des Teams
+	 * @param makeNull, Ob das Startfeld leer ist
+	 */
 	public void changeStartField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull) {
 		if (makeNull) {
 			if (team == 1) {
@@ -622,7 +634,14 @@ public class FrameFX extends Stage {
 			}
 		}
 	}
-
+ /**
+  * Gleiche Methode wie changeStartField, gilt nur fürs WinFeld
+  * @param id
+  * @param team
+  * @param teamColor
+  * @param teamBgColor
+  * @param makeNull
+  */
 	public void changeWinField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull) {
 		if (makeNull) {
 			if (team == 1) {

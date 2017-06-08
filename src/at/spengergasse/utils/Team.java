@@ -1,6 +1,8 @@
 package at.spengergasse.utils;
 
-
+/*
+ * Teams, welche für das Spiel gerbaucht werden
+ */
 public class Team {
 	
 	private int tname;

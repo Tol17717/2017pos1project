@@ -1,5 +1,8 @@
 package at.spengergasse.utils;
 
+/*
+ * Spielfigur Klasse, welche für die Teams und das Spiel gebraucht wird
+ */
 public class Spielfigur {
 
 	private int team;

@@ -8,7 +8,6 @@ public class DiceThread extends Thread {
 	private Button a;
 	private Wuerfeln wuerfel;
 	private int dice;
-	public boolean isWuerfling;
 
 	public DiceThread() {
 		// TODO Auto-generated constructor stub
@@ -55,10 +54,11 @@ public class DiceThread extends Thread {
 		super(group, target, name, stackSize);
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * Führt den animierten Würfel aus
+	 */
 	@Override
 	public void run() {
-		isWuerfling = true;
 		float w = 75;
 		int c = 0;
 		for (int i = 0; i < 12; i++) {
@@ -93,6 +93,5 @@ public class DiceThread extends Thread {
 				e.printStackTrace();
 			}
 		}
-		isWuerfling = false;
 	}
 }

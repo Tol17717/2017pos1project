@@ -696,7 +696,10 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		}
 
 	}
-
+	/**
+	 * Aktualisiert das Spielfeld (GUI)
+	 * @param game
+	 */
 	public void refresh(Game game) {
 		for (int i = 0; i < 40; i++) {
 			if (i < 4) {
@@ -783,7 +786,9 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 
 		}
 	}
-
+	/**
+	 * Der Syntax des Würfels
+	 */
 	public void dice() {
 		Wuerfeln w = new Wuerfeln();
 		dice = w.wuerfeln() + 1;
@@ -993,7 +998,14 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			}
 		}
 	}
-
+	/**
+	 * Prüft, ob ein Win Array eines jeweiligen Teams voll ist und lässt ein Pop up fenster erscheinen
+	 * wenn ein team gewinnt. Das Team wird auch im Highscore System eingetragen
+	 * Sobald der dritte menschliche Spieler das Spiel beendet oder nur noch mehr bots übrig sind
+	 * ist das Spiel vorbei und man wird zum Startbildschirm übergeleitet
+	 * @param game
+	 * @throws IOException
+	 */
 	public void checkifWon(Game game) throws IOException {
 
 		if (game.wint1()) {
@@ -1119,7 +1131,9 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		}
 
 	}
-
+	/**
+	 * Der Zug des Teams, falls dieser ein Bot ist
+	 */
 	public void bot() {
 		for (int x = 0; x < 5; x++) {
 			if (itIsYourTurn == 0 && t1hasWon) {
@@ -1143,7 +1157,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 							break;
 						}
 					}
-					System.out.println("Bot 1 hat gedrückt");
+					System.out.println("Bot 1 hat gedrueckt");
 					gui.getWhosTurn().setText("Team 2 turn");
 					gui.getWhosTurn().setFill(t2);
 					if (dice == 6)
@@ -1158,7 +1172,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				} else {
 					dice();
 					game.botmove(1, dice);
-					System.out.println("Bot 1 hat gedrückt");
+					System.out.println("Bot 1 hat gedrueckt");
 					gui.getWhosTurn().setText("Team 2 turn");
 					gui.getWhosTurn().setFill(t2);
 					itIsYourTurn++;
@@ -1179,7 +1193,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 							break;
 						}
 					}
-					System.out.println("Bot 2 hat gedrückt");
+					System.out.println("Bot 2 hat gedrueckt");
 					gui.getWhosTurn().setText("Team 3 turn");
 					gui.getWhosTurn().setFill(t3);
 					if (dice == 6)
@@ -1194,7 +1208,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				} else {
 					dice();
 					game.botmove(2, dice);
-					System.out.println("Bot 2 hat gedrückt");
+					System.out.println("Bot 2 hat gedrueckt");
 					gui.getWhosTurn().setText("Team 3 turn");
 					gui.getWhosTurn().setFill(t3);
 					itIsYourTurn++;
@@ -1215,7 +1229,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 							break;
 						}
 					}
-					System.out.println("Bot 3 hat gedrückt");
+					System.out.println("Bot 3 hat gedrueckt");
 					gui.getWhosTurn().setText("Team 4 turn");
 					gui.getWhosTurn().setFill(t4);
 					if (dice == 6)
@@ -1230,7 +1244,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				} else {
 					dice();
 					game.botmove(3, dice);
-					System.out.println("Bot 3 hat gedrückt");
+					System.out.println("Bot 3 hat gedrueckt");
 					gui.getWhosTurn().setText("Team 4 turn");
 					gui.getWhosTurn().setFill(t4);
 					itIsYourTurn++;
@@ -1251,7 +1265,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 							break;
 						}
 					}
-					System.out.println("Bot 4 hat gedrückt");
+					System.out.println("Bot 4 hat gedrueckt");
 					gui.getWhosTurn().setText("Team 1 turn");
 					gui.getWhosTurn().setFill(t1);
 					if (dice == 6)
@@ -1266,7 +1280,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 				} else {
 					dice();
 					game.botmove(4, dice);
-					System.out.println("Bot 4 hat gedrückt");
+					System.out.println("Bot 4 hat gedrueckt");
 					gui.getWhosTurn().setText("Team 1 turn");
 					gui.getWhosTurn().setFill(t1);
 					itIsYourTurn = 0;

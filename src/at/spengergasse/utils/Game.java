@@ -41,19 +41,10 @@ public class Game {
 		place = 1;
 		teamsSetup();
 	}
-	/**
-	 * Was die Methode macht
-	 * @param wuerfel, was parameter macht
-	 * @return was wird zurückgegeben
-	 */
-	public boolean getOutOfStart(int wuerfel) {
-		if (wuerfel == 6) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
+	/**Setzt alle Spielfiguren auf ihre Startpositionen
+	 * 
+	 */
 	public void teamsSetup() {
 		startT1[0] = t1.getSf1();
 		startT1[1] = t1.getSf2();
@@ -76,6 +67,17 @@ public class Game {
 		startT4[3] = t4.getSf4();
 	}
 
+	/**
+	 * Wird ausgeführt, wenn eine Figur aus dem Startfeld bewegt werden soll
+	 * 
+	 * @param team
+	 *            - (Team)Das gewünschte Team
+	 * @param position
+	 *            - (int)Die derzeitige Position
+	 * @param wuerfelwert
+	 *            - (int)Wert der gewürfelt wurde
+	 * @return
+	 */
 	public boolean moveOutOfStart(int team, int position, int wuerfelwert) {
 		if (wuerfelwert == 6) {
 			if (team == 1) {
@@ -85,7 +87,7 @@ public class Game {
 						startT1[position] = null;
 						return true;
 					}
-					if(kick(1, 0)){
+					if (kick(1, 0)) {
 						gameField[0] = startT1[position];
 						startT1[position] = null;
 						return true;
@@ -100,7 +102,7 @@ public class Game {
 						startT2[position] = null;
 						return true;
 					}
-					if (kick(2, 10)){
+					if (kick(2, 10)) {
 						gameField[10] = startT2[position];
 						startT2[position] = null;
 						return true;
@@ -115,7 +117,7 @@ public class Game {
 						startT3[position] = null;
 						return true;
 					}
-					if (kick(3, 20)){
+					if (kick(3, 20)) {
 						gameField[20] = startT3[position];
 						startT3[position] = null;
 						return true;
@@ -130,7 +132,7 @@ public class Game {
 						startT4[position] = null;
 						return true;
 					}
-					if (kick(4, 30)){
+					if (kick(4, 30)) {
 						gameField[30] = startT4[position];
 						startT4[position] = null;
 						return true;
@@ -142,6 +144,16 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Gibt true zurück, wenn eine Spielfigur gekickt wird.
+	 * 
+	 * 
+	 * @param team
+	 *            - (Team)Das gewünschte Team
+	 * @param feld
+	 *            - (int)Derzeitige Position der zu kickenden Figur
+	 * @return true,false
+	 */
 	public boolean kick(int team, int feld) {
 		if (gameField[feld] == null) {
 			return true;
@@ -225,6 +237,17 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Bewegt Figuren innerhalb des Spielfeldes
+	 * 
+	 * @param team
+	 *            - (Team)Das gewünschte Team
+	 * @param position
+	 *            - (int)Die derzeitige Position
+	 * @param steps
+	 *            - (int)Zurückgelegte Strecke
+	 * @return
+	 */
 	public boolean moveFromField(int team, int position, int steps) {
 		int k;
 		int b;
@@ -341,10 +364,21 @@ public class Game {
 
 	}
 
+	/**
+	 * Bewegt Figuren, während sie im Winfield sind
+	 * 
+	 * @param team
+	 *            - (int)Das gewünschte Team
+	 * @param position
+	 *            - (int)Die derzeitige Position
+	 * @param steps
+	 *            - (int)Der gewürfelte Wert
+	 * @return
+	 */
 	public boolean moveFromWinField(int team, int position, int steps) {
 		int k;
 		if (team == 1) {
-			if(winT1[position] == null){
+			if (winT1[position] == null) {
 				return false;
 			}
 			k = steps + position;
@@ -373,7 +407,7 @@ public class Game {
 			}
 		}
 		if (team == 2) {
-			if(winT2[position] == null){
+			if (winT2[position] == null) {
 				return false;
 			}
 			k = steps + position;
@@ -402,7 +436,7 @@ public class Game {
 			}
 		}
 		if (team == 3) {
-			if(winT3[position] == null){
+			if (winT3[position] == null) {
 				return false;
 			}
 			k = steps + position;
@@ -431,7 +465,7 @@ public class Game {
 			}
 		}
 		if (team == 4) {
-			if(winT4[position] == null){
+			if (winT4[position] == null) {
 				return false;
 			}
 			k = steps + position;
@@ -462,6 +496,12 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Gibt true zurück, falls das Win-Array von Team 1 voll ist, und somit T1
+	 * den Sieg errungen hat
+	 * 
+	 * @return true,false
+	 */
 	public boolean wint1() {
 		for (int i = 0; i < 4; i++) {
 			if (winT1[i] == null) {
@@ -471,6 +511,12 @@ public class Game {
 		return true;
 	}
 
+	/**
+	 * Gibt true zurück, falls das Win-Array von Team 2 voll ist, und somit T2
+	 * den Sieg errungen hat
+	 * 
+	 * @return true,false
+	 */
 	public boolean wint2() {
 		for (int i = 0; i < 4; i++) {
 			if (winT2[i] == null) {
@@ -480,6 +526,12 @@ public class Game {
 		return true;
 	}
 
+	/**
+	 * Gibt true zurück, falls das Win-Array von Team 3 voll ist, und somit T3
+	 * den Sieg errungen hat
+	 * 
+	 * @return true,false
+	 */
 	public boolean wint3() {
 		for (int i = 0; i < 4; i++) {
 			if (winT2[i] == null) {
@@ -489,6 +541,12 @@ public class Game {
 		return true;
 	}
 
+	/**
+	 * Gibt true zurück, falls das Win-Array von Team 4 voll ist, und somit T4
+	 * den Sieg errungen hat
+	 * 
+	 * @return true,false
+	 */
 	public boolean wint4() {
 		for (int i = 0; i < 4; i++) {
 			if (winT2[i] == null) {
@@ -498,8 +556,17 @@ public class Game {
 		return true;
 	}
 
+	/**
+	 * Eintrag in das Highscore System eines Spielers, wird in einer Serializable Datei gespeichert
+	 * Bots werden nicht eingetragen
+	 * 
+	 * @param teamname
+	 *            - (String)Name des Teams
+	 * @return true, false
+	 * @throws IOException
+	 */
 	public boolean highscoreEntry(String teamname) throws IOException {
-		if(teamname.equals("Bot")){
+		if (teamname.equals("Bot")) {
 			place++;
 			return true;
 		}
@@ -550,6 +617,17 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Gibt true zurück, falls eine Figur ins Winfeld versetzt werden kann
+	 * 
+	 * @param team
+	 *            - (int)Das gewünschte Team
+	 * @param from
+	 *            - (int)Die derzeitige Position der Figur
+	 * @param to
+	 *            - (int)Die gewünschte Position
+	 * @return true,false.
+	 */
 	public boolean canMoveInWinField(int team, int from, int to) {
 		if (team == 1) {
 			if (winT1[to] == null) {
@@ -586,8 +664,20 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Gibt true zurück, falls ein Platz im WinFeld eines jeweiligen Teams frei
+	 * ist. Dient zur Bewegung innerhalb des WinFieldes.
+	 * 
+	 * @param team
+	 *            - (int)Das gewünschte Team
+	 * @param from
+	 *            - (int)Die derzeitige Position
+	 * @param to
+	 *            - (int)Die gewünschte Position
+	 * @return true,false
+	 */
 	public boolean canMoveWithinWinField(int team, int from, int to) {
-		if(from == to){
+		if (from == to) {
 			return true;
 		}
 		if (team == 1) {
@@ -625,6 +715,16 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Prüft, ob das Team von einem Bot gesteuert wird und übernimmt somit
+	 * automatisch für dieses Team den Zug
+	 * 
+	 * @param team
+	 *            - (int)Das gewünschte Team
+	 * @param steps
+	 *            - (int)Gewürfelter Wert
+	 * @return true,false
+	 */
 	public boolean botmove(int team, int steps) {
 		if (team == 1) {
 			if (t1.isBot()) {

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Person implements Comparable<Person>, Serializable{
 
 
-	/**
+	/**Serialisierte Klasse, welche für das Highscore System benötigt wird
 	 * 
 	 */
 	private static final long serialVersionUID = -612580165415596578L;

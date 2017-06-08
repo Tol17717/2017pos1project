@@ -14,12 +14,19 @@ public class Highscore {
 	public Highscore() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Sortiert das Highscore array nach Punkten
+	 */
 	public void sort() {
 		highscore.sort(c);
 		System.out.println("Highscore array sorted");
 	}
-
+	/**
+	 * Fügt Punkte zu einem Spieler hinzu, falls der Spieler noch nicht vorhanden ist, wird ein neues Person Objekt erstellt
+	 * @param name - (String)Name des Teams
+	 * @param score - (int)Punkte des Teams
+	 */
 	public void add(String name, int score) {
 		for (Person p : highscore) {
 			if (p.getName().equals(name)) {
@@ -33,7 +40,9 @@ public class Highscore {
 		highscore.add(e);
 		System.out.println(e.toString());
 	}
-
+	/**
+	 * Liest die Textdatei
+	 */
 	public void read() {
 		if(new File("\\POSProjectTOL_HRA_2017\\highscore.ser").exists() != true){
 			return;
@@ -65,7 +74,10 @@ public class Highscore {
 			return;
 		}
 	}
-
+	/**
+	 * Speichert die Werte der Teams in eine Serializable Datei
+	 * @throws IOException
+	 */
 	public void write() throws IOException {
 		if (new File("\\POSProjectTOL_HRA_2017\\highscore.ser").exists() != true) {
 			createFile();
@@ -84,7 +96,9 @@ public class Highscore {
 		}
 		System.out.printf("Serialized data is saved in C:\\POSProjectTOL_HRA_2017\\highscore.ser");
 	}
-
+	/**
+	 * Gibt den Highscore aus
+	 */
 	public void print() {
 		sort();
 		for (Person x : highscore) {
@@ -107,7 +121,10 @@ public class Highscore {
 			System.out.println("Score: " + p.getScore());
 		}
 	}
-
+	/**
+	 * Erstellt die Datei, falls sie nicht vorhanden ist
+	 * @throws IOException
+	 */
 	public void createFile() throws IOException { //TODO Path aus dem Hardcode entfernen
 		if (new File("\\POSProjectTOL_HRA_2017").exists()) {
 			String pfad = "\\POSProjectTOL_HRA_2017\\highscore.ser";
