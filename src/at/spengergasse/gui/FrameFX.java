@@ -3,12 +3,10 @@ package at.spengergasse.gui;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -139,7 +137,7 @@ public class FrameFX extends Stage {
 		t2w = new Button[4];
 		t3w = new Button[4];
 		t4w = new Button[4];
-		
+
 		mainStage.setTitle("Mensch Aergere Dich Nicht!");
 		mainStage.getIcons().add(new Image("at/spengergasse/img/titleicon.jpg"));
 		HBox hbox = new HBox();
@@ -357,15 +355,27 @@ public class FrameFX extends Stage {
 		gamePane.setVgap(25);
 		gamePane.setHgap(25);
 		gamePane.setPadding(new Insets(50, 50, 50, 50));
-		BackgroundImage backgroundImageButtonUp = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/uparr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundUp = new Background(backgroundImageButtonUp);
-        BackgroundImage backgroundImageButtonDown = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/downarr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundDown = new Background(backgroundImageButtonDown);
-        BackgroundImage backgroundImageButtonLeft = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/leftarr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundLeft = new Background(backgroundImageButtonLeft);
-        BackgroundImage backgroundImageButtonRight = new BackgroundImage( new Image( getClass().getResource("/at/spengergasse/img/rightarr.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundRight = new Background(backgroundImageButtonRight);
-		
+		BackgroundImage backgroundImageButtonUp = new BackgroundImage(
+				new Image(getClass().getResource("/at/spengergasse/img/uparr.png").toExternalForm()),
+				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+				BackgroundSize.DEFAULT);
+		Background backgroundUp = new Background(backgroundImageButtonUp);
+		BackgroundImage backgroundImageButtonDown = new BackgroundImage(
+				new Image(getClass().getResource("/at/spengergasse/img/downarr.png").toExternalForm()),
+				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+				BackgroundSize.DEFAULT);
+		Background backgroundDown = new Background(backgroundImageButtonDown);
+		BackgroundImage backgroundImageButtonLeft = new BackgroundImage(
+				new Image(getClass().getResource("/at/spengergasse/img/leftarr.png").toExternalForm()),
+				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+				BackgroundSize.DEFAULT);
+		Background backgroundLeft = new Background(backgroundImageButtonLeft);
+		BackgroundImage backgroundImageButtonRight = new BackgroundImage(
+				new Image(getClass().getResource("/at/spengergasse/img/rightarr.png").toExternalForm()),
+				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+				BackgroundSize.DEFAULT);
+		Background backgroundRight = new Background(backgroundImageButtonRight);
+
 		Button up = new Button();
 		up.setBackground(backgroundUp);
 		up.setMinSize(64, 150);
@@ -498,7 +508,7 @@ public class FrameFX extends Stage {
 			}
 			gamePane.add(gameField[i], x, y);
 		}
-		
+
 		showT1name = new Text("");
 		showT2name = new Text("");
 		showT3name = new Text("");
@@ -530,7 +540,6 @@ public class FrameFX extends Stage {
 		skipRound.setStyle("-fx-font: 20px Tahoma");
 		skipRound.setBackground(new Background(new BackgroundFill(Color.BEIGE, null, null)));
 		gamePane.add(skipRound, 14, 6);
-		
 
 		for (int i = 0; i < 40; i++) {
 			gameField[i].addEventHandler(ActionEvent.ACTION, event);
@@ -555,11 +564,16 @@ public class FrameFX extends Stage {
 		dice.addEventHandler(ActionEvent.ACTION, event);
 		skipRound.addEventHandler(ActionEvent.ACTION, event);
 	}
+
 	/**
 	 * Verändert das Aussehen des Spielfeldes
-	 * @param id, Position  
-	 * @param teamColor, Teamfarbe
-	 * @param makeNull, Ob das Spielfeld leer ist
+	 * 
+	 * @param id,
+	 *            Position
+	 * @param teamColor,
+	 *            Teamfarbe
+	 * @param makeNull,
+	 *            Ob das Spielfeld leer ist
 	 */
 	public void changeGameField(int id, Color teamColor, boolean makeNull) {
 		if (makeNull) {
@@ -579,13 +593,20 @@ public class FrameFX extends Stage {
 			}
 		}
 	}
+
 	/**
 	 * Verändert das Aussehen der Startfelder
-	 * @param id, position 
-	 * @param team, welches Team
-	 * @param teamColor, Teamfarbe
-	 * @param teamBgColor, Hintergrundfarbe des Teams
-	 * @param makeNull, Ob das Startfeld leer ist
+	 * 
+	 * @param id,
+	 *            position
+	 * @param team,
+	 *            welches Team
+	 * @param teamColor,
+	 *            Teamfarbe
+	 * @param teamBgColor,
+	 *            Hintergrundfarbe des Teams
+	 * @param makeNull,
+	 *            Ob das Startfeld leer ist
 	 */
 	public void changeStartField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull) {
 		if (makeNull) {
@@ -634,14 +655,16 @@ public class FrameFX extends Stage {
 			}
 		}
 	}
- /**
-  * Gleiche Methode wie changeStartField, gilt nur fürs WinFeld
-  * @param id
-  * @param team
-  * @param teamColor
-  * @param teamBgColor
-  * @param makeNull
-  */
+
+	/**
+	 * Gleiche Methode wie changeStartField, gilt nur fürs WinFeld
+	 * 
+	 * @param id
+	 * @param team
+	 * @param teamColor
+	 * @param teamBgColor
+	 * @param makeNull
+	 */
 	public void changeWinField(int id, int team, Color teamColor, Color teamBgColor, boolean makeNull) {
 		if (makeNull) {
 			if (team == 1) {

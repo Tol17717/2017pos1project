@@ -54,6 +54,7 @@ public class DiceThread extends Thread {
 		super(group, target, name, stackSize);
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * Führt den animierten Würfel aus
 	 */

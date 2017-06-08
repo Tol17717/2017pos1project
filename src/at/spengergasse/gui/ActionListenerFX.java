@@ -696,8 +696,10 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		}
 
 	}
+
 	/**
 	 * Aktualisiert das Spielfeld (GUI)
+	 * 
 	 * @param game
 	 */
 	public void refresh(Game game) {
@@ -786,6 +788,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 
 		}
 	}
+
 	/**
 	 * Der Syntax des Würfels
 	 */
@@ -998,11 +1001,14 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			}
 		}
 	}
+
 	/**
-	 * Prüft, ob ein Win Array eines jeweiligen Teams voll ist und lässt ein Pop up fenster erscheinen
-	 * wenn ein team gewinnt. Das Team wird auch im Highscore System eingetragen
-	 * Sobald der dritte menschliche Spieler das Spiel beendet oder nur noch mehr bots übrig sind
-	 * ist das Spiel vorbei und man wird zum Startbildschirm übergeleitet
+	 * Prüft, ob ein Win Array eines jeweiligen Teams voll ist und lässt ein Pop
+	 * up fenster erscheinen wenn ein team gewinnt. Das Team wird auch im
+	 * Highscore System eingetragen Sobald der dritte menschliche Spieler das
+	 * Spiel beendet oder nur noch mehr bots übrig sind ist das Spiel vorbei und
+	 * man wird zum Startbildschirm übergeleitet
+	 * 
 	 * @param game
 	 * @throws IOException
 	 */
@@ -1131,6 +1137,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		}
 
 	}
+
 	/**
 	 * Der Zug des Teams, falls dieser ein Bot ist
 	 */
