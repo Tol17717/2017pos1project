@@ -7,7 +7,7 @@ public class DiceThread extends Thread {
 
 	private Button a;
 	private Wuerfeln wuerfel;
-	private int dice;
+	public int dice;
 
 	public DiceThread() {
 		// TODO Auto-generated constructor stub
@@ -57,15 +57,10 @@ public class DiceThread extends Thread {
 
 	@Override
 	public void run() {
-		//a.setDisable(true);
 		float w = 75;
 		int c = 0;
 		for (int i = 0; i < 12; i++) {
-			if (i == 11) {
-				c = dice;
-			} else {
-				c = wuerfel.wuerfeln();
-			}
+			c = wuerfel.wuerfeln();
 			if (c == 1) {
 				a.setStyle("-fx-background-image: url('at/spengergasse/img/wuerfel1.jpg')");
 			}
@@ -92,6 +87,5 @@ public class DiceThread extends Thread {
 				e.printStackTrace();
 			}
 		}
-		//a.setDisable(false);
 	}
 }
