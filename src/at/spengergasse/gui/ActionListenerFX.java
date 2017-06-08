@@ -58,6 +58,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		t2isBot = false;
 		t3isBot = false;
 		t4isBot = false;
+		gui.getSelectionErrTxt().setText("");
 	}
 
 	@Override
