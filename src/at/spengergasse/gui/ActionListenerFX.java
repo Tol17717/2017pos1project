@@ -58,7 +58,6 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 		t2isBot = false;
 		t3isBot = false;
 		t4isBot = false;
-		gui.getSelectionErrTxt().setText("");
 	}
 
 	@Override
@@ -289,6 +288,7 @@ public class ActionListenerFX implements EventHandler<ActionEvent> {
 			gui.getWhosTurn().setFill(t1);
 
 			gui.getMainStage().setScene(gui.getGameScene());
+			gui.getSelectionErrTxt().setText("");
 			t1name = gui.getShowT1name().getText();
 			t2name = gui.getShowT2name().getText();
 			t3name = gui.getShowT3name().getText();
