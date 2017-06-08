@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class Person implements Comparable<Person>, Serializable{
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -612580165415596578L;
 	private  int score;
 	private String name;
 	private int place;

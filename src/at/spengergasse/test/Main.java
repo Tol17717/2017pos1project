@@ -16,7 +16,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		highscore.read();
-		highscore.add("Elliott", 1);
+		highscore.add("Elliott", 10);
 		highscore.print();
 		highscore.write();
 		
